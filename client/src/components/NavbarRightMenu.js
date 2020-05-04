@@ -1,75 +1,71 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
 import PropTypes from 'prop-types';
-
-import Button from '@material-ui/core/Button';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';
 
-const styles = {
-  link: {
-    outline: 'none',
-    textDecoration: 'none'
+import Divider from '@material-ui/core/Divider';
+import Drawer from '@material-ui/core/Drawer';
+import List from '@material-ui/core/List';
+import MenuIcon from '@material-ui/icons/Menu';
+import { FolderListItems, OtherFolderListItems } from './MenuItems';
+
+const styles = theme => ({
+  list: {
+    width: 250
   },
-  menuButton: {
-    color: '#fff',
-    fontSize: '18px',
-    marginRight: '-15px',
-    textTransform: 'none'
-  }
-};
+  fullList: {
+    width: 'auto'
+  },
+  toolbar: theme.mixins.toolbar
+});
 
-class NavbarRightMenu extends Component {
+class NavbarLeftMenu extends React.Component {
   state = {
-    anchorEl: null
+    left: false
   };
 
-  handleClick = (event) => {
-    this.setState({ anchorEl: event.currentTarget });
-  };
-
-  handleClose = () => {
-    this.setState({ anchorEl: null });
+  toggleDrawer = open => () => {
+    this.setState({
+      left: open
+    });
   };
 
   render() {
-    const { classes, logoutUser, user } = this.props;
-    const { anchorEl } = this.state;
+    const { classes, user } = this.props;
+    const { left } = this.state;
+
+    const sideList = (
+      <div className={classes.list}>
+        <div className={classes.toolbar} />
+        <Divider />
+        <List>
+          <FolderListItems user={user} />
+        </List>
+        <Divider />
+        <List>{OtherFolderListItems}</List>
+      </div>
+    );
 
     return (
       <div>
-        <Button
-          aria-owns={anchorEl ? 'right-menu' : null}
-          aria-haspopup="true"
-          className={classes.menuButton}
-          onClick={this.handleClick}
-        >
-          {user.name}
-        </Button>
-        <Menu
-          id="right-menu"
-          anchorEl={anchorEl}
-          open={Boolean(anchorEl)}
-          onClose={this.handleClose}
-        >
-          <Link className={classes.link} to={`/profile/${user.userId}`}>
-            <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-          </Link>
-          <Link className={classes.link} to="/discover">
-            <MenuItem onClick={this.handleClose}>Discover</MenuItem>
-          </Link>
-          <MenuItem onClick={logoutUser}>Logout</MenuItem>
-        </Menu>
+        <MenuIcon onClick={this.toggleDrawer(true)} />
+        <Drawer open={left} onClose={this.toggleDrawer(false)}>
+          <div
+            tabIndex={0}
+            role="button"
+            onClick={this.toggleDrawer(false)}
+            onKeyDown={this.toggleDrawer(false)}
+          >
+            {sideList}
+          </div>
+        </Drawer>
       </div>
     );
   }
 }
 
-NavbarRightMenu.propTypes = {
+NavbarLeftMenu.propTypes = {
   classes: PropTypes.object.isRequired,
-  logoutUser: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(NavbarRightMenu);
+export default withStyles(styles)(NavbarLeftMenu);

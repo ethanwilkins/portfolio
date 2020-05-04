@@ -35,25 +35,27 @@ class Navbar extends Component {
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
-            <IconButton
-              className={classes.menuButton}
-              color="inherit"
-              aria-label="Menu"
-            >
-              <NavbarLeftMenu user={user} />
-            </IconButton>
             <Typography
               className={classes.flex}
               variant="title"
               color="inherit"
             >
               <Link className={classes.logo} to="/">
-                Council
+                Forrest Wilkins
               </Link>
             </Typography>
+
             <div>
-              <NavbarRightMenu logoutUser={logoutUser} user={user} />
+              <NavbarLeftMenu logoutUser={logoutUser} user={user} />
             </div>
+
+            <IconButton
+              className={classes.menuButton}
+              color="inherit"
+              aria-label="Menu"
+            >
+              <NavbarRightMenu user={user} />
+            </IconButton>
           </Toolbar>
         </AppBar>
       </div>
