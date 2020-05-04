@@ -1,6 +1,6 @@
 # Portfolio for Forrest Wilkins
 
-A work in progress...
+A website to showcase my work and skills.
 
 ## FOSS
 
