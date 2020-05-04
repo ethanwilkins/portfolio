@@ -11,6 +11,7 @@ This is free and open source software, as specified by the GNU General Public Li
 1. Clone the repository.
 2. `cd` into the directory and run `npm install`.
 3. Run `cd client && npm install`.
+4. [Set up MongoDB](https://github.com/jm-shi/MERN-Social-Network/blob/master/README.md).
 
 ## Built With
 
