@@ -1,6 +1,6 @@
 # Portfolio for Forrest Wilkins
 
-A website to showcase my work and skills.
+A website to showcase my work and skills. Built with MERN.
 
 ## FOSS
 
