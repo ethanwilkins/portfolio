@@ -43,6 +43,7 @@ client/node_modules/
 jspm_packages/
 package-lock.json
 client/package-lock.json
+yarn.lock
 
 # Server/backend
 backend/secrets.js

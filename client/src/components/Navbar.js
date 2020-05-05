@@ -15,16 +15,20 @@ const styles = {
   flex: {
     flexGrow: 1
   },
-  logo: {
-    color: '#fff',
-    textDecoration: 'none'
+  name: {
+    textDecoration: 'none',
+    color: 'black'
   },
   menuButton: {
-    marginLeft: -12,
-    marginRight: 20
+    marginRight: -10,
+    color: 'black'
   },
   root: {
     flexGrow: 1
+  },
+  navBar: {
+    background: '#fff',
+    boxShadow: 'none'
   }
 };
 
@@ -33,14 +37,14 @@ class Navbar extends Component {
     const { classes, logoutUser, user } = this.props;
     return (
       <div className={classes.root}>
-        <AppBar position="static">
-          <Toolbar>
+        <AppBar elevation={0} position="static">
+          <Toolbar className={classes.navBar}>
             <Typography
               className={classes.flex}
               variant="title"
               color="inherit"
             >
-              <Link className={classes.logo} to="/">
+              <Link className={classes.name} to="/">
                 Forrest Wilkins
               </Link>
             </Typography>
