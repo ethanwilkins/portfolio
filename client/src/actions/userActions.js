@@ -28,10 +28,7 @@ export const followUser = (signedInUserId, idToFollow) => async (dispatch) => {
   });
 };
 
-export const unfollowUser = (
-  signedInUserId,
-  idToUnfollow
-) => async (dispatch) => {
+export const unfollowUser = (signedInUserId, idToUnfollow) => async (dispatch) => {
   const unfollowResult = await axios.patch(
     `/users/unfollowing/${signedInUserId}`,
     {
