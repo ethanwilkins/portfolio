@@ -8,7 +8,7 @@ import App from './components/App';
 import createStore from './store';
 import setAuthToken from './setAuthToken';
 import { logoutUser, setCurrentUser } from './actions/authActions';
-import './index.css';
+import './styles/index.css';
 
 const store = createStore(
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
