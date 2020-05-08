@@ -7,44 +7,24 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import { withStyles } from '@material-ui/core/styles';
+import styles from '../styles/Navbar.module.scss';
 
 import NavbarLeftMenu from './NavbarLeftMenu';
 import NavbarRightMenu from './NavbarRightMenu';
 
-const styles = {
-  flex: {
-    flexGrow: 1
-  },
-  name: {
-    textDecoration: 'none',
-    color: 'black'
-  },
-  menuButton: {
-    marginRight: -10,
-    color: 'black'
-  },
-  root: {
-    flexGrow: 1
-  },
-  navBar: {
-    background: '#fff',
-    boxShadow: 'none'
-  }
-};
-
 class Navbar extends Component {
   render() {
-    const { classes, logoutUser, user } = this.props;
+    const { logoutUser, user } = this.props;
     return (
-      <div className={classes.root}>
+      <div className={styles.root}>
         <AppBar elevation={0} position="static">
-          <Toolbar className={classes.navBar}>
+          <Toolbar className={styles.nav_bar}>
             <Typography
-              className={classes.flex}
+              className={styles.flex}
               variant="title"
               color="inherit"
             >
-              <Link className={classes.name} to="/">
+              <Link className={styles.name} to="/">
                 Forrest Wilkins
               </Link>
             </Typography>
@@ -54,8 +34,7 @@ class Navbar extends Component {
             </div>
 
             <IconButton
-              className={classes.menuButton}
-              color="inherit"
+              color="black"
               aria-label="Menu"
             >
               <NavbarRightMenu user={user} />
@@ -68,7 +47,6 @@ class Navbar extends Component {
 }
 
 Navbar.propTypes = {
-  classes: PropTypes.object.isRequired,
   logoutUser: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired
 };

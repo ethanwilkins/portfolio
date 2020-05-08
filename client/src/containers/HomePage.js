@@ -4,14 +4,11 @@ import PropTypes from 'prop-types';
 
 import NavbarContainer from './NavbarContainer';
 
-import styles from '../styles/HomePage.module.css';
-
 export class HomePage extends Component {
   render() {
     return (
       <div>
         <NavbarContainer />
-        <div className={styles.test}>Test</div>
       </div>
     );
   }
