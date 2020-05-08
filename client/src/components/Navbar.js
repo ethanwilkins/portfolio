@@ -6,19 +6,23 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
-import { withStyles } from '@material-ui/core/styles';
 import styles from '../styles/Navbar.module.scss';
 
 import NavbarLeftMenu from './NavbarLeftMenu';
 import NavbarRightMenu from './NavbarRightMenu';
 
+import Avatar from '@material-ui/core/Avatar';
+import avatarImg from "../images/me.jpg";
+
 class Navbar extends Component {
   render() {
     const { logoutUser, user } = this.props;
+
     return (
       <div className={styles.root}>
         <AppBar elevation={0} position="static">
-          <Toolbar className={styles.nav_bar}>
+          <Toolbar className={styles.navBar}>
+            <Avatar alt="Forrest Wilkins" src={avatarImg} className={styles.avatar}/>
             <Typography
               className={styles.flex}
               variant="title"
@@ -33,10 +37,7 @@ class Navbar extends Component {
               <NavbarLeftMenu logoutUser={logoutUser} user={user} />
             </div>
 
-            <IconButton
-              color="black"
-              aria-label="Menu"
-            >
+            <IconButton aria-label="Menu">
               <NavbarRightMenu user={user} />
             </IconButton>
           </Toolbar>
@@ -51,4 +52,4 @@ Navbar.propTypes = {
   user: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(Navbar);
+export default Navbar;
