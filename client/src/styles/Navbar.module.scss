@@ -1,3 +1,43 @@
+$mainFontSize: 20px;
+$activeColor: rgb(95, 210, 140);
+$cardMaxWidth: 950px;
+
+@mixin card {
+  transition: all .4s ease-in-out;
+  position: relative;
+  padding: 1.25px 7.5px;
+  color: rgb(50, 50, 50);
+  border: 0px solid white;
+  max-width: $cardMaxWidth;
+  margin: 0 auto;
+  width: 94.5%;
+  overflow: auto;
+  font-size: $mainFontSize;
+}
+
+
+@font-face {
+  font-family: "Maison Neue Thin";
+  src: url("../fonts/maison_neue_thin.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Maison Neue Light";
+  src: url("../fonts/maison_neue_light.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.headerContainer {
+  height: 50px;
+}
+
+.verticalSpacer {
+  padding-bottom: 40px;
+}
+
 .avatar {
   position: absolute;
   top: 0px;
@@ -5,4 +45,59 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
+}
+
+.avatarContainer {
+  float: left;
+}
+
+@mixin avatarItem {
+  position: absolute;
+  left: 62.5px;
+  white-space: nowrap;
+  font-size: 18px;
+}
+
+.avatarName {
+  @include avatarItem;
+  top: -2.5px;
+}
+
+.avatarTitle {
+  @include avatarItem;
+  top: 22.5px;
+  font-family: "Maison Neue Thin";
+}
+
+.headerLink:hover {
+  text-decoration: none;
+  color: $activeColor;
+}
+// end of global css
+
+// for mobile
+$mobileFontSize: 18px;
+@media screen and (max-width: 975px) {
+  .headerContainer {
+    margin-top: -37.5px;
+    margin-left: 15px;
+  }
+  .avatar {
+    width: 40px;
+    height: 40px;
+  }
+  .avatarName {
+    top: -3px;
+    left: 52.5px;
+    font-size: 16px;
+  }
+  .avatarTitle {
+    top: 17px;
+    left: 52.5px;
+    font-size: 16px;
+    font-family: "Maison Neue Light";
+  }
+  .verticalSpacer {
+    padding-bottom: 20px;
+  }
 }

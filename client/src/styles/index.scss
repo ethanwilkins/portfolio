@@ -1,45 +1,23 @@
-$main_font_size: 20px;
+$mainFontSize: 20px;
+$activeColor: rgb(95, 210, 140);
+$cardMaxWidth: 950px;
 
-$active_color: rgb(95, 210, 140);
-
-$card_max_midth: 950px;
 @mixin card {
   transition: all .4s ease-in-out;
   position: relative;
   padding: 1.25px 7.5px;
   color: rgb(50, 50, 50);
   border: 0px solid white;
-  max-width: $card_max_midth;
+  max-width: $cardMaxWidth;
   margin: 0 auto;
   width: 94.5%;
   overflow: auto;
-  font-size: $main_font_size;
+  font-size: $mainFontSize;
 }
 
 @font-face {
   font-family: "Maison Neue Light";
   src: url("../fonts/maison_neue_light.otf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Proxima Nova";
-  src: url("../fonts/proxima_nova.otf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Futura PT";
-  src: url("../fonts/futura_pt.otf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Maison Neue Thin";
-  src: url("../fonts/maison_neue_thin.otf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -58,10 +36,65 @@ body {
   line-height: 175%;
 }
 
-.header_container {
-  height: 50px;
+a {
+	text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  color: rgb(50, 50, 50);
+  font-weight: 400;
+  font-size: $mainFontSize;
 }
 
-.vertical_spacer {
-  padding-bottom: 40px;
+a:hover {
+  text-decoration: underline;
+}
+
+::selection {
+  color: white;
+  background: rgb(85, 210, 140);
+}
+
+:focus {
+  outline: none;
+}
+
+::-moz-focus-inner {
+  border: 0;
+}
+
+.linkActive {
+  color: $activeColor;
+}
+
+.linkSoft {
+  color: rgb(200, 200, 200);
+}
+// end of global css
+
+// for mobile
+$mobileFontSize: 18px;
+@media screen and (max-width: 975px) {
+  a {
+    font-size: $mobileFontSize;
+  }
+  .pageHeader {
+    font-size: 30px;
+    width: 100%;
+  }
+  .card {
+    @include card;
+    font-size: $mobileFontSize;
+    width: 90%;
+  }
+  .cardCol {
+    width: 100%;
+  }
+}
+// end mobile
+
+// for desktop
+$desktopCardMaxWidth: 1125px;
+@media screen and (min-width: 1300px) {
+  .card {
+    max-width: $desktopCardMaxWidth;
+  }
 }
