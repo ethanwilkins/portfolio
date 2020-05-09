@@ -1,5 +1,36 @@
+@font-face {
+  font-family: "Maison Neue Light";
+  src: url("../fonts/maison_neue_light.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Proxima Nova";
+  src: url("../fonts/proxima_nova.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Futura PT";
+  src: url("../fonts/futura_pt.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Maison Neue Thin";
+  src: url("../fonts/maison_neue_thin.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+  font-family: "Maison Neue Light";
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
 }
