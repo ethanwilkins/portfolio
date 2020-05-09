@@ -1,3 +1,21 @@
+$main_font_size: 20px;
+
+$active_color: rgb(95, 210, 140);
+
+$card_max_midth: 950px;
+@mixin card {
+  transition: all .4s ease-in-out;
+  position: relative;
+  padding: 1.25px 7.5px;
+  color: rgb(50, 50, 50);
+  border: 0px solid white;
+  max-width: $card_max_midth;
+  margin: 0 auto;
+  width: 94.5%;
+  overflow: auto;
+  font-size: $main_font_size;
+}
+
 @font-face {
   font-family: "Maison Neue Light";
   src: url("../fonts/maison_neue_light.otf") format("truetype");
@@ -33,4 +51,17 @@ html {
 body {
   margin: 0;
   padding: 0;
+}
+
+.card {
+  @include card;
+  line-height: 175%;
+}
+
+.header_container {
+  height: 50px;
+}
+
+.vertical_spacer {
+  padding-bottom: 40px;
 }

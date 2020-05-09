@@ -12,10 +12,17 @@ class Navbar extends Component {
 
     return (
       <div>
-        <Link to='/'>
-          <img className={styles.avatar} alt="Forrest Wilkins" src={avatarImg}/>
-        </Link>
-        Test
+        <div class="page_hider"></div>
+
+        <div class="vertical_spacer"></div>
+
+        <div class="card header_container">
+          <div class="avatar_container">
+            <Link to='/'>
+              <img className={styles.avatar} alt="Forrest Wilkins" src={avatarImg}/>
+            </Link>
+          </div>
+        </div>
       </div>
     );
   }
