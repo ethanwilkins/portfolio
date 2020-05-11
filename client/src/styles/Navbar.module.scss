@@ -78,10 +78,6 @@ $cardMaxWidth: 950px;
 // for mobile
 $mobileFontSize: 18px;
 @media screen and (max-width: 975px) {
-  .headerContainer {
-    margin-top: -37.5px;
-    margin-left: 15px;
-  }
   .avatar {
     width: 40px;
     height: 40px;
@@ -96,6 +92,10 @@ $mobileFontSize: 18px;
     left: 52.5px;
     font-size: 16px;
     font-family: "Maison Neue Light";
+  }
+  .headerContainer {
+    margin-top: -37.5px;
+    margin-left: 15px;
   }
   .verticalSpacer {
     padding-bottom: 20px;

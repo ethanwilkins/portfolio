@@ -8,6 +8,7 @@ export class HomePage extends Component {
   render() {
     return (
       <div>
+        <div class="pageHider"></div>
         <NavbarContainer />
       </div>
     );

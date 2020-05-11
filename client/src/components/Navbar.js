@@ -12,8 +12,6 @@ class Navbar extends Component {
 
     return (
       <div>
-        <div class="pageHider"></div>
-
         <div className={styles.verticalSpacer}></div>
 
         <div className={"card " + styles.headerContainer}>
