@@ -28,6 +28,18 @@ class Navbar extends Component {
               Software Development
             </div>
           </div>
+
+          <div className={styles.navBar}>
+            <Link to='/' className={styles.navBarLink + " " + styles.headerLink + " linkActive aboutLink"}>
+              About
+            </Link>
+            <Link to='/' className={styles.navBarLink + " " + styles.headerLink}>
+              Blog
+            </Link>
+            <Link to='mailto:forrestwilkins@protonmail.com' className={styles.navBarLink + " " + styles.headerLink + " linkSoft " + styles.emailNavBarLink}>
+              forrestwilkins@protonmail.com
+            </Link>
+          </div>
         </div>
       </div>
     );

@@ -1,5 +1,5 @@
 import React from 'react';
-import createHistory from 'history/createBrowserHistory';
+import { createBrowserHistory } from 'history'
 import { Router, Route, Switch, withRouter } from 'react-router-dom';
 import withAnalytics, { initAnalytics } from 'react-with-analytics';
 
@@ -10,7 +10,7 @@ import SignupPage from '../containers/SignupPage';
 import NotFound from './NotFound';
 
 initAnalytics('UA-126201794-1');
-export const history = createHistory();
+export const history = createBrowserHistory();
 
 const Root = () => (
   <Switch>

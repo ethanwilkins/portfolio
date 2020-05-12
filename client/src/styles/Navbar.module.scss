@@ -1,20 +1,4 @@
-$mainFontSize: 20px;
 $activeColor: rgb(95, 210, 140);
-$cardMaxWidth: 950px;
-
-@mixin card {
-  transition: all .4s ease-in-out;
-  position: relative;
-  padding: 1.25px 7.5px;
-  color: rgb(50, 50, 50);
-  border: 0px solid white;
-  max-width: $cardMaxWidth;
-  margin: 0 auto;
-  width: 94.5%;
-  overflow: auto;
-  font-size: $mainFontSize;
-}
-
 
 @font-face {
   font-family: "Maison Neue Thin";
@@ -73,6 +57,115 @@ $cardMaxWidth: 950px;
   text-decoration: none;
   color: $activeColor;
 }
+
+.navBar {
+  float: right;
+  margin-top: 7.5px;
+}
+
+.navBarLink {
+  padding: 15px;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.emailNavBarLink {
+  font-family: "Maison Neue Thin";
+  padding-right: 0px;
+}
+
+$menuLinkContainerSize: 80px;
+.menuLinkContainer {
+  transition: all 0.25s ease-in-out;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: $menuLinkContainerSize;
+  height: $menuLinkContainerSize;
+  z-index: 10;
+}
+
+.menuLinkContainerOpen {
+  background: $activeColor;
+  position: fixed;
+}
+
+.menuLinkOpen {
+  color: white;
+}
+
+.menuLink {
+  position: absolute;
+  top: 35px;
+  right: 35px;
+  display: block;
+  height: 20px;
+  width: 20px;
+  visibility: hidden;
+  font-size: 25px;
+  transform: scale(1.1, 1);
+  z-index: 15;
+}
+
+.navLinks {
+  transition: all .25s ease-in;
+  padding-top: 20px;
+}
+
+.navLinksContainer {
+  transition: all .35s ease-in-out;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: calc(100% - $menuLinkContainerSize);
+  height: 100%;
+  z-index: 15;
+}
+
+.navLinksContainerOpen {
+  left: 0;
+}
+
+.navMenuLink {
+	display: block;
+	padding: 12.5px 22.5px;
+  letter-spacing: 4px;
+  color: rgb(100, 100, 100);
+  font-size: 20px;
+}
+
+.navIconLinks {
+  font-size: 50px;
+}
+
+.menuLinkHidden {
+  visibility: hidden;
+  display: block;
+  height: 0;
+}
+
+.barsIcon {
+  width: 21.5px;
+  position: absolute;
+  right: -6.5px;
+}
+
+.barsIconBar {
+  width: 100%;
+  height: 2.5px;
+  background: black;
+  margin-bottom: 4.5px;
+}
+
+.xIcon {
+  width: 140%;
+  height: 150%;
+  position: absolute;
+  top: -9px;
+  left: 1.5px;
+  color: white;
+  filter: brightness(1.5);
+}
 // end of global css
 
 // for mobile
@@ -99,5 +192,8 @@ $mobileFontSize: 18px;
   }
   .verticalSpacer {
     padding-bottom: 20px;
+  }
+  .navBar {
+    visibility: hidden;
   }
 }
