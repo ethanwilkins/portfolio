@@ -68,6 +68,17 @@ a:hover {
 .linkSoft {
   color: rgb(200, 200, 200);
 }
+
+// stops blue selection for tapping of links in mobile
+.noSelect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
 // end of global css
 
 // for mobile

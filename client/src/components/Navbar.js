@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import styles from '../styles/Navbar.module.scss';
-import avatarImg from "../images/me.jpg";
+import avatar from '../images/me.jpg';
+import xIcon from '../images/x.png';
 
 import { Link } from 'react-router-dom';
 
@@ -17,7 +18,7 @@ class Navbar extends Component {
         <div className={"card " + styles.headerContainer}>
           <div className={styles.avatarContainer}>
             <Link to='/'>
-              <img className={styles.avatar} alt="Forrest Wilkins" src={avatarImg}/>
+              <img src={avatar} alt="Forrest Wilkins" className={styles.avatar}/>
             </Link>
 
             <Link to='/' className={styles.avatarName + " " + styles.headerLink}>
@@ -41,6 +42,19 @@ class Navbar extends Component {
             </Link>
           </div>
         </div>
+
+        <Link to='' className={styles.menuLinkContainer}>
+          <div className={styles.menuLink + " noSelect"}>
+            <div className={styles.menuIcon + " " + styles.barsIcon}>
+              <div className={styles.barsIconBar}></div>
+              <div className={styles.barsIconBar}></div>
+              <div className={styles.barsIconBar}></div>
+            </div>
+            <div className={styles.menuIcon + " " + styles.menuLinkHidden}>
+              <img src={xIcon}  alt="X-icon should go here." className={styles.xIcon} />
+            </div>
+          </div>
+        </Link>
       </div>
     );
   }
