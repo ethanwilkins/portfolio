@@ -117,7 +117,7 @@ $menuLinkContainerSize: 80px;
   position: fixed;
   top: 0;
   left: -100%;
-  width: calc(100% - $menuLinkContainerSize);
+  width: calc(100% - #{$menuLinkContainerSize});
   height: 100%;
   z-index: 15;
 }
