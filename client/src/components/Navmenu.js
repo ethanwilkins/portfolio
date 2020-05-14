@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+
 import xIcon from '../images/x.png';
 import styles from '../styles/Navbar.module.scss';
 import classNames from 'classnames/bind';
@@ -54,6 +55,42 @@ class Navmenu extends Component {
           navLinksContainerOpen: this.state.open
         })}>
           <div className={styles.navLinks}>
+            <Link to='/' className={cx(styles.navMenuLink, {
+              linkActive: true,
+              noSelect: true,
+              aboutLink: true
+            })}>
+              <i className="fa fa-info" ></i> About
+            </Link>
+            <Link to='/' className={cx(styles.navMenuLink, {
+              linkActive: false,
+              noSelect: true,
+              aboutLink: true
+            })}>
+              <i className="fa fa-rss" ></i> Blog
+            </Link>
+            <Link to='/' className={cx(styles.navMenuLink, {
+              linkActive: false,
+              noSelect: true,
+              aboutLink: true
+            })}>
+              <i className="fa fa-skype" ></i> Skype
+            </Link>
+            <Link to='/' className={cx(styles.navMenuLink, {
+              linkActive: false,
+              noSelect: true,
+              aboutLink: true
+            })}>
+              <i className="fa fa-github" ></i> GitHub
+            </Link>
+            <Link to='/' className={cx(styles.navMenuLink, {
+              linkActive: false,
+              noSelect: true,
+              aboutLink: true
+            })}>
+              <i className="fa fa-stack-overflow" ></i> Stack Overflow
+            </Link>
+
           </div>
         </div>
       </div>
