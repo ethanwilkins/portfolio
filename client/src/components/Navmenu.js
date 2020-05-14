@@ -23,6 +23,10 @@ class Navmenu extends Component {
 
     return (
       <div>
+        <div className={cx('pageHider', {
+          hidePage: this.state.open
+        })}></div>
+
         <Link to='' onClick={this.toggleMenu} className={cx(styles.menuLinkContainer, {
           menuLinkContainerOpen: this.state.open
         })}>
