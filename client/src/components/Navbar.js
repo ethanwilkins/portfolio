@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+
+import Navmenu from './Navmenu';
 
 import styles from '../styles/Navbar.module.scss';
 import avatar from '../images/me.jpg';
-import xIcon from '../images/x.png';
-
-import { Link } from 'react-router-dom';
 
 class Navbar extends Component {
   render() {
@@ -43,18 +43,7 @@ class Navbar extends Component {
           </div>
         </div>
 
-        <Link to='' className={styles.menuLinkContainer}>
-          <div className={styles.menuLink + " noSelect"}>
-            <div className={styles.menuIcon + " " + styles.barsIcon}>
-              <div className={styles.barsIconBar}></div>
-              <div className={styles.barsIconBar}></div>
-              <div className={styles.barsIconBar}></div>
-            </div>
-            <div className={styles.menuIcon + " " + styles.menuLinkHidden}>
-              <img src={xIcon}  alt="X-icon should go here." className={styles.xIcon} />
-            </div>
-          </div>
-        </Link>
+        <Navmenu />
       </div>
     );
   }
