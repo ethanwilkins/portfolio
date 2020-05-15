@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-
 import xIcon from '../images/x.png';
 import styles from '../styles/Navbar.module.scss';
 import classNames from 'classnames/bind';
@@ -21,7 +20,6 @@ class Navmenu extends Component {
   };
 
   render() {
-
     return (
       <div>
         <div className={cx('pageHider', {
@@ -90,7 +88,6 @@ class Navmenu extends Component {
             })}>
               <i className="fa fa-stack-overflow" ></i> Stack Overflow
             </Link>
-
           </div>
         </div>
       </div>

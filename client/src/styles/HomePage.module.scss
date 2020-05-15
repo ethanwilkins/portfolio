@@ -1,0 +1,77 @@
+$mainFontSize: 20px;
+$activeColor: rgb(95, 210, 140);
+$cardMaxWidth: 950px;
+
+@mixin card {
+  transition: all .4s ease-in-out;
+  position: relative;
+  padding: 1.25px 7.5px;
+  color: rgb(50, 50, 50);
+  border: 0px solid white;
+  max-width: $cardMaxWidth;
+  margin: 0 auto;
+  width: 94.5%;
+  overflow: auto;
+  font-size: $mainFontSize;
+}
+
+.headerCard {
+  @include card;
+  padding-bottom: 12.5px;
+}
+
+.pageHeader {
+  font-size: 35px;
+  width: 80%;
+}
+
+.mainImg {
+  display: block;
+  position: relative;
+  border: 0px solid white;
+  margin: 0 auto;
+  max-width: $cardMaxWidth;
+  width: 94.5%;
+}
+
+.mainImgContainer {
+  height: 550px;
+  overflow: hidden;
+  margin-bottom: 35px;
+}
+
+// for mobile
+$mobileFontSize: 18px;
+@media screen and (max-width: 975px) {
+  .pageHeader {
+    font-size: 30px;
+    width: 100%;
+  }
+  .headerCard {
+    padding-bottom: 1.5px;
+    width: 92.5%;
+  }
+  .mainImg {
+    width: 100%;
+  }
+  .mainImgContainer {
+    height: auto;
+  }
+}
+// end mobile
+
+// for desktop
+$desktopCardMaxWidth: 1125px;
+@media screen and (min-width: 1300px) {
+  .mainImg {
+    max-width: $desktopCardMaxWidth;
+  }
+  .headerCard {
+    max-width: $desktopCardMaxWidth;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  .pageHeader {
+    width: 65%;
+  }
+}

@@ -9,7 +9,6 @@ import avatar from '../images/me.jpg';
 
 class Navbar extends Component {
   render() {
-
     return (
       <div>
         <div className={styles.verticalSpacer}></div>
