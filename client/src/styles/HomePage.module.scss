@@ -40,6 +40,36 @@ $cardMaxWidth: 950px;
   margin-bottom: 35px;
 }
 
+.lilCImg {
+  width: 100%;
+  margin-bottom: 12.5px;
+}
+
+.lilCLink:hover {
+  text-decoration: none;
+}
+
+.quote {
+  width: 95%;
+  font-size: 27.5px;
+  line-height: 165%;
+}
+
+.quote:hover {
+  text-decoration: none;
+}
+
+.doubleQuote {
+  font-size: 35px;
+  font-weight: bold;
+  font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+  letter-spacing: 2px;
+}
+
+.quoteGiver {
+  color: rgb(150, 150, 150);
+}
+
 // for mobile
 $mobileFontSize: 18px;
 @media screen and (max-width: 975px) {
@@ -56,6 +86,13 @@ $mobileFontSize: 18px;
   }
   .mainImgContainer {
     height: auto;
+  }
+  .quote {
+    font-size: 22.5px;
+    line-height: 150%;
+  }
+  .doubleQuote {
+    font-size: 30px;
   }
 }
 // end mobile

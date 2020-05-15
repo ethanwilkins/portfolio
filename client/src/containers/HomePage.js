@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import NavbarContainer from './NavbarContainer';
 
 import mainImg from '../images/html.jpg';
+import lilCImg from '../images/lil_c_screen.png';
 import styles from '../styles/HomePage.module.scss';
 
 export class HomePage extends Component {
@@ -22,6 +24,78 @@ export class HomePage extends Component {
         <div className={styles.mainImgContainer}>
           <img src={mainImg} alt='HTML code should show here.' className={styles.mainImg} />
         </div>
+
+        <div className="card" align="left">
+          <div className="cardCol">
+            <p className="linkSoft">
+              About
+            </p>
+            <p>
+              Need a professional website made with quick turnaround for your business, company, or idea that hasn't launched yet?
+            </p>
+            <p>
+              All of my websites are built from scratch using the web development framework known as Ruby on Rails. So whether it's a simple, static landing page for your art or music, or something more complex (e.g. custom social networks or inventory management systems), you've come to the right place.
+            </p>
+            <p>
+              My specialties include website design, hosting, mobile responsive websites, search engine optimization, and full scale content management systems.
+            </p>
+          </div>
+
+          <div className="cardColSpacer"></div>
+
+          <div className="cardCol">
+            <p className="linkSoft">
+              Hire me
+            </p>
+            <p>
+              So are you looking for a professional, communicative, and punctual software engineer with extensive web development skills?
+            </p>
+            <p>
+              If you have an application you are interested in developing, a problem that needs solving or a project that needs rescuing, I'd love to help you with it.
+            </p>
+            <p>
+              Send me an email:
+            </p>
+            <p>
+              <Link to='mailto:forrestwilkins@protonmail.com' className='linkUnderlined linkActive'>
+                forrestwilkins@protonmail.com
+              </Link>
+            </p>
+          </div>
+        </div>
+
+        <div className="card" align="left">
+          <p className="linkSoft">
+            My work
+          </p>
+
+          <Link to='https://lilccorleone.com' className={styles.lilCLink}>
+            <div className="cardCol">
+              <img src={lilCImg} alt="Lil' C. screenshot" className={styles.lilCImg} />
+            </div>
+
+            <div className="cardColSpacer"></div>
+
+            <div className="cardCol">
+              <div className={styles.quote}>
+                <i className={styles.doubleQuote}>"</i>Forrest provides excellent services. The web design he did for my website is much like the professional musician’s websites that I’ve seen and I’m lucky to have come across someone who cares about their customers as much as he does!<i className={styles.doubleQuote}>"</i>
+                <div className={styles.quoteGiver}><i>- Chris Peterson, <b>Lil' C. Corleone</b></i></div>
+              </div>
+            </div>
+          </Link>
+        </div>
+
+        <div className="card" align="left">
+          <p className="linkSoft">
+            Projects
+          </p>
+          <p>
+            <Link to='https://play.google.com/store/apps/developer?id=Forrest+Wilkins'>
+              Interactive Art Apps made with Processing
+            </Link>
+          </p>
+        </div>
+
       </div>
     );
   }
