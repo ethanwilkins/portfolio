@@ -11,7 +11,7 @@ class Navbar extends Component {
   render() {
     return (
       <div>
-        <div className={styles.verticalSpacer}></div>
+        <div className="verticalSpacer"></div>
 
         <div className={"card " + styles.headerContainer}>
           <div className={styles.avatarContainer}>

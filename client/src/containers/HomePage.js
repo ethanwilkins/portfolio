@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import NavbarContainer from './NavbarContainer';
+import Footer from '../components/Footer';
 
 import mainImg from '../images/html.jpg';
 import lilCImg from '../images/lil_c_screen.png';
@@ -96,6 +97,7 @@ export class HomePage extends Component {
           </p>
         </div>
 
+        <Footer />
       </div>
     );
   }
