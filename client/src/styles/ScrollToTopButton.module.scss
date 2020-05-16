@@ -1,19 +1,13 @@
-.icon {
-  font-size: 50px;
-}
-
-.container {
+.button {
+  transition: all .4s ease-in-out;
   position: fixed;
   bottom: 27.5px;
   right: 37.5px;
   z-index: 5;
-  color: rgb(200, 200, 200);
-}
-
-.button {
-  visibility: hidden;
+  color: rgba(200, 200, 200, 0.0);
+  font-size: 50px;
 }
 
 .showButton {
-  visibility: visible;
+  color: rgba(200, 200, 200, 1);
 }

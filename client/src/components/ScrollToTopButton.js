@@ -18,26 +18,31 @@ class ScrollToTopButton extends Component {
         hidden: false
       });
     }
+    if (window.scrollY === 0 && !this.state.hidden) {
+      this.setState({
+        hidden: true
+      });
+    }
   };
 
-  componentDidMount(){
+  scrollToTop = () => {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  };
+
+  componentDidMount() {
     window.addEventListener('scroll', this.showButton);
   };
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     window.removeEventListener('scroll', this.showButton);
   };
 
   render() {
     return (
-      <Link to='/' className={cx(styles.button, {
+      <Link to='/' onClick={this.scrollToTop} className={cx(styles.button, {
         showButton: !this.state.hidden
       })}>
-        <div className={styles.container}>
-          <span className={styles.icon}>
-            <i className="fa fa-angle-up"></i>
-          </span>
-        </div>
+        <i className="fa fa-angle-up"></i>
       </Link>
     );
   }

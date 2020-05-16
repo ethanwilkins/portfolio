@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 
 import xIcon from '../images/x.png';
 import styles from '../styles/Navbar.module.scss';
@@ -94,10 +93,5 @@ class Navmenu extends Component {
     );
   }
 }
-
-Navmenu.propTypes = {
-  logoutUser: PropTypes.func.isRequired,
-  user: PropTypes.object.isRequired
-};
 
 export default Navmenu;
