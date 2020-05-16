@@ -8,19 +8,19 @@ const cx = classNames.bind(styles);
 
 class ScrollToTopButton extends Component {
   state = {
-    hidden: true
+    isHidden: true
   };
 
   showButton = () => {
-    const { hidden } = this.state
+    const { isHidden } = this.state
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
       this.setState({
-        hidden: false
+        isHidden: false
       });
     }
-    if (window.scrollY === 0 && !this.state.hidden) {
+    if (window.scrollY === 0 && !this.state.isHidden) {
       this.setState({
-        hidden: true
+        isHidden: true
       });
     }
   };
@@ -40,7 +40,7 @@ class ScrollToTopButton extends Component {
   render() {
     return (
       <Link to='/' onClick={this.scrollToTop} className={cx(styles.button, {
-        showButton: !this.state.hidden
+        showButton: !this.state.isHidden
       })}>
         <i className="fa fa-angle-up"></i>
       </Link>
