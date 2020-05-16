@@ -8,7 +8,7 @@ class Footer extends Component {
   render() {
     return (
       <div>
-        <div className="verticalSpacer"></div>
+        <div className={styles.verticalSpacer}></div>
 
         <div className={styles.footer}>
           <div className={styles.card} align="left">

@@ -13,7 +13,7 @@ class Navbar extends Component {
       <div>
         <div className="verticalSpacer"></div>
 
-        <div className={"card " + styles.headerContainer}>
+        <div className={styles.headerContainer}>
           <div className={styles.avatarContainer}>
             <Link to='/'>
               <img src={avatar} alt="Forrest Wilkins" className={styles.avatar}/>

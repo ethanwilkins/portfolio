@@ -69,6 +69,10 @@ $cardMaxWidth: 950px;
 .darkLink {
   color: rgb(60, 60, 60);
 }
+
+.verticalSpacer {
+  padding-bottom: 85px;
+}
 // end of global css
 
 // for mobile
@@ -94,6 +98,9 @@ $mobileFontSize: 18px;
   .cardContent {
     margin-bottom: 40px;
     width: 90%;
+  }
+  .verticalSpacer {
+    padding-bottom: 65px;
   }
 }
 // end mobile
