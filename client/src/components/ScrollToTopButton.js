@@ -12,12 +12,12 @@ class ScrollToTopButton extends Component {
   };
 
   showButton = () => {
-    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 5) {
       this.setState({
         isHidden: false
       });
     }
-    if (window.scrollY === 0 && !this.state.isHidden) {
+    if (window.scrollY < 5 && !this.state.isHidden) {
       this.setState({
         isHidden: true
       });
