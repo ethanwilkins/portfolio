@@ -1,0 +1,19 @@
+.icon {
+  font-size: 50px;
+}
+
+.container {
+  position: fixed;
+  bottom: 27.5px;
+  right: 37.5px;
+  z-index: 5;
+  color: rgb(200, 200, 200);
+}
+
+.button {
+  visibility: hidden;
+}
+
+.showButton {
+  visibility: visible;
+}

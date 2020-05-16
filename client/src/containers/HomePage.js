@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 import NavbarContainer from './NavbarContainer';
 import Footer from '../components/Footer';
+import ScrollToTopButton from '../components/ScrollToTopButton';
 
 import mainImg from '../images/html.jpg';
 import lilCImg from '../images/lil_c_screen.png';
@@ -98,6 +99,7 @@ export class HomePage extends Component {
         </div>
 
         <Footer />
+        <ScrollToTopButton />
       </div>
     );
   }
