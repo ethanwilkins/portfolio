@@ -44,36 +44,36 @@ class Footer extends Component {
               <div className={styles.menuLabel + " linkSoft"}>
                 Contact
               </div>
-              <Link to='mailto:forrestwilkins@protonmail.com' className={styles.menuItem + " " + styles.text}>
+              <a href='mailto:forrestwilkins@protonmail.com' target="_blank" rel="noopener noreferrer" className={styles.menuItem + " " + styles.text}>
                 forrestwilkins@protonmail.com
-              </Link>
+              </a>
               <Link to='/' className={styles.menuItem + " " + styles.text}>
                 (919) 756-0830
               </Link>
-              <Link to='skype:live:forrest_wilkins' className={styles.menuItem + " " + styles.text}>
+              <a href='skype:live:forrest_wilkins' target="_blank" rel="noopener noreferrer" className={styles.menuItem + " " + styles.text}>
                 Skype
-              </Link>
+              </a>
             </div>
 
             <div className={styles.menu}>
               <div className={styles.menuLabel + " linkSoft"}>
                 Online
               </div>
-              <Link to='https://github.com/ethanwilkins' className={styles.menuItem + " " + styles.text}>
+              <a href='https://github.com/ethanwilkins' target="_blank" rel="noopener noreferrer" className={styles.menuItem + " " + styles.text}>
                 GitHub
-              </Link>
-              <Link to='https://stackoverflow.com/users/2034099/ethan-wilkins' className={styles.menuItem + " " + styles.text}>
+              </a>
+              <a href='https://stackoverflow.com/users/2034099/ethan-wilkins' target="_blank" rel="noopener noreferrer" className={styles.menuItem + " " + styles.text}>
                 Stack Overflow
-              </Link>
+              </a>
             </div>
           </div>
           <div className={styles.card} align="left">
             <div className={styles.text}>
               Copyright Forrest Wilkins 2020 © <Link to='/' className={styles.text + " linkUnderlined"}>
                 More information
-              </Link> — <Link to='https://github.com/ethanwilkins/simplr' className={styles.text + " " + styles.darkLink}>
+              </Link> — <a href='https://github.com/ethanwilkins/simplr' target="_blank" rel="noopener noreferrer" className={styles.text + " " + styles.darkLink}>
                 Changelog
-              </Link>
+              </a>
             </div>
           </div>
         </div>

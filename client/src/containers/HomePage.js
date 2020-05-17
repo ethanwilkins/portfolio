@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 import NavbarContainer from './NavbarContainer';
 import Footer from '../components/Footer';
@@ -59,9 +58,9 @@ export class HomePage extends Component {
               Send me an email:
             </p>
             <p>
-              <Link to='mailto:forrestwilkins@protonmail.com' className='linkUnderlined linkActive'>
+              <a href="mailto:forrestwilkins@protonmail.com" target="_blank" rel="noopener noreferrer" className='linkUnderlined linkActive'>
                 forrestwilkins@protonmail.com
-              </Link>
+              </a>
             </p>
           </div>
         </div>
@@ -71,7 +70,7 @@ export class HomePage extends Component {
             My work
           </p>
 
-          <Link to='https://lilccorleone.com' className={styles.lilCLink}>
+          <a href="https://lilccorleone.com" target="_blank" rel="noopener noreferrer" className={styles.lilCLink}>
             <div className="cardCol">
               <img src={lilCImg} alt="Lil' C. screenshot" className={styles.lilCImg} />
             </div>
@@ -84,7 +83,7 @@ export class HomePage extends Component {
                 <div className={styles.quoteGiver}><i>- Chris Peterson, <b>Lil' C. Corleone</b></i></div>
               </div>
             </div>
-          </Link>
+          </a>
         </div>
 
         <div className="card" align="left">
@@ -92,9 +91,9 @@ export class HomePage extends Component {
             Projects
           </p>
           <p>
-            <Link to='https://play.google.com/store/apps/developer?id=Forrest+Wilkins'>
+            <a href="https://play.google.com/store/apps/developer?id=Forrest+Wilkins" rel="noopener noreferrer" target="_blank">
               Interactive Art Apps made with Processing
-            </Link>
+            </a>
           </p>
         </div>
 
