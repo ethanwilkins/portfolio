@@ -66,27 +66,27 @@ class Navmenu extends Component {
             })}>
               <i className="fa fa-rss" ></i> Blog
             </Link>
-            <Link to='/' className={cx(styles.navMenuLink, {
+            <a href='skype:live:forrest_wilkins' target="_blank" rel="noopener noreferrer" className={cx(styles.navMenuLink, {
               linkActive: false,
               noSelect: true,
               aboutLink: true
             })}>
               <i className="fa fa-skype" ></i> Skype
-            </Link>
-            <Link to='/' className={cx(styles.navMenuLink, {
+            </a>
+            <a href='https://github.com/ethanwilkins/simplr' target="_blank" rel="noopener noreferrer" className={cx(styles.navMenuLink, {
               linkActive: false,
               noSelect: true,
               aboutLink: true
             })}>
               <i className="fa fa-github" ></i> GitHub
-            </Link>
-            <Link to='/' className={cx(styles.navMenuLink, {
+            </a>
+            <a href='https://stackoverflow.com/users/2034099/ethan-wilkins' target="_blank" rel="noopener noreferrer" className={cx(styles.navMenuLink, {
               linkActive: false,
               noSelect: true,
               aboutLink: true
             })}>
               <i className="fa fa-stack-overflow" ></i> Stack Overflow
-            </Link>
+            </a>
           </div>
         </div>
       </div>
