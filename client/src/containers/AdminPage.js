@@ -11,9 +11,10 @@ export class AdminPage extends Component {
   };
 
   render() {
+    const { user } = this.props;
     return (
       <div>
-        Welcome, Admin Forrest
+        Welcome, Admin {user.name}!
       </div>
     );
   }
@@ -24,7 +25,7 @@ AdminPage.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  auth: state.authReducer
+  user: state.authReducer.user
 });
 
 export default connect(mapStateToProps)(AdminPage);
