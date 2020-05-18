@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import compose from 'recompose/compose';
+
+import { logoutUser } from '../actions/authActions';
 
 import xIcon from '../images/x.png';
 import styles from '../styles/Navbar.module.scss';
@@ -19,6 +24,8 @@ class Navmenu extends Component {
   };
 
   render() {
+    const { logout } = this.props;
+
     return (
       <div>
         <div className={cx('pageHider', {
@@ -98,7 +105,7 @@ class Navmenu extends Component {
                     <i className="fa fa-cog"></i> Admin
                   </Link>
 
-                  <Link to='/' className={styles.navMenuLink + " noSelect"}>
+                  <Link to='/' onClick={logout} className={styles.navMenuLink + " noSelect"}>
                     <i className="fa fa-sign-out"></i> Log out
                   </Link>
                 </div>
@@ -111,4 +118,18 @@ class Navmenu extends Component {
   }
 }
 
-export default Navmenu;
+
+Navmenu.propTypes = {
+  logout: PropTypes.func.isRequired
+};
+
+const mapDispatchToProps = dispatch => ({
+  logout: () => dispatch(logoutUser())
+});
+
+export default compose(
+  connect(
+    undefined,
+    mapDispatchToProps
+  )
+)(Navmenu);
