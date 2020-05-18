@@ -97,7 +97,7 @@ class Navmenu extends Component {
             <div>
               {localStorage.jwtToken &&
                 <div>
-                  <Link to='/' className={cx(styles.navMenuLink, {
+                  <Link to='/admin' className={cx(styles.navMenuLink, {
                     linkActive: false,
                     noSelect: true,
                     adminLink: true

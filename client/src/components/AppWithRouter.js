@@ -7,6 +7,7 @@ import HomePage from '../containers/HomePage';
 import LoginPage from '../containers/LoginPage';
 import SettingsPage from '../containers/SettingsPage';
 import SignupPage from '../containers/SignupPage';
+import AdminPage from '../containers/AdminPage';
 import NotFound from './NotFound';
 
 initAnalytics('UA-126201794-1');
@@ -18,6 +19,7 @@ const Root = () => (
     <Route path="/signup" component={SignupPage} />
     <Route path="/login" component={LoginPage} />
     <Route path="/settings" component={SettingsPage} />
+    <Route path="/admin" component={AdminPage} />
     <Route component={NotFound} />
   </Switch>
 );

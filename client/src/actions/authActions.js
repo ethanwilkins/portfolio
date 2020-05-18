@@ -38,6 +38,7 @@ export const loginUser = user => (dispatch) => {
       setAuthToken(token);
       const decoded = jwtDecode(token);
       dispatch(setCurrentUser(decoded));
+      window.location.href = '/admin';
     })
     .catch((err) => {
       dispatch({
