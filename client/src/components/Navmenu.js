@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import compose from 'recompose/compose';
@@ -24,7 +24,8 @@ class Navmenu extends Component {
   };
 
   render() {
-    const { logout } = this.props;
+    const { logout, location } = this.props;
+    const path = location.pathname;
 
     return (
       <div>
@@ -32,7 +33,7 @@ class Navmenu extends Component {
           hidePage: this.state.open
         })}></div>
 
-        <div to='' onClick={this.toggleMenu} className={cx(styles.menuLinkContainer, {
+        <div onClick={this.toggleMenu} className={cx(styles.menuLinkContainer, {
           menuLinkContainerOpen: this.state.open
         })}>
           <div className={cx(styles.menuLink, {
@@ -60,14 +61,14 @@ class Navmenu extends Component {
         })}>
           <div className={styles.navLinks}>
             <Link to='/' className={cx(styles.navMenuLink, {
-              linkActive: true,
+              linkActive: path === '/',
               noSelect: true,
               aboutLink: true
             })}>
               <i className="fa fa-info"></i> About
             </Link>
             <Link to='/blog' className={cx(styles.navMenuLink, {
-              linkActive: false,
+              linkActive: path === '/blog',
               noSelect: true,
               aboutLink: true
             })}>
@@ -94,7 +95,7 @@ class Navmenu extends Component {
             })}>
               <i className="fa fa-stack-overflow"></i> Stack Overflow
             </a>
-            
+
             <div className={styles.verticalSpacer}></div>
 
             {(() => {
@@ -102,7 +103,7 @@ class Navmenu extends Component {
                 return (
                   <div>
                     <Link to='/dev' className={cx(styles.navMenuLink, {
-                      linkActive: false,
+                      linkActive: path === '/dev',
                       noSelect: true
                     })}>
                       <i className="fa fa-cog"></i> Admin
@@ -129,7 +130,8 @@ class Navmenu extends Component {
 }
 
 Navmenu.propTypes = {
-  logout: PropTypes.func.isRequired
+  logout: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired
 };
 
 const mapDispatchToProps = dispatch => ({
@@ -141,4 +143,4 @@ export default compose(
     undefined,
     mapDispatchToProps
   )
-)(Navmenu);
+)(withRouter(Navmenu));

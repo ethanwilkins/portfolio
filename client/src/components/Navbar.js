@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import Navmenu from './Navmenu';
 
+import avatar from '../images/me.jpg';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/opacity.css';
-
 import styles from '../styles/Navbar.module.scss';
-import avatar from '../images/me.jpg';
+import classNames from 'classnames/bind';
+
+const cx = classNames.bind(styles);
 
 class Navbar extends Component {
   render() {
+    const path = this.props.location.pathname;
+
     return (
       <div>
         <div className="verticalSpacer"></div>
@@ -36,10 +40,16 @@ class Navbar extends Component {
           </div>
 
           <div className={styles.navBar}>
-            <Link to='/' className={styles.navBarLink + " " + styles.headerLink + " linkActive aboutLink"}>
+            <Link to='/' className={cx(styles.navBarLink, {
+              headerLink: true,
+              linkActive: path === '/'
+            })}>
               About
             </Link>
-            <Link to='/blog' className={styles.navBarLink + " " + styles.headerLink}>
+            <Link to='/blog' className={cx(styles.navBarLink, {
+              headerLink: true,
+              linkActive: path === '/blog'
+            })}>
               Blog
             </Link>
             <a href='mailto:forrestwilkins@protonmail.com' target="_blank" rel="noopener noreferrer"
@@ -60,4 +70,4 @@ Navbar.propTypes = {
   user: PropTypes.object.isRequired
 };
 
-export default Navbar;
+export default withRouter(Navbar);
