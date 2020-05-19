@@ -39,7 +39,7 @@ class Navbar extends Component {
             <Link to='/' className={styles.navBarLink + " " + styles.headerLink + " linkActive aboutLink"}>
               About
             </Link>
-            <Link to='/' className={styles.navBarLink + " " + styles.headerLink}>
+            <Link to='/blog' className={styles.navBarLink + " " + styles.headerLink}>
               Blog
             </Link>
             <a href='mailto:forrestwilkins@protonmail.com' target="_blank" rel="noopener noreferrer"

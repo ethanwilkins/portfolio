@@ -35,10 +35,11 @@ export const loginUser = user => (dispatch) => {
     .then((res) => {
       const { token } = res.data;
       localStorage.setItem('jwtToken', token);
+      localStorage.setItem('loggedInBefore', true);
       setAuthToken(token);
       const decoded = jwtDecode(token);
       dispatch(setCurrentUser(decoded));
-      window.location.href = '/admin';
+      window.location.href = '/dev';
     })
     .catch((err) => {
       dispatch({

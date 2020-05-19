@@ -66,7 +66,7 @@ class Navmenu extends Component {
             })}>
               <i className="fa fa-info"></i> About
             </Link>
-            <Link to='/' className={cx(styles.navMenuLink, {
+            <Link to='/blog' className={cx(styles.navMenuLink, {
               linkActive: false,
               noSelect: true,
               aboutLink: true
@@ -94,30 +94,39 @@ class Navmenu extends Component {
             })}>
               <i className="fa fa-stack-overflow"></i> Stack Overflow
             </a>
-            <div>
-              {localStorage.jwtToken &&
-                <div>
-                  <Link to='/admin' className={cx(styles.navMenuLink, {
-                    linkActive: false,
-                    noSelect: true,
-                    adminLink: true
-                  })}>
-                    <i className="fa fa-cog"></i> Admin
-                  </Link>
+            
+            <div className={styles.verticalSpacer}></div>
 
-                  <Link to='/' onClick={logout} className={styles.navMenuLink + " noSelect"}>
-                    <i className="fa fa-sign-out"></i> Log out
+            {(() => {
+              if (localStorage.jwtToken) {
+                return (
+                  <div>
+                    <Link to='/dev' className={cx(styles.navMenuLink, {
+                      linkActive: false,
+                      noSelect: true
+                    })}>
+                      <i className="fa fa-cog"></i> Admin
+                    </Link>
+
+                    <Link to='/' onClick={logout} className={styles.navMenuLink + " noSelect"}>
+                      <i className="fa fa-sign-out"></i> Log out
+                    </Link>
+                  </div>
+                )
+              } else if (localStorage.loggedInBefore) {
+                return (
+                  <Link to='/login' className={styles.navMenuLink + " noSelect"}>
+                    <i className="fa fa-sign-in"></i> Log in
                   </Link>
-                </div>
+                )
               }
-            </div>
+            })()}
           </div>
         </div>
       </div>
     );
   }
 }
-
 
 Navmenu.propTypes = {
   logout: PropTypes.func.isRequired
