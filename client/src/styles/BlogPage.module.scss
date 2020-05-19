@@ -1,0 +1,79 @@
+// Place all the styles related to the blog controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+$mainFontSize: 19px;
+$cardMaxWidth: 950px;
+
+.blog {
+  transition: all .4s ease-in-out;
+  position: relative;
+  padding: 1.25px 7.5px;
+  color: rgb(50, 50, 50);
+  border: 0px solid white;
+  max-width: $cardMaxWidth;
+  margin: 0 auto;
+  width: 94.5%;
+  overflow: auto;
+  font-size: $mainFontSize;
+  margin-top: 75px;
+}
+
+.leftPane {
+  float: left;
+  width: 25%;
+}
+
+.feed {
+  float: left;
+  width: 75%;
+}
+
+.img {
+  width: 100%;
+}
+
+.imgContainer {
+  height: 400px;
+  overflow: hidden;
+  margin-bottom: 50px;
+}
+
+.item {
+  margin-bottom: 25px;
+}
+
+.title {
+  font-size: 32.5px;
+}
+
+
+// for mobile
+@media screen and (max-width: 975px) {
+  .blog {
+    width: 95%;
+  }
+  .feed {
+    width: 100%;
+  }
+  .leftPane {
+    width: 0%;
+    height: 0;
+    visibility: hidden;
+  }
+  .imgContainer {
+    height: auto;
+    margin-bottom: 40px;
+  }
+  .item {
+    margin-bottom: 20px;
+  }
+}
+
+// for desktop
+$desktop_card_max_width: 1125px;
+@media screen and (min-width: 1300px) {
+  .blog {
+    max-width: $desktop_card_max_width;
+  }
+}
