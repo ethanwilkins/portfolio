@@ -6,6 +6,9 @@ import NavbarContainer from './NavbarContainer';
 import Footer from '../components/Footer';
 import ScrollToTopButton from '../components/ScrollToTopButton';
 
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/opacity.css';
+
 import mainImg from '../images/html.jpg';
 import lilCImg from '../images/lil_c_screen.png';
 import styles from '../styles/HomePage.module.scss';
@@ -22,8 +25,12 @@ export class HomePage extends Component {
           </h2>
         </div>
 
-        <div className={styles.mainImgContainer}>
-          <img src={mainImg} alt='HTML code should show here.' className={styles.mainImg} />
+        <div className={styles.mainImgContainer} align="center">
+          <LazyLoadImage
+            alt='HTML code should show here.'
+            effect="opacity"
+            src={mainImg}
+            className={styles.mainImg} />
         </div>
 
         <div className="card" align="left">
@@ -72,7 +79,11 @@ export class HomePage extends Component {
 
           <a href="https://lilccorleone.com" target="_blank" rel="noopener noreferrer" className={styles.lilCLink}>
             <div className="cardCol">
-              <img src={lilCImg} alt="Lil' C. screenshot" className={styles.lilCImg} />
+              <LazyLoadImage
+                alt="Lil' C. screenshot"
+                effect="opacity"
+                src={lilCImg}
+                className={styles.lilCImg} />
             </div>
 
             <div className="cardColSpacer"></div>

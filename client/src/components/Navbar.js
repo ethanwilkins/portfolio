@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 
 import Navmenu from './Navmenu';
 
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/opacity.css';
+
 import styles from '../styles/Navbar.module.scss';
 import avatar from '../images/me.jpg';
 
@@ -16,7 +19,11 @@ class Navbar extends Component {
         <div className={styles.headerContainer}>
           <div className={styles.avatarContainer}>
             <Link to='/'>
-              <img src={avatar} alt="Forrest Wilkins" className={styles.avatar}/>
+              <LazyLoadImage
+                alt='Forrest Wilkins'
+                effect="opacity"
+                src={avatar}
+                className={styles.avatar} />
             </Link>
 
             <Link to='/' className={styles.avatarName + " " + styles.headerLink}>
