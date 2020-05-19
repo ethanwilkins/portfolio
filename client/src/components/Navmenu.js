@@ -32,7 +32,7 @@ class Navmenu extends Component {
           hidePage: this.state.open
         })}></div>
 
-        <Link to='' onClick={this.toggleMenu} className={cx(styles.menuLinkContainer, {
+        <div to='' onClick={this.toggleMenu} className={cx(styles.menuLinkContainer, {
           menuLinkContainerOpen: this.state.open
         })}>
           <div className={cx(styles.menuLink, {
@@ -53,7 +53,7 @@ class Navmenu extends Component {
               <img src={xIcon}  alt="X-icon should go here." className={styles.xIcon} />
             </div>
           </div>
-        </Link>
+        </div>
 
         <div className={cx(styles.navLinksContainer, {
           navLinksContainerOpen: this.state.open

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import ScrollToTopButton from '../components/ScrollToTopButton';
 
 import styles from '../styles/Footer.module.scss';
 
@@ -77,6 +78,8 @@ class Footer extends Component {
             </div>
           </div>
         </div>
+
+        <ScrollToTopButton />
       </div>
     );
   }

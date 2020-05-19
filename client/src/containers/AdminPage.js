@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
+import NavbarContainer from './NavbarContainer';
+import Footer from '../components/Footer';
+
+import styles from '../styles/HomePage.module.scss';
+
 export class AdminPage extends Component {
   componentDidMount = () => {
     const { history } = this.props;
@@ -14,7 +19,15 @@ export class AdminPage extends Component {
     const { user } = this.props;
     return (
       <div>
-        Welcome, Admin {user.name}!
+        <NavbarContainer />
+
+        <div className={styles.headerCard}>
+          <h2 className={styles.pageHeader}>
+            Welcome, Admin {user.name}
+          </h2>
+        </div>
+
+        <Footer />
       </div>
     );
   }

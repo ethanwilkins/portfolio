@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 
 import NavbarContainer from './NavbarContainer';
 import Footer from '../components/Footer';
-import ScrollToTopButton from '../components/ScrollToTopButton';
 
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/opacity.css';
@@ -109,7 +108,6 @@ export class HomePage extends Component {
         </div>
 
         <Footer />
-        <ScrollToTopButton />
       </div>
     );
   }
