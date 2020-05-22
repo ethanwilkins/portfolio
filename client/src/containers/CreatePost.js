@@ -10,6 +10,7 @@ import { createPost } from '../actions/postsActions';
 
 import 'trix/dist/trix';
 import 'trix/dist/trix.css';
+import styles from '../styles/BlogPage.module.scss';
 
 export class CreatePost extends Component {
   state = {
@@ -48,12 +49,14 @@ export class CreatePost extends Component {
           onChange={this.handleChange}
           value={postText}
         />
+
         <TrixEditor
           autoFocus={true}
           placeholder="Post something awesome..."
           uploadURL="https://domain.com/imgupload/receiving/post"
           uploadData={{"key1": "value", "key2": "value"}}
         />
+
         <Button
           variant="contained"
           color="primary"
