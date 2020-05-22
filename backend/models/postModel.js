@@ -29,9 +29,13 @@ const PostSchema = new Schema({
     type: Number,
     required: true
   },
-  text: {
+  title: {
     type: String,
     trim: true,
+    required: true
+  },
+  body: {
+    type: String,
     required: true
   },
   timestamp: {

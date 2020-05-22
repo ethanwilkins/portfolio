@@ -25,18 +25,24 @@ const styles = theme => ({
 export class EditPost extends Component {
   /* eslint-disable react/destructuring-assignment */
   state = {
-    postText: this.props.text
+    title: this.props.title,
+    body: this.props.body
   };
   /* eslint-enable react/destructuring-assignment */
 
-  handleChange = (e) => {
-    const postText = e.target.value;
-    this.setState(() => ({ postText }));
+  handleTitleChange = (e) => {
+    const title = e.target.value;
+    this.setState(() => ({ title }));
+  };
+
+  handleBodyChange = (e) => {
+    const body = e.target.value;
+    this.setState(() => ({ body }));
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { postText } = this.state;
+    const { title, body } = this.state;
     const {
       commentPostId,
       id,
@@ -45,19 +51,19 @@ export class EditPost extends Component {
       editPost,
       handleModalClose
     } = this.props;
-    if (!postText.trim()) return;
+    if (!title.trim()) return;
 
     if (isEditingComment) {
-      editPost('editComment', id, commentPostId, postText);
+      editPost('editComment', id, commentPostId, title, body);
     } else {
-      editPost(id, postText, author);
+      editPost(id, title, body, author);
     }
 
     handleModalClose();
   };
 
   render() {
-    const { postText } = this.state;
+    const { title, body } = this.state;
     const { classes } = this.props;
     return (
       <form
@@ -68,13 +74,24 @@ export class EditPost extends Component {
       >
         <TextField
           id="textarea"
-          placeholder="What's on your mind?"
+          placeholder="Title"
           multiline
           className={classes.textField}
           margin="normal"
           rowsMax="5"
-          value={postText}
-          onChange={this.handleChange}
+          value={title}
+          defaultValue={title}
+          onChange={this.handleTitleChange}
+        />
+        <TextField
+          id="textarea"
+          placeholder="Body"
+          multiline
+          className={classes.textField}
+          margin="normal"
+          rowsMax="5"
+          value={body}
+          onChange={this.handleBodyChange}
         />
         <Button
           variant="contained"
@@ -97,7 +114,8 @@ EditPost.propTypes = {
   author: PropTypes.string.isRequired,
   editPost: PropTypes.func.isRequired,
   handleModalClose: PropTypes.func.isRequired,
-  text: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired
 };
 
 export default compose(

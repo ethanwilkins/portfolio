@@ -49,10 +49,11 @@ export const getPosts = () => dispatch =>
       payload: res.data
     }));
 
-export const createPost = (text, user) => dispatch =>
+export const createPost = (title, body, user) => dispatch =>
   axios
     .post('/posts', {
-      text,
+      title,
+      body,
       author: user.name,
       authorId: user.userId,
       avatarColor: user.avatarColor
@@ -63,12 +64,13 @@ export const createPost = (text, user) => dispatch =>
         payload: res.data
       }));
 
-export const editPost = (id, text, author) => dispatch =>
-  axios.patch(`/posts/${id}`, { id, text, author }).then(res =>
+export const editPost = (id, title, body, author) => dispatch =>
+  axios.patch(`/posts/${id}`, { id, title, body, author }).then(res =>
     dispatch({
       type: EDIT_POST,
       id,
-      text,
+      title,
+      body,
       author
     }));
 

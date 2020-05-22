@@ -10,29 +10,38 @@ import { createPost } from '../actions/postsActions';
 
 import 'trix/dist/trix';
 import 'trix/dist/trix.css';
-import styles from '../styles/BlogPage.module.scss';
+//import styles from '../styles/CreatePost.module.scss';
 
 export class CreatePost extends Component {
   state = {
-    postText: ''
+    title: '',
+    body: ''
   };
 
-  handleChange = (e) => {
-    const postText = e.target.value;
-    this.setState(() => ({ postText }));
+  handleTitleChange = (e) => {
+    const title = e.target.value;
+    this.setState(() => ({ title }));
+  };
+
+  handleBodyChange = (e) => {
+    const body = e.target.value;
+    this.setState(() => ({ body }));
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { postText } = this.state;
+    const { title, body } = this.state;
     const { dispatch, user } = this.props;
-    if (!postText.trim()) return;
-    dispatch(createPost(postText, user));
-    this.setState({ postText: '' });
+    if (!title.trim()) return;
+    dispatch(createPost(title, body, user));
+    this.setState({
+      title: '',
+      body: ''
+    });
   };
 
   render() {
-    const { postText } = this.state;
+    const { title, body } = this.state;
 
     return (
       <form
@@ -46,8 +55,18 @@ export class CreatePost extends Component {
           multiline
           margin="normal"
           rowsMax="5"
-          onChange={this.handleChange}
-          value={postText}
+          onChange={this.handleTitleChange}
+          value={title}
+        />
+
+        <TextField
+          id="textarea"
+          placeholder="Body"
+          multiline
+          margin="normal"
+          rowsMax="5"
+          onChange={this.handleBodyChange}
+          value={body}
         />
 
         <TrixEditor

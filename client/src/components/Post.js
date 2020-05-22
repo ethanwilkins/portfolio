@@ -107,7 +107,8 @@ class Post extends Component {
       likers,
       likesCount,
       signedInUserId,
-      text,
+      title,
+      body,
       timestamp,
       updatePostLikes
     } = this.props;
@@ -172,7 +173,8 @@ class Post extends Component {
           subheader={relativeTime}
         />
         <CardContent>
-          <Typography>{text}</Typography>
+          <Typography>{title}</Typography>
+          <Typography>{body}</Typography>
         </CardContent>
         <CardActions className={classes.actions} disableActionSpacing>
           <div>
@@ -227,7 +229,8 @@ class Post extends Component {
           editPost={editPost}
           handleModalClose={this.handleModalClose}
           modalOpen={modalOpen}
-          text={text}
+          title={title}
+          body={body}
         />
       </Card>
     );
@@ -252,7 +255,8 @@ Post.propTypes = {
   likers: PropTypes.array.isRequired,
   likesCount: PropTypes.number.isRequired,
   signedInUserId: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
   timestamp: PropTypes.number.isRequired,
   updatePostLikes: PropTypes.func.isRequired
 };

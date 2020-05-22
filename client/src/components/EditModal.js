@@ -38,7 +38,8 @@ class EditModal extends Component {
       editPost,
       handleModalClose,
       modalOpen,
-      text
+      title,
+      body
     } = this.props;
     const { name } = this.state;
 
@@ -65,7 +66,8 @@ class EditModal extends Component {
               handleModalClose={handleModalClose}
               id={_id}
               isEditingComment={isEditingComment}
-              text={text}
+              title={title}
+              body={body}
             />
           </Typography>
         </div>
@@ -87,7 +89,8 @@ EditModal.propTypes = {
   editPost: PropTypes.func.isRequired,
   handleModalClose: PropTypes.func.isRequired,
   modalOpen: PropTypes.bool.isRequired,
-  text: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired
 };
 
 export default withStyles(styles)(EditModal);

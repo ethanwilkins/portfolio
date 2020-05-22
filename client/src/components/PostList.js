@@ -77,7 +77,8 @@ class PostList extends Component {
                 likers={post.likers}
                 likesCount={post.likesCount}
                 signedInUserId={user.userId}
-                text={post.text}
+                title={post.title}
+                body={post.body}
                 timestamp={post.timestamp}
                 addComment={(action, commenterId, postId, text, timestamp) =>
                   addComment(action, commenterId, postId, text, timestamp)
@@ -136,7 +137,8 @@ PostList.propTypes = {
       comments: PropTypes.array,
       likers: PropTypes.array.isRequired,
       likesCount: PropTypes.number.isRequired,
-      text: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      body: PropTypes.string.isRequired,
       timestamp: PropTypes.number.isRequired
     })
   ),

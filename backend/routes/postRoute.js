@@ -16,7 +16,8 @@ router.post('/', async (req, res) => {
     comments: [],
     likers: [],
     likesCount: 0,
-    text: req.body.text,
+    title: req.body.title,
+    body: req.body.body,
     timestamp: new Date().getTime()
   });
   try {
@@ -138,9 +139,13 @@ router.patch('/:id', (req, res) => {
   }
 
   try {
+    // updates post itself
     return Post.findByIdAndUpdate(
       id,
-      { $set: { text: req.body.text } },
+      { $set: {
+        title: req.body.title,
+        body: req.body.body
+      }},
       { new: true },
       (err, post) => {
         if (err) return res.status(400).send(err);
