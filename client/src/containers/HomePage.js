@@ -110,6 +110,11 @@ export class HomePage extends Component {
               Lending Library built with Ruby on Rails
             </a>
           </p>
+          <p>
+            <a href="https://s.urveys.xyz" rel="noopener noreferrer" target="_blank">
+              Survey maker built with Ruby on Rails
+            </a>
+          </p>
         </div>
 
         <Footer />
