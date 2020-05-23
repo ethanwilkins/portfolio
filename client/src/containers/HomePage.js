@@ -105,6 +105,11 @@ export class HomePage extends Component {
               Interactive Art Apps made with Processing
             </a>
           </p>
+          <p>
+            <a href="https://lendinglibrary.xyz" rel="noopener noreferrer" target="_blank">
+              Lending Library built with Ruby on Rails
+            </a>
+          </p>
         </div>
 
         <Footer />
