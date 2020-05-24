@@ -3,14 +3,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import compose from 'recompose/compose';
 
-import { TrixEditor } from "react-trix";
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import Wysiwyg from "../components/Wysiwyg";
 import { createPost } from '../actions/postsActions';
-
-import 'trix/dist/trix';
-import 'trix/dist/trix.css';
-//import styles from '../styles/CreatePost.module.scss';
 
 export class CreatePost extends Component {
   state = {
@@ -23,9 +19,8 @@ export class CreatePost extends Component {
     this.setState(() => ({ title }));
   };
 
-  handleBodyChange = (e) => {
-    const body = e.target.value;
-    this.setState(() => ({ body }));
+  handleBodyChange = (body) => {
+    this.setState({body : body});
   };
 
   handleSubmit = (e) => {
@@ -41,7 +36,7 @@ export class CreatePost extends Component {
   };
 
   render() {
-    const { title, body } = this.state;
+    const { title } = this.state;
 
     return (
       <form
@@ -59,22 +54,7 @@ export class CreatePost extends Component {
           value={title}
         />
 
-        <TextField
-          id="textarea"
-          placeholder="Body"
-          multiline
-          margin="normal"
-          rowsMax="5"
-          onChange={this.handleBodyChange}
-          value={body}
-        />
-
-        <TrixEditor
-          autoFocus={true}
-          placeholder="Post something awesome..."
-          uploadURL="https://domain.com/imgupload/receiving/post"
-          uploadData={{"key1": "value", "key2": "value"}}
-        />
+        <Wysiwyg onChange={this.handleBodyChange} />
 
         <Button
           variant="contained"
