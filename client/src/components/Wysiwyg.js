@@ -37,6 +37,7 @@ export class Wysywig extends Component {
       name: "base-image-" + Date.now(),
       data: Base64.encode(file).toString()
     };
+    alert(imageObj.name);
     axios.post('/images/upload', imageObj)
       .then((data) => {
         if (data.data.success) {
