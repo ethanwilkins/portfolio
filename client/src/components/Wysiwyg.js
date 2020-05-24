@@ -22,6 +22,7 @@ export class Wysywig extends Component {
       var attachment = event.attachment;
       if (attachment.file) {
         this.getBaseFile(attachment.file);
+        // update src attribute with correct url here using _id
       }
     });
   }
@@ -37,15 +38,15 @@ export class Wysywig extends Component {
       name: "base-image-" + Date.now(),
       data: Base64.encode(file).toString()
     };
-    alert(imageObj.name);
     axios.post('/images/upload', imageObj)
       .then((data) => {
         if (data.data.success) {
-          alert("Image has been successfully uploaded using base64 format");
+          console.log("Image has been successfully uploaded using base64 format");
+          // needs to return _id for url
         }
       })
       .catch((err) => {
-        alert("Error while uploading image using base64 format");
+        console.log("Error while uploading image using base64 format");
       });
   };
 

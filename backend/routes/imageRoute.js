@@ -5,7 +5,6 @@ const router = new express.Router();
 
 router.post('/upload', async (req, res) => {
   const newImage = new Image({
-    postId: "0",
     name: req.body.name,
     data: req.body.data,
     timestamp: new Date().getTime()
@@ -14,7 +13,7 @@ router.post('/upload', async (req, res) => {
     const image = await newImage.save();
     return res.status(200).json({
       success: true,
-      document: image
+      image: image
     });
   } catch (err) {
     return res.status(400).send(err);

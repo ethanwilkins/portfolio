@@ -3,10 +3,6 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const ImageSchema = new Schema({
-  postId: {
-    type: String,
-    required: true
-  },
   name: {
     type: String,
     default: "none",
