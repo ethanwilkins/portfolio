@@ -172,10 +172,12 @@ class Post extends Component {
           }
           subheader={relativeTime}
         />
+        
         <CardContent>
           <Typography>{title}</Typography>
-          <Typography>{body}</Typography>
+          <div dangerouslySetInnerHTML={{ __html: body }} />
         </CardContent>
+        
         <CardActions className={classes.actions} disableActionSpacing>
           <div>
             <IconButton

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import 'trix';
 import 'trix/dist/trix.css';
 
-export class Wysiwy extends Component {
+export class Wysywig extends Component {
   constructor(props) {
     super(props);
     this.trixInput = React.createRef();
@@ -12,6 +12,9 @@ export class Wysiwy extends Component {
   componentDidMount() {
     this.trixInput.current.addEventListener("trix-change", event => {
       this.props.onChange(event.target.innerHTML); //calling custom event
+    });
+    this.trixInput.current.addEventListener("trix-attachment-add", event => {
+      alert("You have attached an image.");
     });
   }
 
@@ -25,4 +28,4 @@ export class Wysiwy extends Component {
   }
 }
 
-export default Wysiwy;
+export default Wysywig;

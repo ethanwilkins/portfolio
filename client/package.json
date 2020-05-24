@@ -25,7 +25,6 @@
     "react-redux": "^5.0.7",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^2.0.3",
-    "react-trix": "^0.7.0",
     "react-with-analytics": "0.0.5",
     "recompose": "^0.30.0",
     "redux": "^4.0.0",
