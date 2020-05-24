@@ -13,9 +13,7 @@ export class Wysywig extends Component {
     this.trixInput.current.addEventListener("trix-change", event => {
       this.props.onChange(event.target.innerHTML); //calling custom event
     });
-    this.trixInput.current.addEventListener("trix-attachment-add", event => {
-      alert("You have attached an image.");
-    });
+    // this.trixInput.current.addEventListener("trix-attachment-add", event => {});
   }
 
   render() {
