@@ -3,6 +3,15 @@ const Image = require('../models/imageModel');
 
 const router = new express.Router();
 
+router.get('/:id', async (req, res) => {
+  try {
+    const image = await Image.findById(req.params.id);
+    return res.json(image);
+  } catch (err) {
+    return res.status(404).send(err);
+  }
+});
+
 router.post('/upload', async (req, res) => {
   const newImage = new Image({
     name: req.body.name,

@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import 'trix';
+import Trix from 'trix';
 import 'trix/dist/trix.css';
+
+Trix.config.attachments.preview.caption = {
+  name: false,
+  size: false
+};
 
 export class Wysywig extends Component {
   constructor(props) {
     super(props);
     this.trixInput = React.createRef();
-
-    this.state = {
-      baseImage: ''
-    }
   }
 
   componentDidMount() {
@@ -21,28 +22,29 @@ export class Wysywig extends Component {
     this.trixInput.current.addEventListener("trix-attachment-add", event => {
       var attachment = event.attachment;
       if (attachment.file) {
-        this.getBaseFile(attachment.file);
-        // update src attribute with correct url here using _id
+        this.getFile(attachment);
       }
     });
   }
 
   // function to capture base64 format of an image
-  getBaseFile = (file) => {
+  getFile = (attachment) => {
     let Base64 = require('js-base64').Base64;
-    // create a local readable base64 instance of an image
-    this.setState({
-      baseImage: Base64.encode(file)
-    });
     let imageObj = {
       name: "base-image-" + Date.now(),
-      data: Base64.encode(file).toString()
+      data: Base64.encode(attachment.file).toString()
     };
     axios.post('/images/upload', imageObj)
       .then((data) => {
         if (data.data.success) {
           console.log("Image has been successfully uploaded using base64 format");
-          // needs to return _id for url
+          let imageURL = window.location.hostname + '/images/' + data.data.image._id;
+          alert(imageURL);
+          // updates attributes of attachment with correct URL to uploaded image
+          attachment.setAttributes({
+            url: imageURL,
+            href: imageURL
+          })
         }
       })
       .catch((err) => {
