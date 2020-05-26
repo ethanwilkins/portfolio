@@ -22,35 +22,26 @@ export class Wysywig extends Component {
     this.trixInput.current.addEventListener("trix-attachment-add", event => {
       var attachment = event.attachment;
       if (attachment.file) {
-        this.getFile(attachment);
+        this.uploadImage(attachment);
       }
     });
   }
 
-  // function to capture base64 format of an image
-  getFile = (attachment) => {
-    let Base64 = require('js-base64').Base64;
-    let imageObj = {
-      name: "base-image-" + Date.now(),
-      data: Base64.encode(attachment.file).toString()
-    };
-    axios.post('/images/upload', imageObj)
+  uploadImage = (attachment) => {
+    let imageFormObj = new FormData();
+    imageFormObj.append("imageName", "multer-image-" + Date.now());
+    imageFormObj.append("imageData", attachment.file);
+
+    axios.post('/images/upload', imageFormObj)
       .then((data) => {
         if (data.data.success) {
-          console.log("Image has been successfully uploaded using base64 format");
-          let imageURL = '/images/' + data.data.image._id;
-          alert(imageURL);
-          // updates attributes of attachment with correct URL to uploaded image
-          attachment.setAttributes({
-            url: imageURL,
-            href: imageURL
-          });
+          alert("Image has been successfully uploaded using multer");
         }
       })
       .catch((err) => {
-        console.log("Error while uploading image using base64 format");
+        alert("Error while uploading image using multer");
       });
-  };
+  }
 
   render() {
     return (
