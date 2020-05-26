@@ -6,7 +6,6 @@ const mongoose = require('mongoose');
 const path = require('path');
 const posts = require('./routes/postRoute');
 const users = require('./routes/userRoute');
-const actors = require('./routes/actorRoute');
 const images = require('./routes/imageRoute');
 const dbURI = process.env.REACT_APP_DB_URI || require('./secrets').dbURI;
 
@@ -51,8 +50,7 @@ else {
 app.use('/posts', posts);
 app.use('/users', users);
 app.use('/images', images);
-// For ActivityPub/WebFinger
-app.use('/actors', actors);
+app.use('/uploads', express.static('uploads'));
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.resolve(__dirname, '..', 'client', 'build')));

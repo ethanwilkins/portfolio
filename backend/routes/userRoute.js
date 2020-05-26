@@ -1,6 +1,3 @@
-// Strict mode for ActivityPub and WebFinger functions
-'use strict';
-
 const bcrypt = require('bcrypt');
 const express = require('express');
 const jwt = require('jsonwebtoken');
@@ -8,47 +5,7 @@ const validateLogin = require('../validation/validateLogin');
 const validateSignup = require('../validation/validateSignup');
 const User = require('../models/userModel');
 
-// For ActivityPub and WebFinger
-const crypto = require('crypto');
-const generateRSAKeypair = require('generate-rsa-keypair');
-
 const router = new express.Router();
-
-// Creates ActivityPub Actor
-function createActor(name, domain, pubkey) {
-  return {
-    '@context': [
-      'https://www.w3.org/ns/activitystreams',
-      'https://w3id.org/security/v1'
-    ],
-
-    'id': `https://${domain}/u/${name}`,
-    'type': 'Person',
-    'preferredUsername': `${name}`,
-    'inbox': `https://${domain}/api/inbox`,
-    'followers': `https://${domain}/u/${name}/followers`,
-
-    'publicKey': {
-      'id': `https://${domain}/u/${name}#main-key`,
-      'owner': `https://${domain}/u/${name}`,
-      'publicKeyPem': pubkey
-    }
-  };
-}
-
-function createWebfinger(name, domain) {
-  return {
-    'subject': `acct:${name}@${domain}`,
-
-    'links': [
-      {
-        'rel': 'self',
-        'type': 'application/activity+json',
-        'href': `https://${domain}/u/${name}`
-      }
-    ]
-  };
-}
 
 // Authentication builds on Maximilian Schwarzmüller's guide:
 // https://www.youtube.com/watch?v=0D5EEKH97NA
@@ -76,15 +33,6 @@ router.post('/signup', async (req, res) => {
       if (error) {
         return res.status(500).json({ error });
       }
-
-      // For ActivityPub and WebFinger
-      let domain = req.headers.origin.replace('https://', '');
-      // create keypair
-      let pair = generateRSAKeypair();
-      let actorRecord = createActor(req.body.name, domain, pair.public);
-      let webfingerRecord = createWebfinger(req.body.name, domain);
-      const apiKey = crypto.randomBytes(16).toString('hex');
-
       const newUser = new User({
         avatarColor: Math.floor(Math.random() * 18) + 1,
         createdAt: new Date().getTime(),
@@ -92,13 +40,7 @@ router.post('/signup', async (req, res) => {
         name: req.body.name,
         password: hash,
         passwordConfirm: hash,
-        showEmail: true,
-        actorName: `${req.body.name}@${domain}`,
-        actor: JSON.stringify(actorRecord),
-        apiKey: apiKey,
-        publicKey: pair.public,
-        privateKey: pair.private,
-        webFinger: JSON.stringify(webfingerRecord)
+        showEmail: true
       });
       return newUser
         .save()
@@ -148,7 +90,7 @@ router.post('/login', async (req, res) => {
           },
           process.env.REACT_APP_JWT_KEY || require('../secrets').jwtKey,
           {
-            expiresIn: '24h'
+            expiresIn: '1h'
           }
         );
         return res.status(200).json({

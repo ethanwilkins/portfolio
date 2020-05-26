@@ -38,13 +38,13 @@ export class Wysywig extends Component {
       .then((data) => {
         if (data.data.success) {
           console.log("Image has been successfully uploaded using base64 format");
-          let imageURL = window.location.hostname + '/images/' + data.data.image._id;
+          let imageURL = '/images/' + data.data.image._id;
           alert(imageURL);
           // updates attributes of attachment with correct URL to uploaded image
           attachment.setAttributes({
             url: imageURL,
             href: imageURL
-          })
+          });
         }
       })
       .catch((err) => {
