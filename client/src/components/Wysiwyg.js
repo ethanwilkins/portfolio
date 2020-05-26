@@ -32,7 +32,7 @@ export class Wysywig extends Component {
     imageFormObj.append("imageName", "multer-image-" + Date.now());
     imageFormObj.append("imageData", attachment.file);
 
-    axios.post('/images/upload', imageFormObj)
+    axios.post('/images/upload', imageFormObj, { 'Content-Type': 'multipart/form-data' })
       .then((data) => {
         if (data.data.success) {
           alert("Image has been successfully uploaded using multer");
