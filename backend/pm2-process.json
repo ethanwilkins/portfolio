@@ -1,0 +1,7 @@
+{
+  "watch": true,
+  "ignore_watch": ["logs", "uploads"],
+  "watch_options": {
+      "followSymlinks": false
+  }
+}
