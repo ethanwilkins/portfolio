@@ -90,7 +90,7 @@ router.post('/login', async (req, res) => {
           },
           process.env.REACT_APP_JWT_KEY || require('../secrets').jwtKey,
           {
-            expiresIn: '1h'
+            expiresIn: '24h'
           }
         );
         return res.status(200).json({
