@@ -40,7 +40,13 @@ export class Wysywig extends Component {
     axios.post('/images/upload', imageFormObj, config)
       .then((data) => {
         if (data.data.success) {
-          alert("Image has been successfully uploaded using multer");
+          // updates attributes of attachment with correct URL to uploaded image
+          let imageURL = window.location.hostname + '/' + data.data.image.data;
+          alert(imageURL);
+          attachment.setAttributes({
+            url: imageURL,
+            href: imageURL
+          })
         }
       })
       .catch((err) => {
