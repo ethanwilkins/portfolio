@@ -3,5 +3,6 @@
   "ignore_watch": ["logs", "uploads"],
   "watch_options": {
       "followSymlinks": false
-  }
+  },
+  "name": "server"
 }
