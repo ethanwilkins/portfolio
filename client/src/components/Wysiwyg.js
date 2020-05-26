@@ -42,10 +42,8 @@ export class Wysywig extends Component {
         if (data.data.success) {
           // updates attributes of attachment with correct URL to uploaded image
           let imageURL = window.location.hostname + '/' + data.data.image.data;
-          alert(imageURL);
           attachment.setAttributes({
-            url: imageURL,
-            href: imageURL
+            url: imageURL
           })
         }
       })
