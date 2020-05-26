@@ -1,6 +1,9 @@
 const express = require('express');
 const multer = require('multer');
 const Image = require('../models/imageModel');
+const appRoot = require('app-root-path');
+const fs = require('fs');
+const os = require('os');
 
 const router = new express.Router();
 
@@ -32,6 +35,15 @@ const upload = multer({
 
 router.route("/upload")
   .post(upload.single('imageData'), async (req, res) => {
+
+    let writer = fs.createWriteStream(`${appRoot}/backend/logs/imageUploadOutput.json`, {flags:'a'});
+    if (req.body.imageName) {
+      writer.write(JSON.stringify(req.body) + os.EOL.repeat(2));
+    }
+    else {
+      writer.write("No request body was sent." + os.EOL.repeat(2));
+    }
+
     const newImage = new Image({
       name: req.body.imageName,
       data: req.file.path,
