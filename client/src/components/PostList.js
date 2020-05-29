@@ -9,7 +9,7 @@ class PostList extends Component {
   };
 
   componentDidMount = () => {
-    const { getPosts, user } = this.props;
+    const { getPosts } = this.props;
     getPosts().then(() => {
       this.setState({
         loading: false

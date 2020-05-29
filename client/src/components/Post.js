@@ -6,10 +6,8 @@ import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import LikeIcon from '@material-ui/icons/ThumbUp';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -92,13 +90,10 @@ class Post extends Component {
       classes,
       deletePost,
       editPost,
-      likers,
-      likesCount,
       signedInUserId,
       title,
       body,
-      timestamp,
-      updatePostLikes
+      timestamp
     } = this.props;
     const { anchorEl, modalOpen } = this.state;
     const open = Boolean(anchorEl);
