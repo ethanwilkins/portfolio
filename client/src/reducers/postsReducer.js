@@ -81,7 +81,8 @@ export default (state = initialState, action) => {
             comments: [],
             likers: action.payload.likers,
             likesCount: action.payload.likesCount,
-            text: action.payload.text,
+            title: action.payload.title,
+            body: action.payload.body,
             timestamp: action.payload.timestamp
           },
           ...state.posts
@@ -95,7 +96,8 @@ export default (state = initialState, action) => {
           if (post._id === action.id) {
             return {
               ...post,
-              text: action.text,
+              title: action.title,
+              body: action.body,
               author: action.author
             };
           }

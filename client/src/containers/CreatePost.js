@@ -11,7 +11,8 @@ import { createPost } from '../actions/postsActions';
 export class CreatePost extends Component {
   state = {
     title: '',
-    body: ''
+    body: '',
+    wysiwygKey: ''
   };
 
   handleTitleChange = (e) => {
@@ -31,12 +32,13 @@ export class CreatePost extends Component {
     dispatch(createPost(title, body, user));
     this.setState({
       title: '',
-      body: ''
+      body: '',
+      wysiwygKey: Math.random()
     });
   };
 
   render() {
-    const { title } = this.state;
+    const { title, wysiwygKey } = this.state;
 
     return (
       <form
@@ -54,7 +56,7 @@ export class CreatePost extends Component {
           value={title}
         />
 
-        <Wysiwyg onChange={this.handleBodyChange} />
+        <Wysiwyg onChange={this.handleBodyChange} key={wysiwygKey}/>
 
         <Button
           variant="contained"
