@@ -31,8 +31,7 @@ const PostSchema = new Schema({
   },
   title: {
     type: String,
-    trim: true,
-    required: true
+    trim: true
   },
   body: {
     type: String,

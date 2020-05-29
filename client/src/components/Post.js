@@ -118,14 +118,6 @@ class Post extends Component {
     return (
       <Card className={classes.card}>
         <CardHeader
-          avatar={
-            <UserAvatar
-              author={name}
-              authorId={authorId}
-              avatarColor={avatarColor}
-              getUser={getUser}
-            />
-          }
           action={
             authorId !== signedInUserId ? null : (
               <div>
@@ -165,11 +157,6 @@ class Post extends Component {
               </div>
             )
           }
-          title={
-            <Link className={classes.link} to={`/profile/${authorId}`}>
-              {name}
-            </Link>
-          }
           subheader={relativeTime}
         />
         
@@ -196,35 +183,7 @@ class Post extends Component {
             </IconButton>
             {likesCount}
           </div>
-          <div style={{ marginLeft: '20px' }}>
-            <IconButton onClick={this.handleExpandClick}>
-              <CommentIcon />
-            </IconButton>
-            {comments.length}
-          </div>
-          <IconButton
-            className={classnames(classes.expand, {
-              [classes.expandOpen]: expanded
-            })}
-            onClick={this.handleExpandClick}
-            aria-expanded={expanded}
-            aria-label="Show more"
-          >
-            <ExpandMoreIcon />
-          </IconButton>
         </CardActions>
-        <Collapse in={expanded} timeout="auto" unmountOnExit>
-          <Comments
-            addComment={addComment}
-            comments={comments}
-            commenterId={signedInUserId}
-            deleteComment={deleteComment}
-            editComment={editComment}
-            getUser={getUser}
-            postId={_id}
-            signedInUserId={signedInUserId}
-          />
-        </Collapse>
 
         <EditModal
           _id={_id}

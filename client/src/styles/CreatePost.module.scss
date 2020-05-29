@@ -1,0 +1,26 @@
+$width: 100%;
+
+.button {
+  width: $width;
+  height: 35px;
+  background: rgb(250, 250, 250);
+  color: rgb(70, 70, 70);
+  border-color: rgb(205, 205, 205);
+  border-radius: 3px;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.textField {
+  width: $width;
+}
+// end of global css
+
+// for mobile
+$mobileWidth: 100%;
+@media screen and (max-width: 975px) {
+  .button, .textField {
+    width: $mobileWidth;
+    max-width: initial;
+  }
+}

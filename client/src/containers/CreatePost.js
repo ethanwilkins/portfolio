@@ -8,6 +8,8 @@ import TextField from '@material-ui/core/TextField';
 import Wysiwyg from "../components/Wysiwyg";
 import { createPost } from '../actions/postsActions';
 
+import styles from '../styles/CreatePost.module.scss';
+
 export class CreatePost extends Component {
   state = {
     title: '',
@@ -46,6 +48,7 @@ export class CreatePost extends Component {
         noValidate
         autoComplete="off"
         onSubmit={this.handleSubmit}
+        className={styles.form}
       >
         <TextField
           id="textarea"
@@ -55,17 +58,14 @@ export class CreatePost extends Component {
           rowsMax="5"
           onChange={this.handleTitleChange}
           value={title}
+          className={styles.textField}
         />
 
         <Wysiwyg onChange={this.handleBodyChange} key={wysiwygKey}/>
 
-        <Button
-          variant="contained"
-          color="primary"
-          type="submit"
-        >
-          Post
-        </Button>
+        <button type="submit" name="commit" className={styles.button}>
+        <b>Post <i class="fa fa-pencil"></i></b>
+      </button>
       </form>
     );
   }
