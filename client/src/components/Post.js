@@ -152,26 +152,6 @@ class Post extends Component {
           <Typography>{title}</Typography>
           <div dangerouslySetInnerHTML={{ __html: body }} />
         </CardContent>
-        
-        <CardActions className={classes.actions} disableActionSpacing>
-          <div>
-            <IconButton
-              onClick={() =>
-                (likers.includes(signedInUserId)
-                  ? updatePostLikes('unlike', _id, signedInUserId)
-                  : updatePostLikes('like', _id, signedInUserId))
-              }
-              aria-label="Like"
-            >
-              <LikeIcon
-                style={
-                  likers.includes(signedInUserId) ? { color: '#3f51b5' } : null
-                }
-              />
-            </IconButton>
-            {likesCount}
-          </div>
-        </CardActions>
 
         <EditModal
           _id={_id}
@@ -192,22 +172,15 @@ Post.defaultProps = {
 
 Post.propTypes = {
   _id: PropTypes.string.isRequired,
-  addComment: PropTypes.func.isRequired,
   authorId: PropTypes.string.isRequired,
   classes: PropTypes.object.isRequired,
-  comments: PropTypes.array,
-  deleteComment: PropTypes.func.isRequired,
   deletePost: PropTypes.func.isRequired,
-  editComment: PropTypes.func.isRequired,
   editPost: PropTypes.func.isRequired,
   getUser: PropTypes.func.isRequired,
-  likers: PropTypes.array.isRequired,
-  likesCount: PropTypes.number.isRequired,
-  signedInUserId: PropTypes.string.isRequired,
+  signedInUserId: PropTypes.string,
   title: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
-  timestamp: PropTypes.number.isRequired,
-  updatePostLikes: PropTypes.func.isRequired
+  timestamp: PropTypes.number.isRequired
 };
 
 export default withStyles(styles)(Post);

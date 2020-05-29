@@ -63,7 +63,7 @@ export class CreatePost extends Component {
         <Wysiwyg onChange={this.handleBodyChange} key={wysiwygKey}/>
 
         <button type="submit" name="commit" className={styles.button}>
-        <b>Post <i class="fa fa-pencil"></i></b>
+        <b>Post <i className="fa fa-pencil"></i></b>
       </button>
       </form>
     );
