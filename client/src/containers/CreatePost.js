@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import compose from 'recompose/compose';
 
-import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Wysiwyg from "../components/Wysiwyg";
 import { createPost } from '../actions/postsActions';

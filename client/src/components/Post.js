@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import * as moment from 'moment';
 
 import { withStyles } from '@material-ui/core/styles';
@@ -9,9 +7,6 @@ import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
-import CommentIcon from '@material-ui/icons/Comment';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import LikeIcon from '@material-ui/icons/ThumbUp';
@@ -19,9 +14,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 
-import Comments from './Comments';
 import EditModal from './EditModal';
-import UserAvatar from './UserAvatar';
 
 const options = ['Edit', 'Delete'];
 const ITEM_HEIGHT = 48;
@@ -95,15 +88,10 @@ class Post extends Component {
   render() {
     const {
       _id,
-      addComment,
       authorId,
       classes,
-      comments,
-      deleteComment,
       deletePost,
-      editComment,
       editPost,
-      getUser,
       likers,
       likesCount,
       signedInUserId,
@@ -112,7 +100,7 @@ class Post extends Component {
       timestamp,
       updatePostLikes
     } = this.props;
-    const { anchorEl, avatarColor, expanded, modalOpen, name } = this.state;
+    const { anchorEl, modalOpen } = this.state;
     const open = Boolean(anchorEl);
     const relativeTime = moment(timestamp).fromNow();
     return (
