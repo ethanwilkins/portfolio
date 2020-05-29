@@ -20,12 +20,6 @@ const UserSchema = new Schema({
     unique: true,
     match: /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
   },
-  followers: {
-    type: [String]
-  },
-  following: {
-    type: [String]
-  },
   name: {
     type: String,
     required: true
@@ -41,40 +35,6 @@ const UserSchema = new Schema({
   showEmail: {
     type: Boolean,
     required: true
-  },
-  // For ActivityPub and WebFinger
-  actorName: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  actor: {
-    type: String,
-    required: true,
-    unique: true
-  },
-  actorFollowers: {
-    type: String
-  },
-  apiKey: {
-    type: String,
-    required: true,
-    unique: true
-  },
-  publicKey: {
-    type: String,
-    required: true,
-    unique: true
-  },
-  privateKey: {
-    type: String,
-    required: true,
-    unique: true
-  },
-  webFinger: {
-    type: String,
-    required: true,
-    unique: true
   }
 });
 

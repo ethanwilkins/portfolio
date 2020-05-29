@@ -7,28 +7,6 @@ const PostSchema = new Schema({
     type: String,
     required: true
   },
-  avatarColor: {
-    type: Number,
-    required: true
-  },
-  comments: {
-    type: [
-      {
-        commenterId: String,
-        text: String,
-        timestamp: Number
-      }
-    ],
-    required: true
-  },
-  likers: {
-    type: [String],
-    required: true
-  },
-  likesCount: {
-    type: Number,
-    required: true
-  },
   title: {
     type: String,
     trim: true
