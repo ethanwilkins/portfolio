@@ -1,3 +1,5 @@
+// this CSS is not a module as it applies globally
+
 $mainFontSize: 20px;
 $activeColor: rgb(95, 210, 140);
 $cardMaxWidth: 950px;
@@ -112,6 +114,11 @@ a:hover {
   background: linear-gradient(rgba(255, 255, 255, 0.985),
                     rgba(255, 255, 255, 0.99));
   z-index: 10;
+}
+
+// other classes used by Trix img parent: attachment--preview attachment--jpg
+.attachment img {
+  width: 100%;
 }
 // end of global css
 
