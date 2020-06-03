@@ -90,7 +90,7 @@ router.post('/login', async (req, res) => {
           },
           process.env.REACT_APP_JWT_KEY || require('../secrets').jwtKey,
           {
-            expiresIn: '24h'
+            expiresIn: '365d'
           }
         );
         return res.status(200).json({
@@ -171,106 +171,6 @@ router.patch('/:id', async (req, res) => {
     return res.json({ user, token });
   } catch (err) {
     return res.status(500).json({ message: err });
-  }
-});
-
-// Add a user to the list of users you are following
-router.patch('/following/:id', async (req, res) => {
-  const { id } = req.params;
-
-  if (!req.body.idToFollow) {
-    return res.status(404).json({ message: 'No ID found' });
-  }
-
-  try {
-    await User.findByIdAndUpdate(
-      id,
-      { $addToSet: { following: req.body.idToFollow } },
-      { new: true, upsert: true },
-      (err, doc) => {
-        if (err) {
-          return res.status(400).json(err);
-        }
-        return res.status(201).json(doc);
-      }
-    );
-  } catch (e) {
-    return res.status(500).json(err);
-  }
-});
-
-// Remove a user from the list of users you are following
-router.patch('/unfollowing/:id', async (req, res) => {
-  const { id } = req.params;
-
-  if (!req.body.idToUnfollow) {
-    return res.status(404).json({ message: 'No ID found' });
-  }
-
-  try {
-    await User.findByIdAndUpdate(
-      id,
-      { $pull: { following: req.body.idToUnfollow } },
-      { new: true, upsert: true },
-      (err, doc) => {
-        if (err) {
-          return res.status(400).json(err);
-        }
-        return res.status(200).json(doc);
-      }
-    );
-  } catch (e) {
-    return res.status(500).json(err);
-  }
-});
-
-// Add a user to the list of users that are following you
-router.patch('/followers/:id', async (req, res) => {
-  const { id } = req.params;
-
-  if (!req.body.followerId) {
-    return res.status(404).json({ message: 'No ID found' });
-  }
-
-  try {
-    await User.findByIdAndUpdate(
-      id,
-      { $addToSet: { followers: req.body.followerId } },
-      { new: true, upsert: true },
-      (err, doc) => {
-        if (err) {
-          return res.status(400).json(err);
-        }
-        return res.status(201).json(doc);
-      }
-    );
-  } catch (e) {
-    return res.status(500).json(err);
-  }
-});
-
-// Remove a user from the list of users that are following you
-router.patch('/unfollowers/:id', async (req, res) => {
-  const { id } = req.params;
-
-  if (!req.body.unfollowerId) {
-    return res.status(404).json({ message: 'No ID found' });
-  }
-
-  try {
-    await User.findByIdAndUpdate(
-      id,
-      { $pull: { followers: req.body.unfollowerId } },
-      { new: true, upsert: true },
-      (err, doc) => {
-        if (err) {
-          return res.status(400).json(err);
-        }
-        return res.status(200).json(doc);
-      }
-    );
-  } catch (e) {
-    return res.status(500).json(err);
   }
 });
 
