@@ -146,8 +146,6 @@ class Post extends Component {
         <CardContent>
           <Typography>{title}</Typography>
           <div dangerouslySetInnerHTML={{ __html: body }} />
-
-          <Typography>{body}</Typography>
         </CardContent>
 
         <EditModal
