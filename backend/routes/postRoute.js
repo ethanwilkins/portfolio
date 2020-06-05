@@ -1,7 +1,7 @@
 const express = require('express');
 const { ObjectID } = require('mongodb');
 const Post = require('../models/postModel');
-
+const multerUpload = require('../config/multer');
 const router = new express.Router();
 
 // get all posts sorted chronologically
@@ -11,24 +11,27 @@ router.get('/', async (req, res) => {
 });
 
 // create a new post
-router.post('/', async (req, res) => {
-  const newPost = new Post({
-    authorId: req.body.authorId,
-    avatarColor: req.body.avatarColor || 0,
-    comments: [],
-    likers: [],
-    likesCount: 0,
-    title: req.body.title,
-    body: req.body.body,
-    timestamp: new Date().getTime()
+router.route('/')
+  .post(multerUpload.single('imageData'), async (req, res) => {
+    const newPost = new Post({
+      authorId: req.body.authorId,
+      avatarColor: req.body.avatarColor || 0,
+      comments: [],
+      likers: [],
+      likesCount: 0,
+      title: req.body.title,
+      body: req.body.body,
+      imageName: req.body.imageName,
+      imageData: req.body.imageData,
+      timestamp: new Date().getTime()
+    });
+    try {
+      const post = await newPost.save();
+      return res.status(201).json(post);
+    } catch (err) {
+      return res.status(400).send(err);
+    }
   });
-  try {
-    const post = await newPost.save();
-    return res.status(201).json(post);
-  } catch (err) {
-    return res.status(400).send(err);
-  }
-});
 
 // update a post
 router.patch('/:id', (req, res) => {

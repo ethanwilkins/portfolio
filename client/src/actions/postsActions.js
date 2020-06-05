@@ -13,11 +13,12 @@ export const getPosts = () => dispatch =>
       payload: res.data
     }));
 
-export const createPost = (title, body, user) => dispatch =>
+export const createPost = (title, body, image, user) => dispatch =>
   axios
     .post('/posts', {
       title,
       body,
+      image,
       author: user.name,
       authorId: user.userId,
       avatarColor: user.avatarColor

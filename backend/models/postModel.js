@@ -15,6 +15,12 @@ const PostSchema = new Schema({
     type: String,
     required: true
   },
+  imageName: {
+    type: String
+  },
+  imageData: {
+    type: String
+  },
   timestamp: {
     type: Number,
     required: true
