@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as moment from 'moment';
 
-import { withStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import IconButton from '@material-ui/core/IconButton';
@@ -14,35 +12,10 @@ import MenuItem from '@material-ui/core/MenuItem';
 
 import EditModal from './EditModal';
 
+import styles from '../styles/Post.module.scss';
+
 const options = ['Edit', 'Delete'];
 const ITEM_HEIGHT = 48;
-
-const styles = theme => ({
-  actions: {
-    display: 'flex'
-  },
-  card: {
-    margin: '20px auto',
-    width: '95%'
-  },
-  link: {
-    color: '#000',
-    textDecoration: 'none'
-  },
-  expand: {
-    transform: 'rotate(0deg)',
-    transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest
-    }),
-    marginLeft: 'auto',
-    [theme.breakpoints.up('sm')]: {
-      marginRight: -8
-    }
-  },
-  expandOpen: {
-    transform: 'rotate(180deg)'
-  }
-});
 
 class Post extends Component {
   state = {
@@ -87,7 +60,6 @@ class Post extends Component {
     const {
       _id,
       authorId,
-      classes,
       deletePost,
       editPost,
       signedInUserId,
@@ -99,7 +71,7 @@ class Post extends Component {
     const open = Boolean(anchorEl);
     const relativeTime = moment(timestamp).fromNow();
     return (
-      <Card className={classes.card}>
+      <div className={styles.card}>
         <CardHeader
           action={
             authorId !== signedInUserId ? null : (
@@ -140,7 +112,6 @@ class Post extends Component {
               </div>
             )
           }
-          subheader={relativeTime}
         />
         
         <CardContent>
@@ -156,7 +127,8 @@ class Post extends Component {
           title={title}
           body={body}
         />
-      </Card>
+        <div className={styles.time}>{relativeTime}</div>
+      </div>
     );
   }
 }
@@ -168,7 +140,6 @@ Post.defaultProps = {
 Post.propTypes = {
   _id: PropTypes.string.isRequired,
   authorId: PropTypes.string.isRequired,
-  classes: PropTypes.object.isRequired,
   deletePost: PropTypes.func.isRequired,
   editPost: PropTypes.func.isRequired,
   getUser: PropTypes.func.isRequired,
@@ -178,4 +149,4 @@ Post.propTypes = {
   timestamp: PropTypes.number.isRequired
 };
 
-export default withStyles(styles)(Post);
+export default Post;

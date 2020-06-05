@@ -1,37 +1,11 @@
 const express = require('express');
-const multer = require('multer');
 const Image = require('../models/imageModel');
-
+const multerUpload = require('../config/multer');
 const router = new express.Router();
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, './uploads/');
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + file.originalname);
-  }
-});
-
-const fileFilter = (req, file, cb) => {
-  if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png' || file.mimetype === 'image/gif') {
-    cb(null, true);
-  } else {
-    // rejects storing a file
-    cb(null, false);
-  }
-}
-
-const upload = multer({
-  storage: storage,
-  limits: {
-    fileSize: 1024 * 1024 * 5
-  },
-  fileFilter: fileFilter
-});
-
+// upload new image
 router.route("/upload")
-  .post(upload.single('imageData'), async (req, res) => {
+  .post(multerUpload.single('imageData'), async (req, res) => {
     const newImage = new Image({
       name: req.body.imageName,
       data: req.file.path,
@@ -48,6 +22,7 @@ router.route("/upload")
     }
   });
 
+// get an image to display
 router.get('/:id', async (req, res) => {
   try {
     const image = await Image.findById(req.params.id);

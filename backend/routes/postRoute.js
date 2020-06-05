@@ -4,11 +4,13 @@ const Post = require('../models/postModel');
 
 const router = new express.Router();
 
+// get all posts sorted chronologically
 router.get('/', async (req, res) => {
   const posts = await Post.find().sort({ timestamp: -1 });
   res.status(200).json(posts);
 });
 
+// create a new post
 router.post('/', async (req, res) => {
   const newPost = new Post({
     authorId: req.body.authorId,
@@ -28,6 +30,7 @@ router.post('/', async (req, res) => {
   }
 });
 
+// update a post
 router.patch('/:id', (req, res) => {
   const { id } = req.params;
 
@@ -53,6 +56,7 @@ router.patch('/:id', (req, res) => {
   }
 });
 
+// delete a post
 router.delete('/:id', async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);

@@ -117,9 +117,16 @@ a:hover {
 }
 
 // other classes used by Trix img parent: attachment--preview attachment--jpg
+// for the image itself
 .attachment img {
   width: 100%;
   height: initial;
+}
+
+// the figure element wrapping the img element
+figure.attachment {
+  width: 100%;
+  margin: initial;
 }
 // end of global css
 

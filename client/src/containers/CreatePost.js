@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import compose from 'recompose/compose';
 
-import TextField from '@material-ui/core/TextField';
+import { TextField } from '@material-ui/core';
 import Wysiwyg from "../components/Wysiwyg";
 import { createPost } from '../actions/postsActions';
 
@@ -12,6 +12,7 @@ import styles from '../styles/CreatePost.module.scss';
 export class CreatePost extends Component {
   state = {
     title: '',
+    image: '',
     body: '',
     wysiwygKey: ''
   };
@@ -21,8 +22,13 @@ export class CreatePost extends Component {
     this.setState(() => ({ title }));
   };
 
+  handleImageChange = (e) => {
+    const image = URL.createObjectURL(e.target.files[0]);
+    this.setState(() => ({ image }));
+  };
+
   handleBodyChange = (body) => {
-    this.setState({body : body});
+    this.setState(() => ({ body }));
   };
 
   handleSubmit = (e) => {
@@ -59,6 +65,8 @@ export class CreatePost extends Component {
           value={title}
           className={styles.textField}
         />
+
+        <input type="file" onChange={this.handleImageChange} />
 
         <Wysiwyg onChange={this.handleBodyChange} key={wysiwygKey}/>
 
