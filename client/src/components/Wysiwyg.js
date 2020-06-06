@@ -31,13 +31,7 @@ export class Wysywig extends Component {
     let imageFormObj = new FormData();
     imageFormObj.append("imageName", "multer-image-" + Date.now());
     imageFormObj.append("imageData", attachment.file);
-    // Configure to allow for image uploading
-    const config = {
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
-    }
-    axios.post('/images/upload', imageFormObj, config)
+    axios.post('/images/upload', imageFormObj)
       .then((data) => {
         if (data.data.success) {
           // updates attributes of attachment with correct URL to uploaded image

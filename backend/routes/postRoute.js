@@ -13,16 +13,16 @@ router.get('/', async (req, res) => {
 // create a new post
 router.route('/')
   .post(multerUpload.single('imageData'), async (req, res) => {
+    console.log("body: " + JSON.stringify(req.body));
+    if (req.body.file) {
+      console.log("file: " + JSON.stringify(req.body.file));
+    }
     const newPost = new Post({
       authorId: req.body.authorId,
-      avatarColor: req.body.avatarColor || 0,
-      comments: [],
-      likers: [],
-      likesCount: 0,
       title: req.body.title,
       body: req.body.body,
       imageName: req.body.imageName,
-      imageData: req.body.imageData,
+      imageData: (req.file ? req.file.path : ''),
       timestamp: new Date().getTime()
     });
     try {

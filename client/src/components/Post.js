@@ -65,6 +65,7 @@ class Post extends Component {
       signedInUserId,
       title,
       body,
+      imageName,
       timestamp
     } = this.props;
     const { anchorEl, modalOpen } = this.state;
@@ -117,6 +118,8 @@ class Post extends Component {
         <CardContent>
           <Typography>{title}</Typography>
           <div dangerouslySetInnerHTML={{ __html: body }} />
+
+          <Typography>{imageName}</Typography>
         </CardContent>
 
         <EditModal

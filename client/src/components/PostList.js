@@ -41,6 +41,7 @@ class PostList extends Component {
               signedInUserId={user.userId}
               title={post.title}
               body={post.body}
+              imageName={post.imageName}
               timestamp={post.timestamp}
               deletePost={id => deletePost(id)}
               editPost={(id, text, author) => editPost(id, text, author)}

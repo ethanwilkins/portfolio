@@ -24,7 +24,7 @@ export class CreatePost extends Component {
   };
 
   handleImageChange = (e) => {
-    const image = URL.createObjectURL(e.target.files[0]);
+    let image = e.target.files[0];
     this.setState(() => ({ image }));
   };
 
@@ -37,6 +37,7 @@ export class CreatePost extends Component {
     const { title, body, image } = this.state;
     const { dispatch, user } = this.props;
     if (!title.trim()) return;
+
     dispatch(createPost(title, body, image, user));
     // updates wysiwygKey to remount Wysiwyg
     this.setState({
