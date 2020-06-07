@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as moment from 'moment';
 
-import CardHeader from '@material-ui/core/CardHeader';
-import CardContent from '@material-ui/core/CardContent';
 import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -65,66 +62,70 @@ class Post extends Component {
       signedInUserId,
       title,
       body,
-      imageName,
       imageData,
       timestamp
     } = this.props;
     const { anchorEl, modalOpen } = this.state;
     const open = Boolean(anchorEl);
-    const relativeTime = moment(timestamp).fromNow();
+    const relativeTime = new Intl.DateTimeFormat('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: '2-digit'
+    }).format(timestamp);
     return (
       <div className={styles.card}>
-        <CardHeader
-          action={
-            authorId !== signedInUserId ? null : (
-              <div>
-                <IconButton
-                  aria-label="More"
-                  aria-owns={open ? 'long-menu' : null}
-                  aria-haspopup="true"
-                  onClick={this.handleClick}
+        {authorId === signedInUserId &&
+          <div className={styles.cardHeader}>
+            <IconButton
+              aria-label="More"
+              aria-owns={open ? 'long-menu' : null}
+              aria-haspopup="true"
+              onClick={this.handleClick}
+              className={styles.iconButton}
+            >
+              <MoreVertIcon />
+            </IconButton>
+            <Menu
+              id="long-menu"
+              anchorEl={anchorEl}
+              open={open}
+              onClose={this.handleClose}
+              PaperProps={{
+                style: {
+                  maxHeight: ITEM_HEIGHT * 4.5,
+                  width: 200
+                }
+              }}
+            >
+              {options.map(option => (
+                <MenuItem
+                  key={option}
+                  onClick={() =>
+                    this.handleClose() ||
+                    (option === 'Delete' ? deletePost(_id) : null) ||
+                    (option === 'Edit' ? this.handleModalOpen() : null)
+                  }
                 >
-                  <MoreVertIcon />
-                </IconButton>
-                <Menu
-                  id="long-menu"
-                  anchorEl={anchorEl}
-                  open={open}
-                  onClose={this.handleClose}
-                  PaperProps={{
-                    style: {
-                      maxHeight: ITEM_HEIGHT * 4.5,
-                      width: 200
-                    }
-                  }}
-                >
-                  {options.map(option => (
-                    <MenuItem
-                      key={option}
-                      onClick={() =>
-                        this.handleClose() ||
-                        (option === 'Delete' ? deletePost(_id) : null) ||
-                        (option === 'Edit' ? this.handleModalOpen() : null)
-                      }
-                    >
-                      {option}
-                    </MenuItem>
-                  ))}
-                </Menu>
-              </div>
-            )
-          }
-        />
+                  {option}
+                </MenuItem>
+              ))}
+            </Menu>
+          </div>
+        }
         
-        <CardContent>
+        <div className={styles.cardContent}>
           {imageData &&
-            <img src={imageData} />
+            <div className={styles.mainImgContainer}>
+              <img src={imageData} className={styles.mainImg}/>
+            </div>
           }
-          <Typography>{title}</Typography>
-          <div dangerouslySetInnerHTML={{ __html: body }} />
-
-          <Typography>{imageName}</Typography>
-        </CardContent>
+          <div className={styles.time}>{relativeTime} —</div>
+          <div className={styles.title}>{title}</div>
+          <div className={styles.body} dangerouslySetInnerHTML={{ __html: body }} />
+          <div className='linkSoft'>
+            <i>Web Development - Ruby on Rails</i>
+          </div>
+        </div>
 
         <EditModal
           _id={_id}
@@ -134,7 +135,6 @@ class Post extends Component {
           title={title}
           body={body}
         />
-        <div className={styles.time}>{relativeTime}</div>
       </div>
     );
   }
