@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import * as moment from 'moment';
 
 import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
@@ -116,7 +115,7 @@ class Post extends Component {
         <div className={styles.cardContent}>
           {imageData &&
             <div className={styles.mainImgContainer}>
-              <img src={imageData} className={styles.mainImg}/>
+              <img src={imageData} alt={imageData} className={styles.mainImg}/>
             </div>
           }
           <div className={styles.time}>{relativeTime} —</div>
