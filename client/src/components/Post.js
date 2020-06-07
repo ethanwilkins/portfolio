@@ -70,7 +70,7 @@ class Post extends Component {
     const relativeTime = new Intl.DateTimeFormat('en-US', {
       year: 'numeric',
       month: 'long',
-      day: '2-digit'
+      day: 'numeric'
     }).format(timestamp);
     return (
       <div className={styles.card}>
