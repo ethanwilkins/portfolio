@@ -26,6 +26,7 @@ export default (state = initialState, action) => {
             authorId: action.payload.authorId,
             title: action.payload.title,
             body: action.payload.body,
+            imageData: action.payload.imageData,
             timestamp: action.payload.timestamp
           },
           ...state.posts

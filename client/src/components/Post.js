@@ -66,6 +66,7 @@ class Post extends Component {
       title,
       body,
       imageName,
+      imageData,
       timestamp
     } = this.props;
     const { anchorEl, modalOpen } = this.state;
@@ -116,6 +117,9 @@ class Post extends Component {
         />
         
         <CardContent>
+          {imageData &&
+            <img src={imageData} />
+          }
           <Typography>{title}</Typography>
           <div dangerouslySetInnerHTML={{ __html: body }} />
 
