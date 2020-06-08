@@ -14,7 +14,7 @@ $cardMaxWidth: 950px;
   max-width: $cardMaxWidth;
   margin: 0 auto;
   width: 94.5%;
-  overflow: auto;
+  overflow: hidden;
   font-size: $mainFontSize;
   margin-top: 75px;
 }
