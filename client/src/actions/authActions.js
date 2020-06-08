@@ -39,7 +39,7 @@ export const loginUser = user => (dispatch) => {
       setAuthToken(token);
       const decoded = jwtDecode(token);
       dispatch(setCurrentUser(decoded));
-      window.location.href = '/dev';
+      window.location.href = '/';
     })
     .catch((err) => {
       dispatch({
@@ -77,4 +77,5 @@ export const logoutUser = () => (dispatch) => {
   localStorage.removeItem('jwtToken');
   setAuthToken(false);
   dispatch(setCurrentUser({}));
+  window.location.href = '/';
 };

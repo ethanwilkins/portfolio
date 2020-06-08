@@ -15,6 +15,7 @@ export class BlogPage extends Component {
   componentDidMount = () => {
     axios.get('/posts').then((res) => {
       if (res.data) {
+        // to display number of blog posts
         this.setState({postsSize: res.data.length});
       }
     });

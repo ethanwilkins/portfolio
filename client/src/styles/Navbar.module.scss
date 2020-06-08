@@ -33,6 +33,7 @@ $cardMaxWidth: 950px;
   @include card;
   line-height: 175%;
   height: 50px;
+  overflow: hidden;
 }
 
 .avatar {

@@ -28,30 +28,12 @@ $cardMaxWidth: 950px;
   float: left;
   width: 75%;
 }
-
-.img {
-  width: 100%;
-}
-
-.imgContainer {
-  height: 400px;
-  overflow: hidden;
-  margin-bottom: 50px;
-}
-
-.item {
-  margin-bottom: 25px;
-}
-
-.title {
-  font-size: 32.5px;
-}
-
+// end global
 
 // for mobile
 @media screen and (max-width: 975px) {
   .blog {
-    width: 95%;
+    width: 92.5%;
   }
   .feed {
     width: 100%;
@@ -60,13 +42,6 @@ $cardMaxWidth: 950px;
     width: 0%;
     height: 0;
     visibility: hidden;
-  }
-  .imgContainer {
-    height: auto;
-    margin-bottom: 40px;
-  }
-  .item {
-    margin-bottom: 20px;
   }
 }
 

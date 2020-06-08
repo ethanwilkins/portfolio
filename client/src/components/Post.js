@@ -8,6 +8,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 
 import EditModal from './EditModal';
 
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+
 import styles from '../styles/Post.module.scss';
 
 const options = ['Edit', 'Delete'];
@@ -81,6 +83,7 @@ class Post extends Component {
               aria-haspopup="true"
               onClick={this.handleClick}
               className={styles.iconButton}
+              style={{padding: '0'}}
             >
               <MoreVertIcon />
             </IconButton>
@@ -115,13 +118,18 @@ class Post extends Component {
         <div className={styles.cardContent}>
           {imageData &&
             <div className={styles.mainImgContainer}>
-              <img src={imageData} alt={imageData} className={styles.mainImg}/>
+              <LazyLoadImage
+                alt="Main image for blog post should show here."
+                effect="opacity"
+                src={imageData}
+                className={styles.mainImg}
+              />
             </div>
           }
           <div className={styles.time}>{relativeTime} —</div>
           <div className={styles.title}>{title}</div>
           <div className={styles.body} dangerouslySetInnerHTML={{ __html: body }} />
-          <div className='linkSoft'>
+          <div className={styles.category + ' linkSoft'}>
             <i>Web Development - Ruby on Rails</i>
           </div>
         </div>
