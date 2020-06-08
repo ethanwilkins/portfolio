@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import compose from 'recompose/compose';
 
-import { TextField, Input } from '@material-ui/core';
+import { TextField, Input, Button } from '@material-ui/core';
 import Wysiwyg from "../components/Wysiwyg";
 import { createPost } from '../actions/postsActions';
 
@@ -85,9 +85,15 @@ export class CreatePost extends Component {
           />
         </div>
 
-        <button type="submit" name="commit" className={styles.button}>
-          <b>Post <i className="fa fa-pencil"></i></b>
-        </button>
+        <Button
+          type="submit"
+          name="commit"
+          className={styles.button}
+          variant="contained"
+          style={{background: 'rgb(105, 220, 150)', color: 'white'}}
+        >
+          <b>post <i className="fa fa-pencil"></i></b>
+        </Button>
       </form>
     );
   }
