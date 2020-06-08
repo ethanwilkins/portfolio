@@ -69,14 +69,15 @@ export class CreatePost extends Component {
               rowsMax="5"
               onChange={this.handleTitleChange}
               value={title}
-              style={{width: '70%', float: 'left'}}
+              className={styles.textField}
+              style={{float: 'left'}}
             />
             <Input
               type="file"
               onChange={this.handleImageChange}
               key={inputKey}
               className={styles.imgInput}
-              style={{width: '30%', fontSize: '10px'}}
+              style={{fontSize: '10px'}}
             />
           </div>
           <Wysiwyg

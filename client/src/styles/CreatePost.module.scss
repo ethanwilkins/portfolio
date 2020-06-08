@@ -16,9 +16,14 @@ $width: 100%;
   overflow-y: auto;
 }
 
+.textField {
+  width: 70%;
+}
+
 .imgInput {
   float: left;
   height: 48px;
+  width: 30%;
 }
 
 .button {
@@ -37,6 +42,10 @@ $width: 100%;
 @media screen and (max-width: 500px) {
   .imgInput {
     height: 48px;
+    width: 37.5%;
+  }
+  .textField {
+    width: 62.5%;
   }
 }
 // end small mobile
