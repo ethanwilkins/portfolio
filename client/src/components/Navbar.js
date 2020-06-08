@@ -48,7 +48,7 @@ class Navbar extends Component {
             </Link>
             <Link to='/blog' className={cx(styles.navBarLink, {
               headerLink: true,
-              linkActive: path === '/blog'
+              linkActive: path === '/blog' || path.includes('/posts')
             })}>
               Blog
             </Link>
