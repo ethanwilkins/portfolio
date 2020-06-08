@@ -23,23 +23,11 @@ $width: 100%;
 
 .button {
   width: $width;
-  height: 35px;
-  background: rgb(95, 210, 140);
-  color: white;
-  border-color: rgb(105, 220, 150);
-  border-radius: 3px;
-  border-width: 0px;
-  font-size: 14px;
 }
 // end of global css
 
 // for mobile
-$mobileWidth: 100%;
 @media screen and (max-width: 975px) {
-  .button {
-    width: $mobileWidth;
-    max-width: initial;
-  }
   .imgInput {
     height: 47.5px;
   }
