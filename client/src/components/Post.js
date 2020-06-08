@@ -151,9 +151,9 @@ Post.defaultProps = {
 Post.propTypes = {
   _id: PropTypes.string.isRequired,
   authorId: PropTypes.string.isRequired,
-  deletePost: PropTypes.func,
-  editPost: PropTypes.func,
-  getUser: PropTypes.func,
+  deletePost: PropTypes.func.isRequired,
+  editPost: PropTypes.func.isRequired,
+  getUser: PropTypes.func.isRequired,
   signedInUserId: PropTypes.string,
   title: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
