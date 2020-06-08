@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { Link } from 'react-router-dom';
 import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Menu from '@material-ui/core/Menu';
@@ -22,16 +23,6 @@ class Post extends Component {
     expanded: false,
     modalOpen: false,
     name: ''
-  };
-
-  componentDidMount = () => {
-    const { authorId, getUser } = this.props;
-    getUser(authorId).then((res) => {
-      this.setState({
-        avatarColor: res.payload.user.avatarColor,
-        name: res.payload.user.name
-      });
-    });
   };
 
   handleClick = (event) => {
@@ -117,17 +108,23 @@ class Post extends Component {
         
         <div className={styles.cardContent}>
           {imageData &&
-            <div className={styles.mainImgContainer}>
-              <LazyLoadImage
-                alt="Main image for blog post should show here."
-                effect="opacity"
-                src={imageData}
-                className={styles.mainImg}
-              />
-            </div>
+            <Link to={`/posts/${_id}`}>
+              <div className={styles.mainImgContainer}>
+                <LazyLoadImage
+                  alt="Main image for blog post should show here."
+                  effect="opacity"
+                  src={'/' + imageData}
+                  className={styles.mainImg}
+                />
+              </div>
+            </Link>
           }
           <div className={styles.time}>{relativeTime} —</div>
-          <div className={styles.title}>{title}</div>
+          
+          <Link className={styles.title} to={`/posts/${_id}`}>
+            {title}
+          </Link>
+          
           <div className={styles.body} dangerouslySetInnerHTML={{ __html: body }} />
           <div className={styles.category + ' linkSoft'}>
             <i>Web Development - Ruby on Rails</i>
@@ -154,9 +151,9 @@ Post.defaultProps = {
 Post.propTypes = {
   _id: PropTypes.string.isRequired,
   authorId: PropTypes.string.isRequired,
-  deletePost: PropTypes.func.isRequired,
-  editPost: PropTypes.func.isRequired,
-  getUser: PropTypes.func.isRequired,
+  deletePost: PropTypes.func,
+  editPost: PropTypes.func,
+  getUser: PropTypes.func,
   signedInUserId: PropTypes.string,
   title: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,

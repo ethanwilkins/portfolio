@@ -1,4 +1,5 @@
 import {
+  GET_POST,
   GET_POSTS,
   CREATE_POST,
   EDIT_POST,
@@ -6,11 +7,17 @@ import {
 } from '../actions/actionTypes';
 
 const initialState = {
-  posts: []
+  posts: [],
+  post: {}
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case GET_POST:
+      return {
+        ...state,
+        post: action.payload
+      };
     case GET_POSTS:
       return {
         ...initialState,

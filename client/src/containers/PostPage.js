@@ -1,51 +1,24 @@
-import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import compose from 'recompose/compose';
-
-import { getPost } from '../actions/postsActions';
-
-
-export class PostPage extends Component {
-
-  componentDidMount = () => {
-
-    const {
-      retrievePost,
-      match
-    } = this.props;
-    const postId = match.params.id;
-
-    return retrievePost(postId).then((res) => {
-      this.setState({
-      });
-    });
-  };
-
-  render() {
-    //const { post } = this.props;
-    return (
-      <div>
-      </div>
-    );
-  }
-}
-
-PostPage.propTypes = {
-  retrievePost: PropTypes.func.isRequired
-};
+import ShowPost from '../components/ShowPost';
+import {
+  deletePost,
+  getPost,
+  editPost
+} from '../actions/postsActions';
+import { getUser } from '../actions/userActions';
 
 const mapStateToProps = state => ({
   post: state.postsReducer.post
 });
 
 const mapDispatchToProps = dispatch => ({
-  retrievePost: postId => dispatch(getPost(postId))
+  deletePost: id => dispatch(deletePost(id)),
+  getPost: id => dispatch(getPost(id)),
+  getUser: id => dispatch(getUser(id)),
+  editPost: (id, text, author) => dispatch(editPost(id, text, author))
 });
 
-export default compose(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )
-)(PostPage);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ShowPost);

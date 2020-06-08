@@ -4,6 +4,21 @@ const Post = require('../models/postModel');
 const multerUpload = require('../config/multer');
 const router = new express.Router();
 
+// Get a post by id
+router.get('/:id', async (req, res) => {
+  const { id } = req.params;
+  try {
+    const post = await Post.findById(id);
+    if (post) {
+      res.json({ post });
+    } else {
+      res.status(404).json({ message: 'Post not found' });
+    }
+  } catch (err) {
+    res.status(500).json({ err });
+  }
+});
+
 // get all posts sorted chronologically
 router.get('/', async (req, res) => {
   const posts = await Post.find().sort({ timestamp: -1 });

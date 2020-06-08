@@ -23,7 +23,7 @@ const Root = () => (
     <Route path="/settings" component={SettingsPage} />
     <Route path="/dev" component={AdminPage} />
     <Route path="/blog" component={BlogPage} />
-    <Route path="/blog_post" component={PostPage} />
+    <Route path="/posts/:id" component={PostPage} />
     <Route component={NotFound} />
   </Switch>
 );
