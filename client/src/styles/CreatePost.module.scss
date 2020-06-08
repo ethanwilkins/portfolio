@@ -4,27 +4,43 @@ $width: 100%;
   margin-bottom: 25px;
 }
 
+.fields {
+  font-weight: initial;
+  font-family: Helvetica;
+}
+
+.row {
+  width: 100%;
+  margin-bottom: 2.5px;
+  overflow-y: auto;
+}
+
+.imgInput {
+  float: left;
+  height: 48px;
+}
+
 .button {
   width: $width;
   height: 35px;
-  background: rgb(250, 250, 250);
-  color: rgb(70, 70, 70);
-  border-color: rgb(205, 205, 205);
+  background: rgb(95, 210, 140);
+  color: white;
+  border-color: rgb(105, 220, 150);
   border-radius: 3px;
+  border-width: 1px;
   margin-top: 10px;
   font-size: 14px;
-}
-
-.textField {
-  width: $width;
 }
 // end of global css
 
 // for mobile
 $mobileWidth: 100%;
 @media screen and (max-width: 975px) {
-  .button, .textField {
+  .button {
     width: $mobileWidth;
     max-width: initial;
+  }
+  .imgInput {
+    height: 47.5px;
   }
 }

@@ -59,27 +59,31 @@ export class CreatePost extends Component {
         onSubmit={this.handleSubmit}
         className={styles.form}
       >
-        <TextField
-          id="textarea"
-          placeholder="Title"
-          multiline
-          margin="normal"
-          rowsMax="5"
-          onChange={this.handleTitleChange}
-          value={title}
-          className={styles.textField}
-        />
-
-        <Input
-          type="file"
-          onChange={this.handleImageChange}
-          key={inputKey}
-        />
-
-        <Wysiwyg
-          onChange={this.handleBodyChange}
-          key={wysiwygKey}
-        />
+        <div className={styles.fields}>
+          <div className={styles.row}>  
+            <TextField
+              id="textarea"
+              placeholder="Title"
+              multiline
+              margin="normal"
+              rowsMax="5"
+              onChange={this.handleTitleChange}
+              value={title}
+              style={{width: '70%', float: 'left'}}
+            />
+            <Input
+              type="file"
+              onChange={this.handleImageChange}
+              key={inputKey}
+              className={styles.imgInput}
+              style={{width: '30%', fontSize: '10px'}}
+            />
+          </div>
+          <Wysiwyg
+            onChange={this.handleBodyChange}
+            key={wysiwygKey}
+          />
+        </div>
 
         <button type="submit" name="commit" className={styles.button}>
           <b>Post <i className="fa fa-pencil"></i></b>
