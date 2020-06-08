@@ -9,6 +9,7 @@ import SettingsPage from '../containers/SettingsPage';
 import SignupPage from '../containers/SignupPage';
 import AdminPage from '../containers/AdminPage';
 import BlogPage from '../containers/BlogPage';
+import PostPage from '../containers/PostPage';
 import NotFound from './NotFound';
 
 initAnalytics('UA-126201794-1');
@@ -22,6 +23,7 @@ const Root = () => (
     <Route path="/settings" component={SettingsPage} />
     <Route path="/dev" component={AdminPage} />
     <Route path="/blog" component={BlogPage} />
+    <Route path="/blog_post" component={PostPage} />
     <Route component={NotFound} />
   </Switch>
 );
