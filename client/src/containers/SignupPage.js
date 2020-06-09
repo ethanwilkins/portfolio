@@ -20,9 +20,9 @@ const styles = theme => ({
   layout: {
     width: 'auto',
     display: 'block', // Fix IE11 issue.
-    marginLeft: theme.spacing.unit * 3,
-    marginRight: theme.spacing.unit * 3,
-    [theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
+    marginLeft: theme.spacing(3),
+    marginRight: theme.spacing(3),
+    [theme.breakpoints.up(400 + theme.spacing(3 * 2))]: {
       width: 400,
       marginLeft: 'auto',
       marginRight: 'auto'
@@ -33,11 +33,11 @@ const styles = theme => ({
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    padding: theme.spacing.unit * 4,
+    padding: theme.spacing(4),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    width: theme.spacing.unit * 50,
+    width: theme.spacing(50),
     backgroundColor: 'theme.palette.background.paper',
     boxShadow: theme.shadows[5]
   },
@@ -46,13 +46,13 @@ const styles = theme => ({
     backgroundColor: theme.palette.secondary.main
   },
   submit: {
-    marginTop: theme.spacing.unit * 3
+    marginTop: theme.spacing(3)
   },
   link: {
     textDecoration: 'none'
   },
   footer: {
-    marginTop: theme.spacing.unit * 2
+    marginTop: theme.spacing(2)
   },
   errorText: {
     color: '#D50000',

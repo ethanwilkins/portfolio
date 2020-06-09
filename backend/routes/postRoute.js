@@ -36,6 +36,7 @@ router.route('/')
       authorId: req.body.authorId,
       title: req.body.title,
       body: req.body.body,
+      previewText: req.body.previewText,
       imageName: req.body.imageName,
       imageData: (req.file ? req.file.path : ''),
       timestamp: new Date().getTime()

@@ -12,7 +12,7 @@ import UserAvatar from './UserAvatar';
 
 const styles = theme => ({
   avatar: {
-    paddingTop: theme.spacing.unit * 2
+    paddingTop: theme.spacing(2)
   },
   cardContent: {
     flexDirection: 'column'
@@ -26,7 +26,7 @@ const styles = theme => ({
     textDecoration: 'none'
   },
   name: {
-    marginTop: theme.spacing.unit * 2,
+    marginTop: theme.spacing(2),
     textAlign: 'center'
   }
 });

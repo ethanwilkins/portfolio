@@ -41,6 +41,7 @@ class PostList extends Component {
               signedInUserId={user.userId}
               title={post.title}
               body={post.body}
+              previewText={post.previewText}
               imageData={post.imageData}
               timestamp={post.timestamp}
               deletePost={id => deletePost(id)}
@@ -67,6 +68,7 @@ PostList.propTypes = {
       authorId: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
       body: PropTypes.string.isRequired,
+      previewText: PropTypes.string.isRequired,
       timestamp: PropTypes.number.isRequired
     })
   ),

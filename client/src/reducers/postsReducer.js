@@ -33,6 +33,7 @@ export default (state = initialState, action) => {
             authorId: action.payload.authorId,
             title: action.payload.title,
             body: action.payload.body,
+            previewText: action.payload.previewText,
             imageData: action.payload.imageData,
             timestamp: action.payload.timestamp
           },
@@ -49,6 +50,7 @@ export default (state = initialState, action) => {
               ...post,
               title: action.title,
               body: action.body,
+              previewText: action.previewText,
               author: action.author
             };
           }

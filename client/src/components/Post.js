@@ -54,6 +54,7 @@ class Post extends Component {
       signedInUserId,
       title,
       body,
+      previewText,
       imageData,
       timestamp
     } = this.props;
@@ -126,8 +127,9 @@ class Post extends Component {
               {title}
             </h2>
           </Link>
-          
-          <div className={styles.body} dangerouslySetInnerHTML={{ __html: body }} />
+          <div className={styles.previewText}>
+            {previewText}
+          </div>
           <div className={styles.category + ' linkSoft'}>
             <i>Web Development - Ruby on Rails</i>
           </div>
@@ -159,6 +161,7 @@ Post.propTypes = {
   signedInUserId: PropTypes.string,
   title: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
+  previewText: PropTypes.string.isRequired,
   timestamp: PropTypes.number.isRequired
 };
 

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import compose from 'recompose/compose';
 
-import { TextField, Input, Button } from '@material-ui/core';
+import { TextField, Input, Button, TextareaAutosize } from '@material-ui/core';
 import Wysiwyg from "../components/Wysiwyg";
 import { createPost } from '../actions/postsActions';
 
@@ -14,6 +14,7 @@ export class CreatePost extends Component {
     title: '',
     image: '',
     body: '',
+    previewText: '',
     wysiwygKey: Math.random(),
     inputKey: Math.random()
   };
@@ -32,25 +33,31 @@ export class CreatePost extends Component {
     this.setState(() => ({ body }));
   };
 
+  handlePreviewTextChange = (e) => {
+    const previewText = e.target.value;
+    this.setState(() => ({ previewText }));
+  };
+
   handleSubmit = (e) => {
     e.preventDefault();
-    const { title, body, image } = this.state;
+    const { title, body, previewText, image } = this.state;
     const { dispatch, user } = this.props;
     if (!title.trim()) return;
 
-    dispatch(createPost(title, body, image, user));
+    dispatch(createPost(title, body, previewText, image, user));
     // updates wysiwygKey to remount Wysiwyg
     this.setState({
       title: '',
       image: '',
       body: '',
+      previewText: '',
       wysiwygKey: Math.random(),
       inputKey: Math.random()
     });
   };
 
   render() {
-    const { title, wysiwygKey, inputKey } = this.state;
+    const { title, previewText, wysiwygKey, inputKey } = this.state;
 
     return (
       <form
@@ -60,7 +67,7 @@ export class CreatePost extends Component {
         className={styles.form}
       >
         <div className={styles.fields}>
-          <div className={styles.row}>  
+          <div className={styles.row}>
             <TextField
               id="textarea"
               placeholder="Title"
@@ -80,6 +87,18 @@ export class CreatePost extends Component {
               style={{fontSize: '10px'}}
             />
           </div>
+
+          <TextareaAutosize
+            id="textarea"
+            placeholder="Preview text"
+            rowsMin={3}
+            margin="normal"
+            rowsMax="5"
+            onChange={this.handlePreviewTextChange}
+            value={previewText}
+            className={styles.textArea}
+          />
+
           <Wysiwyg
             onChange={this.handleBodyChange}
             key={wysiwygKey}

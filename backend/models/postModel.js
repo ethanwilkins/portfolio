@@ -15,6 +15,10 @@ const PostSchema = new Schema({
     type: String,
     required: true
   },
+  previewText: {
+    type: String,
+    required: true
+  },
   imageName: {
     type: String
   },

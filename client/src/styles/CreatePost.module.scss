@@ -20,6 +20,11 @@ $width: 100%;
   width: 70%;
 }
 
+.textArea {
+  width: calc(100% - 6px);
+  margin-bottom: 5px;
+}
+
 .imgInput {
   float: left;
   height: 48px;

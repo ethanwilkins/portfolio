@@ -22,10 +22,11 @@ export const getPosts = () => dispatch =>
       payload: res.data
     }));
 
-export const createPost = (title, body, image, user) => dispatch => {
+export const createPost = (title, body, previewText, image, user) => dispatch => {
   const formPayload = new FormData();
   formPayload.append('title', title);
   formPayload.append('body', body);
+  formPayload.append('previewText', previewText);
   formPayload.append('imageName', "multer-image-" + Date.now());
   formPayload.append('imageData', image);
   formPayload.append('author', user.name);
@@ -40,13 +41,14 @@ export const createPost = (title, body, image, user) => dispatch => {
 };
 
 
-export const editPost = (id, title, body, author) => dispatch =>
-  axios.patch(`/posts/${id}`, { id, title, body, author }).then(res =>
+export const editPost = (id, title, body, previewText, author) => dispatch =>
+  axios.patch(`/posts/${id}`, { id, title, body, previewText, author }).then(res =>
     dispatch({
       type: EDIT_POST,
       id,
       title,
       body,
+      previewText,
       author
     }));
 
