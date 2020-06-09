@@ -6,6 +6,8 @@ import Loading from './Loading';
 import NavbarContainer from '../containers/NavbarContainer';
 import Footer from './Footer';
 
+import styles from '../styles/ShowPost.module.scss';
+
 class ShowPost extends Component {
   state = {
     loading: true,
@@ -59,19 +61,21 @@ class ShowPost extends Component {
     ) : (
       <div>
         <NavbarContainer />
-        <Post
-          key={_id}
-          _id={_id}
-          author={author}
-          authorId={authorId}
-          title={title}
-          body={body}
-          imageData={imageData}
-          timestamp={timestamp}
-          deletePost={id => deletePost(id)}
-          editPost={(id, text, author) => editPost(id, text, author)}
-          getUser={id => getUser(id)}
-        />
+        <div className={styles.container}>
+          <Post
+            key={_id}
+            _id={_id}
+            author={author}
+            authorId={authorId}
+            title={title}
+            body={body}
+            imageData={imageData}
+            timestamp={timestamp}
+            deletePost={id => deletePost(id)}
+            editPost={(id, text, author) => editPost(id, text, author)}
+            getUser={id => getUser(id)}
+          />
+        </div>
         <Footer />
       </div>
     );

@@ -68,7 +68,7 @@ class Navmenu extends Component {
               <i className="fa fa-info"></i> About
             </Link>
             <Link to='/blog' className={cx(styles.navMenuLink, {
-              linkActive: path === '/blog',
+              linkActive: path === '/blog' || path.includes('/posts'),
               noSelect: true,
               aboutLink: true
             })}>
