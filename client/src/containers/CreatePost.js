@@ -5,7 +5,7 @@ import compose from 'recompose/compose';
 
 import { TextField, Input, Button, TextareaAutosize } from '@material-ui/core';
 import Wysiwyg from "../components/Wysiwyg";
-import { createPost } from '../actions/postsActions';
+import { createPost } from '../actions/postActions';
 
 import styles from '../styles/CreatePost.module.scss';
 

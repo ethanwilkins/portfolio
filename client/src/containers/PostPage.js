@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { getPost } from '../actions/postsActions';
+import { getPost } from '../actions/postActions';
 
 import Loading from '../components/Loading';
 import FullPost from '../components/FullPost';

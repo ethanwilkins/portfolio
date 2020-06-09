@@ -4,7 +4,7 @@ import {
   deletePost,
   getPosts,
   editPost
-} from '../actions/postsActions';
+} from '../actions/postActions';
 import { getUser } from '../actions/userActions';
 
 const mapStateToProps = state => ({
