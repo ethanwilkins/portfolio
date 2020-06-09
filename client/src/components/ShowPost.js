@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Post from './Post';
-import Loading from './Loading';
 
+import Loading from './Loading';
+import FullPost from './FullPost';
 import NavbarContainer from '../containers/NavbarContainer';
 import Footer from './Footer';
 
@@ -42,11 +42,6 @@ class ShowPost extends Component {
 
   render() {
     const {
-      deletePost,
-      editPost,
-      getUser
-    } = this.props;
-    const {
       loading,
       _id,
       author,
@@ -62,7 +57,7 @@ class ShowPost extends Component {
       <div>
         <NavbarContainer />
         <div className={styles.container}>
-          <Post
+          <FullPost
             key={_id}
             _id={_id}
             author={author}
@@ -71,9 +66,6 @@ class ShowPost extends Component {
             body={body}
             imageData={imageData}
             timestamp={timestamp}
-            deletePost={id => deletePost(id)}
-            editPost={(id, text, author) => editPost(id, text, author)}
-            getUser={id => getUser(id)}
           />
         </div>
         <Footer />
@@ -87,10 +79,7 @@ ShowPost.defaultProps = {
 };
 
 ShowPost.propTypes = {
-  getPost: PropTypes.func.isRequired,
-  deletePost: PropTypes.func.isRequired,
-  editPost: PropTypes.func.isRequired,
-  getUser: PropTypes.func.isRequired
+  getPost: PropTypes.func.isRequired
 };
 
 export default ShowPost;

@@ -1,5 +1,5 @@
 $mainFontSize: 19px;
-$maxWidth: 800px;
+$maxWidth: 750px;
 
 .container {
   transition: all .4s ease-in-out;
@@ -12,14 +12,14 @@ $maxWidth: 800px;
   width: 94.5%;
   overflow: hidden;
   font-size: $mainFontSize;
-  margin-top: 75px;
+  margin-top: 50px;
 }
 
 // for mobile
 @media screen and (max-width: 975px) {
   .container {
     width: 92.5%;
-    margin-top: 40px;
+    margin-top: 20px;
   }
 }
 // end mobile

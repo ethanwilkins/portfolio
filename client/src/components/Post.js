@@ -121,8 +121,10 @@ class Post extends Component {
           }
           <div className={styles.time}>{relativeTime} —</div>
           
-          <Link className={styles.title} to={`/posts/${_id}`}>
-            {title}
+          <Link to={`/posts/${_id}`}>
+            <h2 className={styles.title}>
+              {title}
+            </h2>
           </Link>
           
           <div className={styles.body} dangerouslySetInnerHTML={{ __html: body }} />
