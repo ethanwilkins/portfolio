@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
+import { getPosts } from '../actions/postActions';
+
 import NavbarContainer from './NavbarContainer';
 import Footer from '../components/Footer';
 import CreatePost from './CreatePost';
 import PostFeed from './PostFeed';
-import axios from 'axios';
 
 import styles from '../styles/BlogPage.module.scss';
 
@@ -13,10 +17,11 @@ export class BlogPage extends Component {
   };
 
   componentDidMount = () => {
-    axios.get('/posts').then((res) => {
-      if (res.data) {
+    const { getPosts } = this.props;
+    getPosts().then((res) => {
+      if (res.payload) {
         // to display number of blog posts
-        this.setState({postsSize: res.data.length});
+        this.setState({postsSize: res.payload.length});
       }
     });
   };
@@ -46,4 +51,15 @@ export class BlogPage extends Component {
   }
 }
 
-export default BlogPage;
+BlogPage.propTypes = {
+  getPosts: PropTypes.func.isRequired
+};
+
+const mapDispatchToProps = dispatch => ({
+  getPosts: () => dispatch(getPosts())
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(BlogPage);

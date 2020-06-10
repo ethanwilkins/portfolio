@@ -8,7 +8,7 @@ import {
 import { getUser } from '../actions/userActions';
 
 const mapStateToProps = state => ({
-  posts: state.postsReducer.posts,
+  posts: state.postReducer.posts,
   user: state.authReducer.user
 });
 

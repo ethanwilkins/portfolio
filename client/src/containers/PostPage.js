@@ -82,15 +82,11 @@ PostPage.propTypes = {
   getPost: PropTypes.func.isRequired
 };
 
-const mapStateToProps = state => ({
-  post: state.postsReducer.post
-});
-
 const mapDispatchToProps = dispatch => ({
   getPost: id => dispatch(getPost(id))
 });
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(PostPage);

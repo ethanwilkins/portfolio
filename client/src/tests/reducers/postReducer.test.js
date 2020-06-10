@@ -4,7 +4,7 @@ import {
   EDIT_POST,
   DELETE_POST
 } from '../../actions/actionTypes';
-import postsReducer from '../../reducers/postsReducer';
+import postReducer from '../../reducers/postReducer';
 
 const initialState = {
   posts: [
@@ -19,7 +19,7 @@ const initialState = {
 describe('posts reducer', () => {
   it('should return the initial state', () => {
     expect(
-      postsReducer(initialState, {
+      postReducer(initialState, {
         ...initialState,
         posts: [
           {
@@ -37,7 +37,7 @@ describe('posts reducer', () => {
       type: GET_POSTS,
       payload: initialState.posts
     };
-    expect(postsReducer(initialState, action)).toEqual({
+    expect(postReducer(initialState, action)).toEqual({
       ...initialState,
       posts: [
         {
@@ -64,7 +64,7 @@ describe('posts reducer', () => {
         _id: '1000'
       }
     };
-    expect(postsReducer(initialState, action)).toEqual({
+    expect(postReducer(initialState, action)).toEqual({
       ...initialState,
       posts: [
         {
@@ -95,7 +95,7 @@ describe('posts reducer', () => {
       id: '123'
     };
 
-    expect(postsReducer(initialState, action)).toEqual({
+    expect(postReducer(initialState, action)).toEqual({
       ...initialState,
       posts: [
         {
@@ -112,7 +112,7 @@ describe('posts reducer', () => {
       type: DELETE_POST,
       id: '123'
     };
-    expect(postsReducer(initialState, action)).toEqual({
+    expect(postReducer(initialState, action)).toEqual({
       ...initialState,
       posts: []
     });
