@@ -5,22 +5,6 @@ import { connect } from 'react-redux';
 import compose from 'recompose/compose';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import { withStyles } from '@material-ui/core/styles';
-
-const styles = theme => ({
-  button: {
-    margin: theme.spacing.unit
-  },
-  container: {
-    display: 'flex',
-    justifyContent: 'center'
-  },
-  textField: {
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
-    width: 500
-  }
-});
 
 export class EditPost extends Component {
   /* eslint-disable react/destructuring-assignment */
@@ -64,10 +48,8 @@ export class EditPost extends Component {
 
   render() {
     const { title, body } = this.state;
-    const { classes } = this.props;
     return (
       <form
-        className={classes.container}
         noValidate
         autoComplete="off"
         onSubmit={this.handleSubmit}
@@ -76,18 +58,15 @@ export class EditPost extends Component {
           id="textarea"
           placeholder="Title"
           multiline
-          className={classes.textField}
           margin="normal"
           rowsMax="5"
           value={title}
-          defaultValue={title}
           onChange={this.handleTitleChange}
         />
         <TextField
           id="textarea"
           placeholder="Body"
           multiline
-          className={classes.textField}
           margin="normal"
           rowsMax="5"
           value={body}
@@ -96,7 +75,6 @@ export class EditPost extends Component {
         <Button
           variant="contained"
           color="primary"
-          className={classes.button}
           type="submit"
         >
           Update
@@ -107,7 +85,6 @@ export class EditPost extends Component {
 }
 
 EditPost.propTypes = {
-  classes: PropTypes.object.isRequired,
   commentPostId: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   isEditingComment: PropTypes.bool.isRequired,
@@ -119,6 +96,5 @@ EditPost.propTypes = {
 };
 
 export default compose(
-  withStyles(styles),
   connect()
 )(EditPost);

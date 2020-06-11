@@ -31,6 +31,7 @@ export default (state = initialState, action) => {
             _id: action.payload._id,
             author: action.payload.author,
             authorId: action.payload.authorId,
+            prettyId: action.payload.prettyId,
             title: action.payload.title,
             body: action.payload.body,
             previewText: action.payload.previewText,
