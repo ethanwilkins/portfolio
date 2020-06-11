@@ -30,7 +30,7 @@ class PostPage extends Component {
       getPostByPrettyId,
       match
     } = this.props;
-    const prettyId = match.params.id;
+    const prettyId = match.params.prettyId;
     getPostByPrettyId(prettyId).then((res) => {
       this.setState({
         loading: false,

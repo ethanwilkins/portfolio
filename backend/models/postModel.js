@@ -10,6 +10,7 @@ const PostSchema = new Schema({
   title: {
     type: String,
     trim: true,
+    required: true,
     unique: true,
   },
   body: {
@@ -22,6 +23,7 @@ const PostSchema = new Schema({
   },
   prettyId: {
     type: String,
+    trim: true,
     required: true,
     unique: true,
   },
