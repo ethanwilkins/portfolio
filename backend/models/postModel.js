@@ -9,7 +9,8 @@ const PostSchema = new Schema({
   },
   title: {
     type: String,
-    trim: true
+    trim: true,
+    unique: true,
   },
   body: {
     type: String,
@@ -18,6 +19,11 @@ const PostSchema = new Schema({
   previewText: {
     type: String,
     required: true
+  },
+  prettyId: {
+    type: String,
+    required: true,
+    unique: true,
   },
   imageName: {
     type: String

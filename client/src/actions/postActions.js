@@ -1,11 +1,20 @@
 import axios from 'axios';
 import {
   GET_POST,
+  GET_POST_BY_PRETTY_ID,
   GET_POSTS,
   CREATE_POST,
   EDIT_POST,
   DELETE_POST
 } from './actionTypes';
+
+export const getPostByPrettyId = prettyId => async (dispatch) => {
+  const result = await axios.get(`/posts/pretty/${prettyId}`);
+  return dispatch({
+    type: GET_POST_BY_PRETTY_ID,
+    payload: result.data
+  });
+};
 
 export const getPost = postId => async (dispatch) => {
   const result = await axios.get(`/posts/${postId}`);

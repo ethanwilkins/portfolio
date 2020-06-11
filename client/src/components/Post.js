@@ -49,6 +49,7 @@ class Post extends Component {
     const {
       _id,
       authorId,
+      prettyId,
       deletePost,
       editPost,
       signedInUserId,
@@ -109,7 +110,7 @@ class Post extends Component {
         
         <div className={styles.cardContent}>
           {imageData &&
-            <Link to={`/posts/${_id}`}>
+            <Link to={`/posts/${prettyId}`}>
               <div className={styles.mainImgContainer}>
                 <LazyLoadImage
                   alt="Main image for blog post should show here."
@@ -122,7 +123,7 @@ class Post extends Component {
           }
           <div className={styles.time}>{relativeTime} —</div>
           
-          <Link to={`/posts/${_id}`}>
+          <Link to={`/posts/${prettyId}`}>
             <h2 className={styles.title}>
               {title}
             </h2>
@@ -155,6 +156,7 @@ Post.defaultProps = {
 Post.propTypes = {
   _id: PropTypes.string.isRequired,
   authorId: PropTypes.string.isRequired,
+  prettyId: PropTypes.string.isRequired,
   deletePost: PropTypes.func.isRequired,
   editPost: PropTypes.func.isRequired,
   getUser: PropTypes.func.isRequired,

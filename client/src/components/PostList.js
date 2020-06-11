@@ -38,6 +38,7 @@ class PostList extends Component {
               _id={post._id}
               author={post.author}
               authorId={post.authorId}
+              prettyId={post.prettyId}
               signedInUserId={user.userId}
               title={post.title}
               body={post.body}
@@ -66,6 +67,7 @@ PostList.propTypes = {
     PropTypes.shape({
       _id: PropTypes.string.isRequired,
       authorId: PropTypes.string.isRequired,
+      prettyId: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
       body: PropTypes.string.isRequired,
       previewText: PropTypes.string.isRequired,

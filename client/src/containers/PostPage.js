@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { getPost } from '../actions/postActions';
+import { getPostByPrettyId } from '../actions/postActions';
 
 import Loading from '../components/Loading';
 import FullPost from '../components/FullPost';
@@ -18,6 +18,7 @@ class PostPage extends Component {
     _id: '',
     author: '',
     authorId: '',
+    prettyId: '',
     title: '',
     body: '',
     imageData: '',
@@ -26,16 +27,17 @@ class PostPage extends Component {
 
   componentDidMount = () => {
     const {
-      getPost,
+      getPostByPrettyId,
       match
     } = this.props;
-    const postId = match.params.id;
-    getPost(postId).then((res) => {
+    const prettyId = match.params.id;
+    getPostByPrettyId(prettyId).then((res) => {
       this.setState({
         loading: false,
         _id: res.payload.post._id,
         author: res.payload.post.author,
         authorId: res.payload.post.authorId,
+        prettyId: res.payload.post.prettyId,
         title: res.payload.post.title,
         body: res.payload.post.body,
         imageData: res.payload.post.imageData,
@@ -79,11 +81,11 @@ class PostPage extends Component {
 }
 
 PostPage.propTypes = {
-  getPost: PropTypes.func.isRequired
+  getPostByPrettyId: PropTypes.func.isRequired
 };
 
 const mapDispatchToProps = dispatch => ({
-  getPost: id => dispatch(getPost(id))
+  getPostByPrettyId: prettyId => dispatch(getPostByPrettyId(prettyId))
 });
 
 export default connect(

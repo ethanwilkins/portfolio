@@ -4,6 +4,21 @@ const Post = require('../models/postModel');
 const multerUpload = require('../config/multer');
 const router = new express.Router();
 
+// Get a post by prettyId
+router.get('/pretty/:prettyId', async (req, res) => {
+  const { prettyId } = req.params;
+  try {
+    const post = await Post.findOne({prettyId: new RegExp('^'+prettyId+'$', "i")});
+    if (post) {
+      res.json({ post });
+    } else {
+      res.status(404).json({ message: 'Post not found' });
+    }
+  } catch (err) {
+    res.status(500).json({ err });
+  }
+});
+
 // Get a post by id
 router.get('/:id', async (req, res) => {
   const { id } = req.params;
@@ -33,6 +48,7 @@ router.route('/')
       title: req.body.title,
       body: req.body.body,
       previewText: req.body.previewText,
+      prettyId: req.body.title.replace(/\s/g, '-').replace(/[^a-zA-Z0-9-_]/g, '').toLowerCase(),
       imageName: req.body.imageName,
       imageData: (req.file ? req.file.path : ''),
       timestamp: new Date().getTime()
