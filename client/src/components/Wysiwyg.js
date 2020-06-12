@@ -27,8 +27,8 @@ export class Wysywig extends Component {
         this.uploadImage(attachment);
       }
     });
-
     this.trixInput.current.addEventListener("trix-initialize", event => {
+      // sets value of trix-editor when value prop is passed in from EditPost
       if (this.props.value) {
         let stored = this.props.value;
         event.target.editor.loadHTML(stored);
