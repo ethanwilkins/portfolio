@@ -62,30 +62,35 @@ router.route('/')
   });
 
 // update a post
-router.patch('/:id', (req, res) => {
-  const { id } = req.params;
+router.route('/:id')
+  .patch(multerUpload.single('imageData'), (req, res) => {
+    const { id } = req.params;
 
-  if (!ObjectID.isValid(id)) {
-    return res.status(404).send();
-  }
+    if (!ObjectID.isValid(id)) {
+      return res.status(404).send();
+    }
 
-  try {
-    return Post.findByIdAndUpdate(
-      id,
-      { $set: {
-        title: req.body.title,
-        body: req.body.body
-      }},
-      { new: true },
-      (err, post) => {
-        if (err) return res.status(400).send(err);
-        return res.send(post);
-      }
-    );
-  } catch (err) {
-    return res.status(400).send(err);
-  }
-});
+    try {
+      return Post.findByIdAndUpdate(
+        id,
+        { $set: {
+          title: req.body.title,
+          body: req.body.body,
+          previewText: req.body.previewText,
+          prettyId: req.body.title.replace(/\s/g, '-').replace(/[^a-zA-Z0-9-_]/g, '').toLowerCase(),
+          imageName: req.body.imageName,
+          imageData: (req.file ? req.file.path : ''),
+        }},
+        { new: true },
+        (err, post) => {
+          if (err) return res.status(400).send(err);
+          return res.send(post);
+        }
+      );
+    } catch (err) {
+      return res.status(400).send(err);
+    }
+  });
 
 // delete a post
 router.delete('/:id', async (req, res) => {

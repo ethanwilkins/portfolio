@@ -16,7 +16,7 @@ const mapDispatchToProps = dispatch => ({
   deletePost: id => dispatch(deletePost(id)),
   getPosts: () => dispatch(getPosts()),
   getUser: id => dispatch(getUser(id)),
-  editPost: (id, text, author) => dispatch(editPost(id, text, author))
+  editPost: (id, title, body, previewText, image) => dispatch(editPost(id, title, body, previewText, image))
 });
 
 export default connect(

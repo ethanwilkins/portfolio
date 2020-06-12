@@ -37,12 +37,11 @@ export class EditPost extends Component {
     const { title, body, image, previewText } = this.state;
     const {
       id,
-      author,
       editPost,
       handleModalClose
     } = this.props;
     if (!title.trim()) return;
-    editPost(id, title, body, image, previewText, author);
+    editPost(id, title, body, previewText, image);
     handleModalClose();
   };
 
@@ -53,6 +52,7 @@ export class EditPost extends Component {
         title={title}
         body={body}
         previewText={previewText}
+        image={image}
         handleTitleChange={this.handleTitleChange}
         handleBodyChange={this.handleBodyChange}
         handleImageChange={this.handleImageChange}
@@ -67,7 +67,6 @@ EditPost.propTypes = {
   commentPostId: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   isEditingComment: PropTypes.bool.isRequired,
-  author: PropTypes.string.isRequired,
   editPost: PropTypes.func.isRequired,
   handleModalClose: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,

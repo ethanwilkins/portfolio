@@ -14,14 +14,14 @@ const muiStyles = theme => ({
     position: 'absolute',
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
-    padding: theme.spacing(4),
-    top: '50%',
+    padding: theme.spacing(2),
+    top: '35%',
     left: '50%',
     outline: 'none',
     transform: 'translate(-50%, -50%)'
   },
   spacing: {
-    marginBottom: '10px'
+    marginBottom: '5px'
   }
 });
 
@@ -63,7 +63,6 @@ class EditModal extends Component {
           </Typography>
           <Typography variant="h6" id="modal-description">
             <EditPost
-              author={name}
               commentPostId={commentPostId}
               editPost={editPost}
               handleModalClose={handleModalClose}
@@ -81,16 +80,9 @@ class EditModal extends Component {
   }
 }
 
-EditModal.defaultProps = {
-  commentPostId: '',
-  isEditingComment: false
-};
-
 EditModal.propTypes = {
   _id: PropTypes.string.isRequired,
-  isEditingComment: PropTypes.bool,
   classes: PropTypes.object.isRequired,
-  commentPostId: PropTypes.string,
   editPost: PropTypes.func.isRequired,
   handleModalClose: PropTypes.func.isRequired,
   modalOpen: PropTypes.bool.isRequired,

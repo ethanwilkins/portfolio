@@ -49,17 +49,24 @@ export const createPost = (title, body, previewText, image, user) => dispatch =>
     }));
 };
 
+export const editPost = (id, title, body, previewText, image) => dispatch => {
+  const formPayload = new FormData();
+  formPayload.append('title', title);
+  formPayload.append('body', body);
+  formPayload.append('previewText', previewText);
+  formPayload.append('imageName', "multer-image-" + Date.now());
+  formPayload.append('imageData', image);
 
-export const editPost = (id, title, body, previewText, author) => dispatch =>
-  axios.patch(`/posts/${id}`, { id, title, body, previewText, author }).then(res =>
+  alert(image);
+  alert(previewText);
+
+  axios.patch(`/posts/${id}`, formPayload)
+  .then(res =>
     dispatch({
       type: EDIT_POST,
-      id,
-      title,
-      body,
-      previewText,
-      author
+      payload: res.data
     }));
+};
 
 export const deletePost = id => dispatch =>
   axios.delete(`/posts/${id}`).then(res =>

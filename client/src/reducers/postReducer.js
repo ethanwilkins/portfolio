@@ -49,10 +49,10 @@ export default (state = initialState, action) => {
           if (post._id === action.id) {
             return {
               ...post,
-              title: action.title,
-              body: action.body,
-              previewText: action.previewText,
-              author: action.author
+              title: action.payload.title,
+              body: action.payload.body,
+              previewText: action.payload.previewText,
+              imageData: action.payload.imageData
             };
           }
           return post;

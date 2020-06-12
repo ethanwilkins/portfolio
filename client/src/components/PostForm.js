@@ -85,9 +85,7 @@ PostForm.propTypes = {
   handleBodyChange: PropTypes.func.isRequired,
   handleImageChange: PropTypes.func.isRequired,
   handlePreviewTextChange: PropTypes.func.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
-  wysiwygKey: PropTypes.number.isRequired,
-  inputKey: PropTypes.number.isRequired
+  handleSubmit: PropTypes.func.isRequired
 };
 
 export default PostForm;
