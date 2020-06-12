@@ -12,17 +12,26 @@ Trix.config.attachments.preview.caption = {
 export class Wysywig extends Component {
   constructor(props) {
     super(props);
+    // creates a reference to trix-editor enabling event listers to be added below
     this.trixInput = React.createRef();
   }
 
   componentDidMount() {
+    // gets called on every change for trix-editor
     this.trixInput.current.addEventListener("trix-change", event => {
       this.props.onChange(event.target.innerHTML); //calling custom event
     });
     this.trixInput.current.addEventListener("trix-attachment-add", event => {
-      var attachment = event.attachment;
+      let attachment = event.attachment;
       if (attachment.file) {
         this.uploadImage(attachment);
+      }
+    });
+
+    this.trixInput.current.addEventListener("trix-initialize", event => {
+      if (this.props.value) {
+        let stored = this.props.value;
+        event.target.editor.loadHTML(stored);
       }
     });
   }

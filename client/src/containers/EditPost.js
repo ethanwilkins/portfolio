@@ -21,8 +21,7 @@ export class EditPost extends Component {
     this.setState(() => ({ title }));
   };
 
-  handleBodyChange = (e) => {
-    const body = e.target.value;
+  handleBodyChange = (body) => {
     this.setState(() => ({ body }));
   };
 
@@ -65,7 +64,6 @@ export class EditPost extends Component {
           value={title}
           onChange={this.handleTitleChange}
         />
-
         <Wysiwyg
           value={body}
           onChange={this.handleBodyChange}
