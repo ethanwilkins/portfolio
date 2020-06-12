@@ -143,6 +143,8 @@ class Post extends Component {
           modalOpen={modalOpen}
           title={title}
           body={body}
+          previewText={previewText}
+          image={imageData}
         />
       </div>
     );

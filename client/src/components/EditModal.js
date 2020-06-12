@@ -40,7 +40,9 @@ class EditModal extends Component {
       handleModalClose,
       modalOpen,
       title,
-      body
+      body,
+      previewText,
+      image
     } = this.props;
     const { name } = this.state;
 
@@ -69,6 +71,8 @@ class EditModal extends Component {
               isEditingComment={isEditingComment}
               title={title}
               body={body}
+              previewText={previewText}
+              image={image}
             />
           </Typography>
         </div>
@@ -91,6 +95,8 @@ EditModal.propTypes = {
   handleModalClose: PropTypes.func.isRequired,
   modalOpen: PropTypes.bool.isRequired,
   title: PropTypes.string.isRequired,
+  previewText: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired
 };
 

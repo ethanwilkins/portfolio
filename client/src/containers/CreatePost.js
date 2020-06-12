@@ -3,11 +3,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import compose from 'recompose/compose';
 
-import { TextField, Input, Button, TextareaAutosize } from '@material-ui/core';
-import Wysiwyg from "../components/Wysiwyg";
-import { createPost } from '../actions/postActions';
+import PostForm from "../components/PostForm";
 
-import styles from '../styles/CreatePost.module.scss';
+import { createPost } from '../actions/postActions';
 
 export class CreatePost extends Component {
   state = {
@@ -57,64 +55,21 @@ export class CreatePost extends Component {
   };
 
   render() {
-    const { title, previewText, wysiwygKey, inputKey } = this.state;
+    const { title, body, previewText, wysiwygKey, inputKey } = this.state;
 
     return (
-      <form
-        noValidate
-        autoComplete="off"
-        onSubmit={this.handleSubmit}
-        className={styles.form}
-      >
-        <div className={styles.fields}>
-          <div className={styles.row}>
-            <TextField
-              id="textarea"
-              placeholder="Title"
-              multiline
-              margin="normal"
-              rowsMax="5"
-              onChange={this.handleTitleChange}
-              value={title}
-              className={styles.textField}
-              style={{float: 'left'}}
-            />
-            <Input
-              type="file"
-              onChange={this.handleImageChange}
-              key={inputKey}
-              className={styles.imgInput}
-              style={{fontSize: '10px'}}
-            />
-          </div>
-
-          <TextareaAutosize
-            id="textarea"
-            placeholder="Preview text"
-            rowsMin={3}
-            margin="normal"
-            rowsMax="5"
-            onChange={this.handlePreviewTextChange}
-            value={previewText}
-            className={styles.textArea}
-          />
-
-          <Wysiwyg
-            onChange={this.handleBodyChange}
-            key={wysiwygKey}
-          />
-        </div>
-
-        <Button
-          type="submit"
-          name="commit"
-          className={styles.button}
-          variant="contained"
-          style={{background: 'rgb(105, 220, 150)', color: 'white'}}
-        >
-          <b>post <i className="fa fa-pencil"></i></b>
-        </Button>
-      </form>
+      <PostForm
+        title={title}
+        body={body}
+        previewText={previewText}
+        handleTitleChange={this.handleTitleChange}
+        handleBodyChange={this.handleBodyChange}
+        handleImageChange={this.handleImageChange}
+        handlePreviewTextChange={this.handlePreviewTextChange}
+        handleSubmit={this.handleSubmit}
+        wysiwygKey={wysiwygKey}
+        inputKey={inputKey}
+      />
     );
   }
 }

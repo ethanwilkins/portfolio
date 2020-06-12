@@ -1,18 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
-import compose from 'recompose/compose';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-
-import Wysiwyg from "../components/Wysiwyg";
+import PostForm from "../components/PostForm";
 
 export class EditPost extends Component {
   /* eslint-disable react/destructuring-assignment */
   state = {
     title: this.props.title,
-    body: this.props.body
+    body: this.props.body,
+    image: this.props.image,
+    previewText: this.props.previewText,
   };
   /* eslint-enable react/destructuring-assignment */
 
@@ -21,61 +18,47 @@ export class EditPost extends Component {
     this.setState(() => ({ title }));
   };
 
+  handleImageChange = (e) => {
+    let image = e.target.files[0];
+    this.setState(() => ({ image }));
+  };
+
   handleBodyChange = (body) => {
     this.setState(() => ({ body }));
   };
 
+  handlePreviewTextChange = (e) => {
+    const previewText = e.target.value;
+    this.setState(() => ({ previewText }));
+  };
+
   handleSubmit = (e) => {
     e.preventDefault();
-    const { title, body } = this.state;
+    const { title, body, image, previewText } = this.state;
     const {
-      commentPostId,
       id,
-      isEditingComment,
       author,
       editPost,
       handleModalClose
     } = this.props;
     if (!title.trim()) return;
-
-    if (isEditingComment) {
-      editPost('editComment', id, commentPostId, title, body);
-    } else {
-      editPost(id, title, body, author);
-    }
-
+    editPost(id, title, body, image, previewText, author);
     handleModalClose();
   };
 
   render() {
-    const { title, body } = this.state;
+    const { title, body, image, previewText } = this.state;
     return (
-      <form
-        noValidate
-        autoComplete="off"
-        onSubmit={this.handleSubmit}
-      >
-        <TextField
-          id="textarea"
-          placeholder="Title"
-          multiline
-          margin="normal"
-          rowsMax="5"
-          value={title}
-          onChange={this.handleTitleChange}
-        />
-        <Wysiwyg
-          value={body}
-          onChange={this.handleBodyChange}
-        />
-        <Button
-          variant="contained"
-          color="primary"
-          type="submit"
-        >
-          Update
-        </Button>
-      </form>
+      <PostForm
+        title={title}
+        body={body}
+        previewText={previewText}
+        handleTitleChange={this.handleTitleChange}
+        handleBodyChange={this.handleBodyChange}
+        handleImageChange={this.handleImageChange}
+        handlePreviewTextChange={this.handlePreviewTextChange}
+        handleSubmit={this.handleSubmit}
+      />
     );
   }
 }
@@ -91,6 +74,4 @@ EditPost.propTypes = {
   body: PropTypes.string.isRequired
 };
 
-export default compose(
-  connect()
-)(EditPost);
+export default EditPost;
