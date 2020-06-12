@@ -46,7 +46,7 @@ export class Wysywig extends Component {
           // updates attributes of attachment with correct URL to uploaded image
           let imageURL = data.data.image.data;
           attachment.setAttributes({
-            url: imageURL
+            url: '/' + imageURL
           })
         }
       })
