@@ -6,6 +6,8 @@ import compose from 'recompose/compose';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
+import Wysiwyg from "../components/Wysiwyg";
+
 export class EditPost extends Component {
   /* eslint-disable react/destructuring-assignment */
   state = {
@@ -63,12 +65,8 @@ export class EditPost extends Component {
           value={title}
           onChange={this.handleTitleChange}
         />
-        <TextField
-          id="textarea"
-          placeholder="Body"
-          multiline
-          margin="normal"
-          rowsMax="5"
+
+        <Wysiwyg
           value={body}
           onChange={this.handleBodyChange}
         />

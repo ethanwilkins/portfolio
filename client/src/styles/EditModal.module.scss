@@ -1,0 +1,15 @@
+.modal {
+}
+
+.paper {
+  width: 70%;
+  height: 80%;
+}
+// end global
+
+// for mobile
+@media screen and (max-width: 975px) {
+  .paper {
+    width: 80%;
+  }
+}
