@@ -72,11 +72,6 @@ router.route('/:id')
 
     try {
       const post = await Post.findById(id);
-      console.log("Got here!");
-      if (req.file) {
-        console.log('imageName : ' + req.body.imageName);
-        console.log('imageData : ' + req.file.path);
-      }
       return post.updateOne(
         { $set: {
           title: req.body.title,
@@ -84,7 +79,7 @@ router.route('/:id')
           previewText: req.body.previewText,
           prettyId: req.body.title.replace(/\s/g, '-').replace(/[^a-zA-Z0-9-_]/g, '').toLowerCase(),
           imageName: (req.body.imageName ? req.body.imageName : (post.imageName ? post.imageName : null)),
-          imageData: (req.file ? req.file.path : (post.imageData ? post.imageData : null)),
+          imageData: (req.file ? req.file.path : (post.imageData ? post.imageData : null))
         }},
         { new: true },
         (err, post) => {

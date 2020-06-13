@@ -21,7 +21,7 @@ class EditPage extends Component {
     title: '',
     body: '',
     previewText: '',
-    imageData: '',
+    image: '',
     timestamp: 0
   };
 
@@ -39,7 +39,6 @@ class EditPage extends Component {
         title: res.payload.post.title,
         body: res.payload.post.body,
         previewText: res.payload.post.previewText,
-        imageData: res.payload.post.imageData,
         timestamp: res.payload.post.timestamp
       });
     });
@@ -79,8 +78,7 @@ class EditPage extends Component {
       loading,
       title,
       body,
-      previewText,
-      imageData
+      previewText
     } = this.state;
     return loading ? (
       <Loading />
@@ -89,16 +87,15 @@ class EditPage extends Component {
         <NavbarContainer />
         <div className={styles.container}>
           <PostForm
-          title={title}
-          body={body}
-          previewText={previewText}
-          image={imageData}
-          handleTitleChange={this.handleTitleChange}
-          handleBodyChange={this.handleBodyChange}
-          handleImageChange={this.handleImageChange}
-          handlePreviewTextChange={this.handlePreviewTextChange}
-          handleSubmit={this.handleSubmit}
-        />
+            title={title}
+            body={body}
+            previewText={previewText}
+            handleTitleChange={this.handleTitleChange}
+            handleBodyChange={this.handleBodyChange}
+            handleImageChange={this.handleImageChange}
+            handlePreviewTextChange={this.handlePreviewTextChange}
+            handleSubmit={this.handleSubmit}
+          />
         </div>
         <Footer />
       </div>
