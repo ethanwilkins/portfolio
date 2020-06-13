@@ -64,9 +64,7 @@ export class EditPost extends Component {
 }
 
 EditPost.propTypes = {
-  commentPostId: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
-  isEditingComment: PropTypes.bool.isRequired,
   editPost: PropTypes.func.isRequired,
   handleModalClose: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,

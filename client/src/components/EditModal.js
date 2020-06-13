@@ -26,16 +26,10 @@ const muiStyles = theme => ({
 });
 
 class EditModal extends Component {
-  state = {
-    name: ''
-  };
-
   render() {
     const {
       _id,
-      isEditingComment,
       classes,
-      commentPostId,
       editPost,
       handleModalClose,
       modalOpen,
@@ -44,7 +38,6 @@ class EditModal extends Component {
       previewText,
       image
     } = this.props;
-    const { name } = this.state;
 
     return (
       <Modal
@@ -59,15 +52,13 @@ class EditModal extends Component {
             id="modal-title"
             className={classes.spacing}
           >
-            {isEditingComment ? 'Edit this comment' : 'Edit this post'}
+            Edit this post
           </Typography>
           <Typography variant="h6" id="modal-description">
             <EditPost
-              commentPostId={commentPostId}
               editPost={editPost}
               handleModalClose={handleModalClose}
               id={_id}
-              isEditingComment={isEditingComment}
               title={title}
               body={body}
               previewText={previewText}
