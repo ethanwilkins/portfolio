@@ -9,9 +9,9 @@ import PostForm from '../components/PostForm';
 import NavbarContainer from './NavbarContainer';
 import Footer from '../components/Footer';
 
-import styles from '../styles/PostPage.module.scss';
+import styles from '../styles/EditPage.module.scss';
 
-class EditPostPage extends Component {
+class EditPage extends Component {
   state = {
     loading: true,
     _id: '',
@@ -65,10 +65,13 @@ class EditPostPage extends Component {
   };
 
   handleSubmit = (e) => {
+    const { editPost } = this.props;
     e.preventDefault();
     const { id, title, body, image, previewText } = this.state;
     if (!title.trim()) return;
-    editPost(id, title, body, previewText, image);
+    editPost(id, title, body, previewText, image).then(() => {
+      console.log("Success.");
+    });
   };
 
   render() {
@@ -103,7 +106,7 @@ class EditPostPage extends Component {
   }
 }
 
-EditPostPage.propTypes = {
+EditPage.propTypes = {
   getPostByPrettyId: PropTypes.func.isRequired,
   editPost: PropTypes.func.isRequired
 };
@@ -116,4 +119,22 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   null,
   mapDispatchToProps
-)(EditPostPage);
+)(EditPage);
+
+
+
+
+
+
+// import { connect } from 'react-redux';
+// import EditPost from '../components/EditPost';
+// import { editPost } from '../actions/postActions';
+
+// const mapDispatchToProps = dispatch => ({
+//   editPost: (id, title, body, previewText, image) => dispatch(editPost(id, title, body, previewText, image))
+// });
+
+// export default connect(
+//   null,
+//   mapDispatchToProps
+// )(EditPost);

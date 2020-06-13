@@ -6,11 +6,6 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import styles from '../styles/FullPost.module.scss';
 
 class FullPost extends Component {
-  state = {
-    avatarColor: 18,
-    name: ''
-  };
-
   render() {
     const {
       title,
@@ -52,7 +47,6 @@ class FullPost extends Component {
 
 FullPost.propTypes = {
   _id: PropTypes.string.isRequired,
-  authorId: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   timestamp: PropTypes.number.isRequired

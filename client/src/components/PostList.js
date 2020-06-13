@@ -61,7 +61,6 @@ PostList.defaultProps = {
 
 PostList.propTypes = {
   deletePost: PropTypes.func.isRequired,
-  editPost: PropTypes.func.isRequired,
   getPosts: PropTypes.func.isRequired,
   posts: PropTypes.arrayOf(
     PropTypes.shape({

@@ -29,7 +29,7 @@ class Post extends Component {
   };
 
   goToEditPostPage = (prettyId) => {
-    window.location.href = `/post/${prettyId}`;
+    window.location.href = `/edit_post/${prettyId}`;
   };
 
   render() {
@@ -95,7 +95,7 @@ class Post extends Component {
         
         <div className={styles.cardContent}>
           {imageData &&
-            <Link to={`/posts/${prettyId}`}>
+            <Link to={`/post/${prettyId}`}>
               <div className={styles.mainImgContainer}>
                 <LazyLoadImage
                   alt="Main image for blog post should show here."
@@ -108,7 +108,7 @@ class Post extends Component {
           }
           <div className={styles.time}>{relativeTime} —</div>
           
-          <Link to={`/posts/${prettyId}`}>
+          <Link to={`/post/${prettyId}`}>
             <h2 className={styles.title}>
               {title}
             </h2>

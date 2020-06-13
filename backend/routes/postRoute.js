@@ -63,7 +63,7 @@ router.route('/')
 
 // update a post
 router.route('/:id')
-  .patch(multerUpload.single('imageData'), (req, res) => {
+  .patch(multerUpload.single('imageData'), async (req, res) => {
     const { id } = req.params;
 
     if (!ObjectID.isValid(id)) {
@@ -71,15 +71,20 @@ router.route('/:id')
     }
 
     try {
-      return Post.findByIdAndUpdate(
-        id,
+      const post = await Post.findById(id);
+      console.log("Got here!");
+      if (req.file) {
+        console.log('imageName : ' + req.body.imageName);
+        console.log('imageData : ' + req.file.path);
+      }
+      return post.updateOne(
         { $set: {
           title: req.body.title,
           body: req.body.body,
           previewText: req.body.previewText,
           prettyId: req.body.title.replace(/\s/g, '-').replace(/[^a-zA-Z0-9-_]/g, '').toLowerCase(),
-          imageName: req.body.imageName,
-          imageData: (req.file ? req.file.path : ''),
+          imageName: (req.body.imageName ? req.body.imageName : (post.imageName ? post.imageName : null)),
+          imageData: (req.file ? req.file.path : (post.imageData ? post.imageData : null)),
         }},
         { new: true },
         (err, post) => {

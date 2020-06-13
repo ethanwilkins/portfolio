@@ -49,7 +49,7 @@ export const createPost = (title, body, previewText, image, user) => dispatch =>
     }));
 };
 
-export const editPost = (id, title, body, previewText, image) => dispatch => {
+export const editPost = (id, title, body, previewText, image) => async (dispatch) => {
   const formPayload = new FormData();
   formPayload.append('title', title);
   formPayload.append('body', body);
@@ -57,15 +57,14 @@ export const editPost = (id, title, body, previewText, image) => dispatch => {
   formPayload.append('imageName', "multer-image-" + Date.now());
   formPayload.append('imageData', image);
 
-  alert(image);
-  alert(previewText);
-
   axios.patch(`/posts/${id}`, formPayload)
   .then(res =>
     dispatch({
       type: EDIT_POST,
       payload: res.data
     }));
+  // redirect back to blog
+  window.location.href = '/blog';
 };
 
 export const deletePost = id => dispatch =>

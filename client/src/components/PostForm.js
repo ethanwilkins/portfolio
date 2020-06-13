@@ -70,7 +70,7 @@ export class PostForm extends Component {
           variant="contained"
           style={{background: 'rgb(105, 220, 150)', color: 'white'}}
         >
-          <b>post <i className="fa fa-pencil"></i></b>
+          <b>{inputKey ? 'post' : 'save'} <i className="fa fa-pencil"></i></b>
         </Button>
       </form>
     );
