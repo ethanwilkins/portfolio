@@ -45,6 +45,8 @@ class EditModal extends Component {
         aria-describedby="modal-description"
         open={modalOpen}
         onClose={handleModalClose}
+        style={{overflow: 'scroll'}}
+        className={styles.modal}
       >
         <div className={classes.paper + ' ' + styles.paper}>
           <Typography

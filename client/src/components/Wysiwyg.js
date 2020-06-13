@@ -19,7 +19,8 @@ export class Wysywig extends Component {
   componentDidMount() {
     // gets called on every change for trix-editor
     this.trixInput.current.addEventListener("trix-change", event => {
-      this.props.onChange(event.target.innerHTML); //calling custom event
+      // calls function that sets state.body in parent element with innerHTML
+      this.props.onChange(event.target.innerHTML);
     });
     this.trixInput.current.addEventListener("trix-attachment-add", event => {
       let attachment = event.attachment;

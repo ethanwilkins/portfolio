@@ -7,8 +7,6 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 
-import EditModal from './EditModal';
-
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 import styles from '../styles/Post.module.scss';
@@ -16,13 +14,10 @@ import styles from '../styles/Post.module.scss';
 const options = ['Edit', 'Delete'];
 const ITEM_HEIGHT = 48;
 
+
 class Post extends Component {
   state = {
-    anchorEl: null,
-    avatarColor: 18,
-    expanded: false,
-    modalOpen: false,
-    name: ''
+    anchorEl: null
   };
 
   handleClick = (event) => {
@@ -33,16 +28,8 @@ class Post extends Component {
     this.setState({ anchorEl: null });
   };
 
-  handleExpandClick = () => {
-    this.setState(state => ({ expanded: !state.expanded }));
-  };
-
-  handleModalOpen = () => {
-    this.setState({ modalOpen: true });
-  };
-
-  handleModalClose = () => {
-    this.setState({ modalOpen: false });
+  goToEditPostPage = (prettyId) => {
+    window.location.href = `/post/${prettyId}`;
   };
 
   render() {
@@ -51,15 +38,13 @@ class Post extends Component {
       authorId,
       prettyId,
       deletePost,
-      editPost,
       signedInUserId,
       title,
-      body,
       previewText,
       imageData,
       timestamp
     } = this.props;
-    const { anchorEl, modalOpen } = this.state;
+    const { anchorEl } = this.state;
     const open = Boolean(anchorEl);
     const relativeTime = new Intl.DateTimeFormat('en-US', {
       year: 'numeric',
@@ -97,8 +82,8 @@ class Post extends Component {
                   key={option}
                   onClick={() =>
                     this.handleClose() ||
-                    (option === 'Delete' ? deletePost(_id) : null) ||
-                    (option === 'Edit' ? this.handleModalOpen() : null)
+                    (option === 'Edit' ? this.goToEditPostPage(prettyId) : null) ||
+                    (option === 'Delete' ? deletePost(_id) : null)
                   }
                 >
                   {option}
@@ -135,32 +120,16 @@ class Post extends Component {
             <i>Web Development - Ruby on Rails</i>
           </div>
         </div>
-
-        <EditModal
-          _id={_id}
-          editPost={editPost}
-          handleModalClose={this.handleModalClose}
-          modalOpen={modalOpen}
-          title={title}
-          body={body}
-          previewText={previewText}
-          image={imageData}
-        />
       </div>
     );
   }
 }
-
-Post.defaultProps = {
-  comments: []
-};
 
 Post.propTypes = {
   _id: PropTypes.string.isRequired,
   authorId: PropTypes.string.isRequired,
   prettyId: PropTypes.string.isRequired,
   deletePost: PropTypes.func.isRequired,
-  editPost: PropTypes.func.isRequired,
   getUser: PropTypes.func.isRequired,
   signedInUserId: PropTypes.string,
   title: PropTypes.string.isRequired,

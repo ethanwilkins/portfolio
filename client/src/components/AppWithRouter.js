@@ -10,6 +10,7 @@ import SignupPage from '../containers/SignupPage';
 import AdminPage from '../containers/AdminPage';
 import BlogPage from '../containers/BlogPage';
 import PostPage from '../containers/PostPage';
+import EditPostPage from '../containers/EditPostPage';
 import NotFound from './NotFound';
 
 initAnalytics('UA-126201794-1');
@@ -24,6 +25,7 @@ const Root = () => (
     <Route path="/dev" component={AdminPage} />
     <Route path="/blog" component={BlogPage} />
     <Route path="/posts/:prettyId" component={PostPage} />
+    <Route path="/post/:prettyId" component={EditPostPage} />
     <Route component={NotFound} />
   </Switch>
 );
