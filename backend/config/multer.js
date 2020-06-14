@@ -6,9 +6,8 @@ const storage = multer.diskStorage({
     cb(null, './uploads/');
   },
   filename: function (req, file, cb) {
-    // regex extracts extension from file name
-    const re = /(?:\.([^.]+))?$/;
-    const extension = re.exec(file.originalname)[0];
+    // extracts extension from file
+    const extension = file.mimetype.split('/')[1];
     // uses only date and extension of original file name
     cb(null, Date.now() + extension);
   }
@@ -16,7 +15,7 @@ const storage = multer.diskStorage({
 
 // filefilter acts as gatekeeper and allows specified file types
 const fileFilter = (req, file, cb) => {
-  if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png' || file.mimetype === 'image/gif') {
+  if (file.mimetype.startsWith('image')) {
     cb(null, true);
   } else {
     // rejects storing a file
