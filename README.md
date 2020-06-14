@@ -16,4 +16,3 @@ This is free and open source software, as specified by the GNU General Public Li
 ## Built With
 
 - [MERN Social Network](https://github.com/jm-shi/MERN-Social-Network) - Social network built with the MERN stack
-- [Express ActivityPub Server](https://github.com/dariusk/express-activitypub) - Reference implementation of ActivityPub server using Express.js
