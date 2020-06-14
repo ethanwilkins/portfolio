@@ -68,9 +68,7 @@ class EditPage extends Component {
     e.preventDefault();
     const { id, title, body, image, previewText } = this.state;
     if (!title.trim()) return;
-    editPost(id, title, body, previewText, image).then(() => {
-      console.log("Success.");
-    });
+    editPost(id, title, body, previewText, image);
   };
 
   render() {

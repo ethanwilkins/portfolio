@@ -49,7 +49,7 @@ export const createPost = (title, body, previewText, image, user) => dispatch =>
     }));
 };
 
-export const editPost = (id, title, body, previewText, image) => async (dispatch) => {
+export const editPost = (id, title, body, previewText, image) =>  dispatch => {
   const formPayload = new FormData();
   formPayload.append('title', title);
   formPayload.append('body', body);
