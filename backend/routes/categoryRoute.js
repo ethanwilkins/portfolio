@@ -20,7 +20,7 @@ router.get('/:id', async (req, res) => {
 
 // get all categories sorted chronologically
 router.get('/', async (req, res) => {
-  const categories = await Category.find().sort({ timestamp: -1 });
+  const categories = await Category.find().sort({ timestamp: 1 });
   res.status(200).json(categories);
 });
 

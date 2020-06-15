@@ -9,7 +9,7 @@ const storage = multer.diskStorage({
     // extracts extension from file
     const extension = file.mimetype.split('/')[1];
     // uses only date and extension of original file name
-    cb(null, Date.now() + extension);
+    cb(null, Date.now() + '.' + extension);
   }
 });
 

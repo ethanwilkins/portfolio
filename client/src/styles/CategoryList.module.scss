@@ -1,0 +1,37 @@
+$activeColor: rgb(95, 210, 140);
+
+@font-face {
+  font-family: "Maison Neue Thin";
+  src: url("../fonts/maison_neue_thin.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.container {
+  margin-top: 65px;
+  font-size: 18px;
+}
+
+.label {
+  font-family: "Maison Neue Thin";
+  padding-bottom: 22.5px;
+}
+
+.seeAllLink {
+  display: block;
+  font-family: "Maison Neue Thin";
+  font-size: 18px;
+  padding-top: 12.5px;
+}
+
+.link {
+  display: block;
+  color: rgb(100, 100, 100);
+  margin-bottom: 12.5px;
+  font-size: 18px;
+}
+
+.link:hover, .seeAllLink:hover {
+  text-decoration: none;
+  color: $activeColor;
+}

@@ -33,9 +33,10 @@ export class CategoryForm extends Component {
           name="commit"
           className={styles.button}
           variant="contained"
-          style={{background: 'rgb(105, 220, 150)', color: 'white'}}
+          size="small"
+          style={{background: 'rgb(105, 220, 150)', color: 'white', marginTop: '7.5px'}}
         >
-          <b>save <i className="fa fa-pencil"></i></b>
+          <b>Save <i className="fa fa-pencil"></i></b>
         </Button>
       </form>
     );
