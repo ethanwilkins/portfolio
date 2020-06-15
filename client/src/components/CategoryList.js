@@ -17,7 +17,10 @@ class CategoryList extends Component {
       <div>
         {categories.map(
           category =>
-          <Link to='/'>
+          <Link
+            to='/'
+            key={category._id}
+          >
             {category.name}
           </Link>
         )}
@@ -31,7 +34,7 @@ CategoryList.defaultProps = {
 };
 
 CategoryList.propTypes = {
-  getPosts: PropTypes.func.isRequired,
+  getCategories: PropTypes.func.isRequired,
   posts: PropTypes.arrayOf(
     PropTypes.shape({
       _id: PropTypes.string.isRequired,

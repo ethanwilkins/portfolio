@@ -7,6 +7,7 @@ const path = require('path');
 const posts = require('./routes/postRoute');
 const users = require('./routes/userRoute');
 const images = require('./routes/imageRoute');
+const categories = require('./routes/categoryRoute');
 const dbURI = process.env.REACT_APP_DB_URI || require('./secrets').dbURI;
 
 const app = express();
@@ -50,6 +51,7 @@ else {
 app.use('/posts', posts);
 app.use('/users', users);
 app.use('/images', images);
+app.use('/categories', categories);
 app.use('/uploads', express.static('uploads'));
 
 if (process.env.NODE_ENV === 'production') {

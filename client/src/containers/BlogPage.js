@@ -8,7 +8,8 @@ import NavbarContainer from './NavbarContainer';
 import Footer from '../components/Footer';
 import CreatePost from './CreatePost';
 import PostFeed from './PostFeed';
-import CategoryPane from './CategoryPane';
+import CategoryFeed from './CategoryFeed';
+import CreateCategory from './CreateCategory';
 
 import styles from '../styles/BlogPage.module.scss';
 
@@ -38,7 +39,8 @@ export class BlogPage extends Component {
             <div className="linkActive">
               All {postsSize} Posts
             </div>
-            <CategoryPane />
+            <CategoryFeed />
+            <CreateCategory />
           </div>
           <div className={styles.feed}>
             {localStorage.jwtToken &&

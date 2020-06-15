@@ -27,6 +27,7 @@ router.get('/', async (req, res) => {
 // create a new category
 router.post('/', async (req, res) => {
     const newCategory = new Category({
+      authorId: req.body.authorId,
       name: req.body.name,
       timestamp: new Date().getTime()
     });

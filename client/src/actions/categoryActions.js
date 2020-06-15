@@ -22,9 +22,12 @@ export const getCategories = () => dispatch =>
       payload: res.data
     }));
 
-export const createCategory = (name) => dispatch => {
+export const createCategory = (name, user) => dispatch => {
 
-  axios.post('/categories', name)
+  axios.post('/categories', {
+    authorId: user.userId,
+    name
+  })
   .then(res =>
     dispatch({
       type: CREATE_CATEGORY,

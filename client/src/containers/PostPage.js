@@ -53,7 +53,6 @@ class PostPage extends Component {
       _id,
       author,
       authorId,
-      prettyId,
       title,
       body,
       imageData,
