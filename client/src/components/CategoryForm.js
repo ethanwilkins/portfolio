@@ -20,23 +20,26 @@ export class CategoryForm extends Component {
       >
         <TextField
           id="textarea"
-          placeholder="Name"
+          placeholder="Add a category"
           multiline
           margin="normal"
-          rowsMax="5"
+          rowsMax="3"
           onChange={handleNameChange}
           value={name}
-          className={styles.textField}
         />
         <Button
           type="submit"
           name="commit"
-          className={styles.button}
           variant="contained"
           size="small"
-          style={{background: 'rgb(105, 220, 150)', color: 'white', marginTop: '7.5px'}}
+          style={{
+            background: 'rgb(105, 220, 150)',
+            color: 'white',
+            marginLeft: '5px',
+            marginTop: '18px'
+          }}
         >
-          <b>Save <i className="fa fa-pencil"></i></b>
+          <b>add <i className="fa fa-plus"></i></b>
         </Button>
       </form>
     );

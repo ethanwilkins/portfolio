@@ -27,12 +27,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         categories: [
+          ...state.categories,
           {
             _id: action.payload._id,
             name: action.payload.name,
             timestamp: action.payload.timestamp
-          },
-          ...state.categories
+          }
         ]
       };
     }
