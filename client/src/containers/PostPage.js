@@ -11,7 +11,7 @@ import Footer from '../components/Footer';
 
 import styles from '../styles/PostPage.module.scss';
 
-import ReactDisqusComments from 'react-disqus-comments';
+import { DiscussionEmbed } from 'disqus-react';
 
 class PostPage extends Component {
   state = {
@@ -53,6 +53,7 @@ class PostPage extends Component {
       _id,
       author,
       authorId,
+      prettyId,
       title,
       body,
       imageData,
@@ -74,12 +75,15 @@ class PostPage extends Component {
             imageData={imageData}
             timestamp={timestamp}
           />
-          <ReactDisqusComments
-            shortname="example"
-            identifier="something-unique-12345"
-            title="Example Thread"
-            url="http://www.example.com/example-thread"
-            category_id="123456"
+          <DiscussionEmbed
+            shortname='https-forrestwebco-com'
+            config={
+              {
+                url: 'https://forrestwebco.com',
+                identifier: _id,
+                title: title,
+              }
+            }
           />
         </div>
         <Footer />
