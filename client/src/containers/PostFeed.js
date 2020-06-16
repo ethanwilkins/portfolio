@@ -4,7 +4,6 @@ import {
   deletePost,
   getPosts
 } from '../actions/postActions';
-import { getUser } from '../actions/userActions';
 
 const mapStateToProps = state => ({
   posts: state.postReducer.posts,
@@ -13,8 +12,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   deletePost: id => dispatch(deletePost(id)),
-  getPosts: () => dispatch(getPosts()),
-  getUser: id => dispatch(getUser(id))
+  getPosts: () => dispatch(getPosts())
 });
 
 export default connect(

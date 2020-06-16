@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import { Link } from 'react-router-dom';
 import IconButton from '@material-ui/core/IconButton';
@@ -11,6 +12,8 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 import styles from '../styles/Post.module.scss';
 
+import { getCategory } from '../actions/categoryActions';
+
 const options = ['Edit', 'Delete'];
 const ITEM_HEIGHT = 48;
 
@@ -21,7 +24,12 @@ class Post extends Component {
   };
 
   componentDidMount = () => {
-    const { categoryId } = this.props;
+    const { categoryId, getCategory } = this.props;
+    getCategory(categoryId).then((res) => {
+      this.setState({
+        categoryName: res.payload.category.name,
+      });
+    });
   };
 
   handleClick = (event) => {
@@ -134,8 +142,8 @@ Post.propTypes = {
   authorId: PropTypes.string.isRequired,
   prettyId: PropTypes.string.isRequired,
   categoryId: PropTypes.string.isRequired,
+  getCategory: PropTypes.func.isRequired,
   deletePost: PropTypes.func.isRequired,
-  getUser: PropTypes.func.isRequired,
   signedInUserId: PropTypes.string,
   title: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
@@ -143,4 +151,11 @@ Post.propTypes = {
   timestamp: PropTypes.number.isRequired
 };
 
-export default Post;
+const mapDispatchToProps = dispatch => ({
+  getCategory: id => dispatch(getCategory(id))
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(Post);

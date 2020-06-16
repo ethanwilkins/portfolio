@@ -21,7 +21,6 @@ class PostList extends Component {
     const {
       deletePost,
       editPost,
-      getUser,
       posts,
       user
     } = this.props;
@@ -47,8 +46,7 @@ class PostList extends Component {
               imageData={post.imageData}
               timestamp={post.timestamp}
               deletePost={id => deletePost(id)}
-              editPost={(id, title, body, previewText, image) => editPost(id, title, body, previewText, image)}
-              getUser={id => getUser(id)}
+              editPost={(id, title, body, previewText, categoryId, image) => editPost(id, title, body, previewText, categoryId, image)}
             />
         )}
       </div>
@@ -68,13 +66,13 @@ PostList.propTypes = {
       _id: PropTypes.string.isRequired,
       authorId: PropTypes.string.isRequired,
       prettyId: PropTypes.string.isRequired,
+      categoryId: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
       body: PropTypes.string.isRequired,
       previewText: PropTypes.string.isRequired,
       timestamp: PropTypes.number.isRequired
     })
   ),
-  getUser: PropTypes.func.isRequired,
   user: PropTypes.shape({
     userId: PropTypes.string
   })
