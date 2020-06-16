@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import Category from './Category';
+
 import styles from '../styles/CategoryList.module.scss';
 
 class CategoryList extends Component {
@@ -13,7 +15,7 @@ class CategoryList extends Component {
   };
 
   render() {
-    const { categories } = this.props;
+    const { categories, deleteCategory } = this.props;
 
     return (
       <div className={styles.container}>
@@ -22,13 +24,12 @@ class CategoryList extends Component {
         </div>
         {categories.map(
           category =>
-          <Link
-            to='/'
+          <Category
             key={category._id}
-            className={styles.link}
-          >
-            {category.name}
-          </Link>
+            _id={category._id}
+            name={category.name}
+            deleteCategory={id => deleteCategory(id)}
+          />
         )}
         <Link
           to='/'
@@ -47,6 +48,7 @@ CategoryList.defaultProps = {
 
 CategoryList.propTypes = {
   getCategories: PropTypes.func.isRequired,
+  deleteCategory: PropTypes.func.isRequired,
   posts: PropTypes.arrayOf(
     PropTypes.shape({
       _id: PropTypes.string.isRequired,

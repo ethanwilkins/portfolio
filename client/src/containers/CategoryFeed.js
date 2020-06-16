@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import CategoryList from '../components/CategoryList';
 import {
-  getCategories
+  getCategories, deleteCategory
 } from '../actions/categoryActions';
 
 const mapStateToProps = state => ({
@@ -9,7 +9,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getCategories: () => dispatch(getCategories())
+  getCategories: () => dispatch(getCategories()),
+  deleteCategory: id => dispatch(deleteCategory(id))
 });
 
 export default connect(

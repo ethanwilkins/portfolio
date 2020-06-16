@@ -1,0 +1,26 @@
+$activeColor: rgb(95, 210, 140);
+
+.category {
+  margin-bottom: 12.5px;
+}
+
+.link {
+  color: rgb(100, 100, 100);
+  font-size: 18px;
+}
+
+.link:hover, .seeAllLink:hover {
+  text-decoration: none;
+  color: $activeColor;
+}
+
+.delete {
+  display: inline-block;
+  margin-left: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.delete:hover {
+  color: rgb(255, 75, 75);
+}
