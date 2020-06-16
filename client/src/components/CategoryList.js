@@ -28,6 +28,7 @@ class CategoryList extends Component {
             key={category._id}
             _id={category._id}
             name={category.name}
+            prettyId={category.prettyId}
             deleteCategory={id => deleteCategory(id)}
           />
         )}

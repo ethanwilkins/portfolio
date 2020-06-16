@@ -31,6 +31,7 @@ export default (state = initialState, action) => {
           {
             _id: action.payload._id,
             name: action.payload.name,
+            prettyId: action.payload.prettyId,
             timestamp: action.payload.timestamp
           }
         ]

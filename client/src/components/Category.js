@@ -14,12 +14,13 @@ class Category extends Component {
 
   render() {
     const {
-      name
+      name,
+      prettyId
     } = this.props;
     return (
       <div className={styles.category}>
         <Link
-          to='/'
+          to={`/blog/category/${prettyId}`}
           className={styles.link}
         >
           {name}
@@ -40,6 +41,7 @@ class Category extends Component {
 Category.propTypes = {
   _id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
+  prettyId: PropTypes.string.isRequired,
   deleteCategory: PropTypes.func.isRequired,
 };
 
