@@ -7,8 +7,8 @@ import {
   DELETE_CATEGORY
 } from './actionTypes';
 
-export const getPost = postId => async (dispatch) => {
-  const result = await axios.get(`/categories/${postId}`);
+export const getCategory = categoryId => async (dispatch) => {
+  const result = await axios.get(`/categories/${categoryId}`);
   return dispatch({
     type: GET_CATEGORY,
     payload: result.data

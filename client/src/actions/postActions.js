@@ -31,11 +31,12 @@ export const getPosts = () => dispatch =>
       payload: res.data
     }));
 
-export const createPost = (title, body, previewText, image, user) => dispatch => {
+export const createPost = (title, body, previewText, categoryId, image, user) => dispatch => {
   const formPayload = new FormData();
   formPayload.append('title', title);
   formPayload.append('body', body);
   formPayload.append('previewText', previewText);
+  formPayload.append('categoryId', categoryId);
   formPayload.append('imageName', "multer-image-" + Date.now());
   formPayload.append('imageData', image);
   formPayload.append('author', user.name);

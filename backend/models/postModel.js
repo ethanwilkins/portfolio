@@ -8,7 +8,8 @@ const PostSchema = new Schema({
     required: true
   },
   categoryId: {
-    type: String
+    type: String,
+    required: true
   },
   title: {
     type: String,

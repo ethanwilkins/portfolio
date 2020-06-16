@@ -54,7 +54,7 @@ export class CreatePost extends Component {
     const { dispatch, user } = this.props;
     if (!title.trim()) return;
 
-    dispatch(createPost(title, body, previewText, image, user, categoryId));
+    dispatch(createPost(title, body, previewText, categoryId, image, user));
     // updates wysiwygKey to remount Wysiwyg
     this.setState({
       title: '',

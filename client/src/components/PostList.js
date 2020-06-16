@@ -39,6 +39,7 @@ class PostList extends Component {
               author={post.author}
               authorId={post.authorId}
               prettyId={post.prettyId}
+              categoryId={post.categoryId}
               signedInUserId={user.userId}
               title={post.title}
               body={post.body}

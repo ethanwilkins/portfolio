@@ -14,10 +14,14 @@ import styles from '../styles/Post.module.scss';
 const options = ['Edit', 'Delete'];
 const ITEM_HEIGHT = 48;
 
-
 class Post extends Component {
   state = {
-    anchorEl: null
+    anchorEl: null,
+    categoryName: ''
+  };
+
+  componentDidMount = () => {
+    const { categoryId } = this.props;
   };
 
   handleClick = (event) => {
@@ -44,7 +48,7 @@ class Post extends Component {
       imageData,
       timestamp
     } = this.props;
-    const { anchorEl } = this.state;
+    const { anchorEl, categoryName } = this.state;
     const open = Boolean(anchorEl);
     const relativeTime = new Intl.DateTimeFormat('en-US', {
       year: 'numeric',
@@ -117,7 +121,7 @@ class Post extends Component {
             {previewText}
           </div>
           <div className={styles.category + ' linkSoft'}>
-            <i>Web Development - Ruby on Rails</i>
+            <i>Web Development - {categoryName}</i>
           </div>
         </div>
       </div>
@@ -129,6 +133,7 @@ Post.propTypes = {
   _id: PropTypes.string.isRequired,
   authorId: PropTypes.string.isRequired,
   prettyId: PropTypes.string.isRequired,
+  categoryId: PropTypes.string.isRequired,
   deletePost: PropTypes.func.isRequired,
   getUser: PropTypes.func.isRequired,
   signedInUserId: PropTypes.string,

@@ -48,6 +48,7 @@ router.route('/')
       title: req.body.title,
       body: req.body.body,
       previewText: req.body.previewText,
+      categoryId: req.body.categoryId,
       prettyId: req.body.title.replace(/\s/g, '-').replace(/[^a-zA-Z0-9-_]/g, '').toLowerCase(),
       imageName: req.body.imageName,
       imageData: (req.file ? req.file.path : ''),
