@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import { getPosts, getPostsByCategoryId } from '../actions/postActions';
 import { getCategoryByPrettyId } from '../actions/categoryActions';
 
+import { Link } from 'react-router-dom';
+
 import NavbarContainer from './NavbarContainer';
 import Footer from '../components/Footer';
 import CreatePost from './CreatePost';
@@ -13,6 +15,9 @@ import CategoryFeed from './CategoryFeed';
 import CreateCategory from './CreateCategory';
 
 import styles from '../styles/BlogPage.module.scss';
+import classNames from 'classnames/bind';
+
+const cx = classNames.bind(styles);
 
 export class BlogPage extends Component {
   state = {
@@ -27,6 +32,8 @@ export class BlogPage extends Component {
       if (location.pathname.includes('category')) {
         // extracts prettyId for category from path
         const prettyId = location.pathname.replace('/blog/category/', '');
+
+
         // retrieves category by it's prettyId in order to get posts with it's _id
         getCategoryByPrettyId(prettyId).then((res) => {
           if (res.payload.category) {
@@ -48,15 +55,19 @@ export class BlogPage extends Component {
 
   render() {
     const { postsSize } = this.state;
+    const { location } = this.props;
+    const path = location.pathname;
 
     return (
       <div>
         <NavbarContainer />
         <div className={styles.blog}>
           <div className={styles.leftPane}>
-            <div className="linkActive">
+            <Link to='/blog' className={cx(styles.allPostsLink, {
+              linkActive: path === '/blog'
+            })}>
               All {postsSize} Posts
-            </div>
+            </Link>
             <CategoryFeed />
             <CreateCategory />
           </div>
