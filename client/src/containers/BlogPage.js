@@ -32,8 +32,6 @@ export class BlogPage extends Component {
       if (location.pathname.includes('category')) {
         // extracts prettyId for category from path
         const prettyId = location.pathname.replace('/blog/category/', '');
-
-
         // retrieves category by it's prettyId in order to get posts with it's _id
         getCategoryByPrettyId(prettyId).then((res) => {
           if (res.payload.category) {
