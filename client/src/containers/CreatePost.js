@@ -19,10 +19,8 @@ export class CreatePost extends Component {
   };
 
   componentDidMount = () => {
-    const { getCategories } = this.props;
-    getCategories().then(() => {
-      console.log('Successfully loaded categoires.');
-    });
+    const { dispatch } = this.props;
+    dispatch(getCategories());
   };
 
   handleTitleChange = (e) => {
@@ -85,6 +83,7 @@ export class CreatePost extends Component {
 }
 
 CreatePost.propTypes = {
+  dispatch: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired
 };
 
@@ -93,13 +92,6 @@ const mapStateToProps = state => ({
   categories: state.categoryReducer.categories
 });
 
-const mapDispatchToProps = dispatch => ({
-  getCategories: () => dispatch(getCategories())
-});
-
 export default compose(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )
+  connect(mapStateToProps)
 )(CreatePost);
