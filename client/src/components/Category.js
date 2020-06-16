@@ -24,12 +24,14 @@ class Category extends Component {
         >
           {name}
         </Link>
-        <span
-          className={styles.delete}
-          onClick={this.handleClick}
-        >
-          <i className="fa fa-trash"></i>
-        </span>
+        {localStorage.jwtToken &&
+          <span
+            className={styles.delete}
+            onClick={this.handleClick}
+          >
+            <i className="fa fa-trash"></i>
+          </span>
+        }
       </div>
     );
   }

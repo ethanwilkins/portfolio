@@ -43,9 +43,7 @@ export class BlogPage extends Component {
             <CreateCategory />
           </div>
           <div className={styles.feed}>
-            {localStorage.jwtToken &&
-                <CreatePost />
-            }
+            <CreatePost />
             <PostFeed />
           </div>
         </div>

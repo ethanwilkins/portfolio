@@ -31,13 +31,13 @@ export class CreateCategory extends Component {
   render() {
     const { name } = this.state;
 
-    return (
+    return localStorage.jwtToken ? (
       <CategoryForm
         name={name}
         handleNameChange={this.handleNameChange}
         handleSubmit={this.handleSubmit}
       />
-    );
+    ) : null;
   }
 }
 

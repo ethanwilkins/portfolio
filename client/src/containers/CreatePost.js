@@ -57,7 +57,7 @@ export class CreatePost extends Component {
   render() {
     const { title, body, previewText, wysiwygKey, inputKey } = this.state;
 
-    return (
+    return localStorage.jwtToken ? (
       <PostForm
         title={title}
         body={body}
@@ -70,7 +70,7 @@ export class CreatePost extends Component {
         wysiwygKey={wysiwygKey}
         inputKey={inputKey}
       />
-    );
+    ) : null;
   }
 }
 
