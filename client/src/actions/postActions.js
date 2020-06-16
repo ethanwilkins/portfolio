@@ -2,6 +2,7 @@ import axios from 'axios';
 import {
   GET_POST,
   GET_POST_BY_PRETTY_ID,
+  GET_POSTS_BY_CATEGORY_ID,
   GET_POSTS,
   CREATE_POST,
   EDIT_POST,
@@ -15,6 +16,13 @@ export const getPostByPrettyId = prettyId => async (dispatch) => {
     payload: result.data
   });
 };
+
+export const getPostsByCategoryId = categoryId => dispatch =>
+  axios.get('/posts').then(res =>
+    dispatch({
+      type: GET_POSTS_BY_CATEGORY_ID,
+      payload: res.data, categoryId
+    }));
 
 export const getPost = postId => async (dispatch) => {
   const result = await axios.get(`/posts/${postId}`);

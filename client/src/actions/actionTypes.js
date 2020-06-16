@@ -5,6 +5,7 @@ export const EDIT_POST = 'EDIT_POST';
 export const GET_POSTS = 'GET_POSTS';
 export const GET_POST = 'GET_POST';
 export const GET_POST_BY_PRETTY_ID = 'GET_POST_BY_PRETTY_ID';
+export const GET_POSTS_BY_CATEGORY_ID = 'GET_POSTS_BY_CATEGORY_ID';
 
 // categoryActions
 export const CREATE_CATEGORY = 'CREATE_CATEGORY';
@@ -12,6 +13,7 @@ export const DELETE_CATEGORY = 'DELETE_CATEGORY';
 export const EDIT_CATEGORY = 'EDIT_CATEGORY';
 export const GET_CATEGORIES = 'GET_CATEGORIES';
 export const GET_CATEGORY = 'GET_CATEGORY';
+export const GET_CATEGORY_BY_PRETTY_ID = 'GET_CATEGORY_BY_PRETTY_ID';
 
 // authActions
 export const GET_ERRORS = 'GET_ERRORS';

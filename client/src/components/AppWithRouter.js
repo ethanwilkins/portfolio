@@ -23,6 +23,7 @@ const Root = () => (
     <Route path="/login" component={LoginPage} />
     <Route path="/settings" component={SettingsPage} />
     <Route path="/dev" component={AdminPage} />
+    <Route path="/blog/category/:prettyId" component={BlogPage} />
     <Route path="/blog" component={BlogPage} />
     <Route path="/post/:prettyId" component={PostPage} />
     <Route path="/edit_post/:prettyId" component={EditPage} />

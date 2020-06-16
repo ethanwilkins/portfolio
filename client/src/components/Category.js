@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import styles from '../styles/Category.module.scss';
 
 class Category extends Component {
-  handleClick = () => {
+  handleDeleteClick = () => {
     const { _id, deleteCategory } = this.props;
     deleteCategory(_id);
   };
@@ -28,7 +28,7 @@ class Category extends Component {
         {localStorage.jwtToken &&
           <span
             className={styles.delete}
-            onClick={this.handleClick}
+            onClick={this.handleDeleteClick}
           >
             <i className="fa fa-trash"></i>
           </span>

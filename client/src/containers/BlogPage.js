@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { getPosts } from '../actions/postActions';
+import { getPosts, getPostsByCategoryId } from '../actions/postActions';
+import { getCategoryByPrettyId } from '../actions/categoryActions';
 
 import NavbarContainer from './NavbarContainer';
 import Footer from '../components/Footer';
@@ -19,7 +20,23 @@ export class BlogPage extends Component {
   };
 
   componentDidMount = () => {
-    const { getPosts } = this.props;
+    const { getPosts, getCategoryByPrettyId, getPostsByCategoryId, history } = this.props;
+    // listens to changes in browser history
+    history.listen((location) => {
+      // if new path includes category, order posts by category
+      if (location.pathname.includes('category')) {
+        // extracts prettyId for category from path
+        const prettyId = location.pathname.replace('/blog/category/', '');
+        getCategoryByPrettyId(prettyId).then((res) => {
+          if (res.payload.category) {
+            getPostsByCategoryId(res.payload.category._id).then(() => {
+              console.log('Success.');
+            });
+          }
+        });
+      }
+    })
+
     getPosts().then((res) => {
       if (res.payload) {
         // to display number of blog posts
@@ -54,11 +71,15 @@ export class BlogPage extends Component {
 }
 
 BlogPage.propTypes = {
-  getPosts: PropTypes.func.isRequired
+  getPosts: PropTypes.func.isRequired,
+  getCategoryByPrettyId: PropTypes.func.isRequired,
+  getPostsByCategoryId: PropTypes.func.isRequired
 };
 
 const mapDispatchToProps = dispatch => ({
-  getPosts: () => dispatch(getPosts())
+  getPosts: () => dispatch(getPosts()),
+  getCategoryByPrettyId: prettyId => dispatch(getCategoryByPrettyId(prettyId)),
+  getPostsByCategoryId: categoryId => dispatch(getPostsByCategoryId(categoryId))
 });
 
 export default connect(

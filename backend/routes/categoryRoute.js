@@ -3,6 +3,21 @@ const { ObjectID } = require('mongodb');
 const Category = require('../models/categoryModel');
 const router = new express.Router();
 
+// Get a category by prettyId
+router.get('/pretty/:prettyId', async (req, res) => {
+  const { prettyId } = req.params;
+  try {
+    const category = await Category.findOne({prettyId: new RegExp('^'+prettyId+'$', "i")});
+    if (category) {
+      res.json({ category });
+    } else {
+      res.status(404).json({ message: 'Category not found' });
+    }
+  } catch (err) {
+    res.status(500).json({ err });
+  }
+});
+
 // Get a Category by id
 router.get('/:id', async (req, res) => {
   const { id } = req.params;
