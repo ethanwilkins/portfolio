@@ -19,10 +19,12 @@ export class PostForm extends Component {
       body,
       previewText,
       categories,
+      categoryId,
       handleTitleChange,
       handleBodyChange,
       handleImageChange,
       handlePreviewTextChange,
+      handleCategoryIdChange,
       handleSubmit,
       wysiwygKey,
       inputKey
@@ -70,18 +72,18 @@ export class PostForm extends Component {
             onChange={handleBodyChange}
             key={wysiwygKey}
           />
+
           <FormControl style={{minWidth: 120}}>
             <InputLabel id="category-select-label">Category</InputLabel>
             <Select
               labelId="category-select-label"
               id="category-select"
+              value={categoryId}
+              onChange={handleCategoryIdChange}
             >
               {categories.map(
                 category =>
-                  <MenuItem
-                    key={category._id}
-                    value={category._id}
-                  >
+                  <MenuItem key={category._id} value={category._id}>
                     {category.name}
                   </MenuItem>
               )}
@@ -110,10 +112,12 @@ PostForm.propTypes = {
   title: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   previewText: PropTypes.string.isRequired,
+  categoryId: PropTypes.string.isRequired,
   handleTitleChange: PropTypes.func.isRequired,
   handleBodyChange: PropTypes.func.isRequired,
   handleImageChange: PropTypes.func.isRequired,
   handlePreviewTextChange: PropTypes.func.isRequired,
+  handleCategoryIdChange: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   categories: PropTypes.arrayOf(
     PropTypes.shape({
