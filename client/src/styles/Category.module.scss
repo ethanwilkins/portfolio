@@ -9,7 +9,7 @@ $activeColor: rgb(95, 210, 140);
   font-size: 18px;
 }
 
-.link:hover, .seeAllLink:hover {
+.link:hover {
   text-decoration: none;
   color: $activeColor;
 }

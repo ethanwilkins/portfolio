@@ -2,15 +2,23 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { TextField, Input, Button, TextareaAutosize } from '@material-ui/core';
+
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+
 import Wysiwyg from "../components/Wysiwyg";
 import styles from '../styles/PostForm.module.scss';
 
 export class PostForm extends Component {
+
   render() {
     const {
       title,
       body,
       previewText,
+      categories,
       handleTitleChange,
       handleBodyChange,
       handleImageChange,
@@ -62,6 +70,23 @@ export class PostForm extends Component {
             onChange={handleBodyChange}
             key={wysiwygKey}
           />
+          <FormControl style={{minWidth: 120}}>
+            <InputLabel id="category-select-label">Category</InputLabel>
+            <Select
+              labelId="category-select-label"
+              id="category-select"
+            >
+              {categories.map(
+                category =>
+                  <MenuItem
+                    key={category._id}
+                    value={category._id}
+                  >
+                    {category.name}
+                  </MenuItem>
+              )}
+            </Select>
+          </FormControl>
         </div>
         <Button
           type="submit"
@@ -77,6 +102,10 @@ export class PostForm extends Component {
   }
 }
 
+PostForm.defaultProps = {
+  categories: [],
+};
+
 PostForm.propTypes = {
   title: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
@@ -85,7 +114,13 @@ PostForm.propTypes = {
   handleBodyChange: PropTypes.func.isRequired,
   handleImageChange: PropTypes.func.isRequired,
   handlePreviewTextChange: PropTypes.func.isRequired,
-  handleSubmit: PropTypes.func.isRequired
+  handleSubmit: PropTypes.func.isRequired,
+  categories: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired
+    })
+  ),
 };
 
 export default PostForm;

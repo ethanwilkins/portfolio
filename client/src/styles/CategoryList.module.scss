@@ -1,3 +1,5 @@
+$activeColor: rgb(95, 210, 140);
+
 @font-face {
   font-family: "Maison Neue Thin";
   src: url("../fonts/maison_neue_thin.otf") format("truetype");
@@ -20,4 +22,9 @@
   font-family: "Maison Neue Thin";
   font-size: 18px;
   padding-top: 12.5px;
+}
+
+.seeAllLink:hover {
+  text-decoration: none;
+  color: $activeColor;
 }

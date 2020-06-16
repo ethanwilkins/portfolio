@@ -6,6 +6,7 @@ import compose from 'recompose/compose';
 import PostForm from "../components/PostForm";
 
 import { createPost } from '../actions/postActions';
+import { getCategories } from '../actions/categoryActions';
 
 export class CreatePost extends Component {
   state = {
@@ -15,6 +16,13 @@ export class CreatePost extends Component {
     previewText: '',
     wysiwygKey: Math.random(),
     inputKey: Math.random()
+  };
+
+  componentDidMount = () => {
+    const { getCategories } = this.props;
+    getCategories().then(() => {
+      console.log('Successfully loaded categoires.');
+    });
   };
 
   handleTitleChange = (e) => {
@@ -56,12 +64,14 @@ export class CreatePost extends Component {
 
   render() {
     const { title, body, previewText, wysiwygKey, inputKey } = this.state;
+    const { categories } = this.props;
 
     return localStorage.jwtToken ? (
       <PostForm
         title={title}
         body={body}
         previewText={previewText}
+        categories={categories}
         handleTitleChange={this.handleTitleChange}
         handleBodyChange={this.handleBodyChange}
         handleImageChange={this.handleImageChange}
@@ -75,14 +85,21 @@ export class CreatePost extends Component {
 }
 
 CreatePost.propTypes = {
-  dispatch: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  user: state.authReducer.user
+  user: state.authReducer.user,
+  categories: state.categoryReducer.categories
+});
+
+const mapDispatchToProps = dispatch => ({
+  getCategories: () => dispatch(getCategories())
 });
 
 export default compose(
-  connect(mapStateToProps)
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
 )(CreatePost);
