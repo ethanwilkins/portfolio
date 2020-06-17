@@ -77,13 +77,20 @@ export class BlogPage extends Component {
             <div className={cx(styles.filterPane, {
                 filterPaneExpanded: expanded
             })}>
-              <Link to='/blog' className={cx(styles.allPostsLink, {
-                linkActive: path === '/blog'
+              <div className={cx(styles.filterPaneCover, {
+                filterPaneCoverExpanded: expanded
+              })}></div>
+              <div className={cx(styles.filterPaneInner, {
+                filterPaneInnerExpanded: expanded
               })}>
-                All {postsSize} Posts
-              </Link>
-              <CategoryFeed />
-              <CreateCategory />
+                <Link to='/blog' className={cx(styles.allPostsLink, {
+                  linkActive: path === '/blog'
+                })}>
+                  All {postsSize} Posts
+                </Link>
+                <CategoryFeed />
+                <CreateCategory />
+              </div>
             </div>
           </div>
           <div className={styles.feed}>

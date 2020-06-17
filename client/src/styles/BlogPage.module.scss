@@ -99,9 +99,32 @@ $cardMaxWidth: 950px;
   .filterPane {
     transition: all 750ms linear;
     max-height: 0px;
+    position: relative;
   }
   .filterPaneExpanded {
     max-height: 100vh;
+  }
+  .filterPaneCover {
+    transition: all 250ms linear;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    background: white;
+  }
+  .filterPaneCoverExpanded {
+    transition: all 750ms linear;
+    opacity: 0;
+    height: 0%;
+  }
+  .filterPaneInner {
+    transition-delay: 0.2s;
+    visibility: hidden;
+  }
+  .filterPaneInnerExpanded {
+    transition-delay: 0.3s;
+    visibility: visible;
   }
 }
 
