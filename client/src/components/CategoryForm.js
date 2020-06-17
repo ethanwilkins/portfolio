@@ -5,6 +5,13 @@ import { TextField, Button } from '@material-ui/core';
 import styles from '../styles/CategoryForm.module.scss';
 
 export class CategoryForm extends Component {
+
+  handleTextFieldKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      this.form.dispatchEvent(new Event('submit'));
+    }
+  };
+
   render() {
     const {
       name,
@@ -17,14 +24,16 @@ export class CategoryForm extends Component {
         autoComplete="off"
         onSubmit={handleSubmit}
         className={styles.form}
+        ref={(ref) => { this.form = ref; }}
       >
         <TextField
           id="textarea"
           placeholder="Add a category"
           multiline
           margin="normal"
-          rowsMax="3"
+          rowsMax="1"
           onChange={handleNameChange}
+          onKeyPress={this.handleTextFieldKeyPress}
           value={name}
         />
         <Button

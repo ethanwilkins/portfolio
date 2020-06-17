@@ -1,13 +1,17 @@
+$activeColor: rgb(95, 210, 140);
+
 .category {
   margin-bottom: 12.5px;
 }
 
 .link {
+  transition: all 200ms linear;
   color: rgb(100, 100, 100);
   font-size: 18px;
 }
 
 .link:hover {
+  color: $activeColor;
   text-decoration: none;
 }
 

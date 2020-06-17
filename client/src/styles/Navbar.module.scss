@@ -57,6 +57,7 @@ $cardMaxWidth: 950px;
 
 .avatarName {
   @include avatarItem;
+  transition: all 200ms linear;
   top: -2.5px;
 }
 
@@ -77,6 +78,7 @@ $cardMaxWidth: 950px;
 }
 
 .navBarLink {
+  transition: all 200ms linear;
   padding: 15px 18px;
   font-size: 18px;
   font-weight: 400;
