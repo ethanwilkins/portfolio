@@ -67,7 +67,7 @@ export class BlogPage extends Component {
         <div className={styles.blog}>
           <div className={styles.leftPane}>
             <div
-              className={styles.expandLink}
+              className={styles.expandLink + ' noSelect'}
               onClick={this.handleClick}
             >
               <i className="fa fa-angle-down"></i>
