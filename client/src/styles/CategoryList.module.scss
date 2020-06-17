@@ -22,6 +22,7 @@ $activeColor: rgb(95, 210, 140);
   font-family: "Maison Neue Thin";
   font-size: 18px;
   padding-top: 12.5px;
+  cursor: pointer;
 }
 
 .seeAllLink:hover {
@@ -37,11 +38,11 @@ $activeColor: rgb(95, 210, 140);
     padding-bottom: 50px;
   }
   .label {
-    font-size: 15px;
+    font-size: 16px;
     padding-bottom: 15px;
   }
   .seeAllLink {
-    font-size: 15px;
+    font-size: 16px;
     padding-top: 10px;
   }
 }

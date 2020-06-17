@@ -53,6 +53,11 @@ $cardMaxWidth: 950px;
   visibility: hidden;
   height: 0;
 }
+
+.expandLink {
+  visibility: hidden;
+  height: 0;
+}
 // end global
 
 // for mobile
@@ -66,6 +71,7 @@ $cardMaxWidth: 950px;
   }
   .leftPane {
     width: 100%;
+    position: relative;
   }
   .filterPostsLabel {
     padding-bottom: 5px;
@@ -79,6 +85,23 @@ $cardMaxWidth: 950px;
   }
   .allPostsLink {
     font-size: 16px;
+  }
+  .expandLink {
+    visibility: visible;
+    height: initial;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    font-size: 40px;
+    transform: scale(1, .9);
+    cursor: pointer;
+  }
+  .filterPane {
+    transition: all .8s ease-in-out;
+    max-height: 0px;
+  }
+  .filterPaneExpanded {
+    max-height: 100vh;
   }
 }
 

@@ -21,7 +21,8 @@ const cx = classNames.bind(styles);
 
 export class BlogPage extends Component {
   state = {
-    postsSize: ''
+    postsSize: '',
+    expanded: false
   };
 
   componentDidMount = () => {
@@ -50,8 +51,13 @@ export class BlogPage extends Component {
     });
   };
 
+  handleClick = () => {
+    const { expanded } = this.state;
+    this.setState({ expanded: !expanded });
+  };
+
   render() {
-    const { postsSize } = this.state;
+    const { postsSize, expanded } = this.state;
     const { location } = this.props;
     const path = location.pathname;
 
@@ -60,15 +66,25 @@ export class BlogPage extends Component {
         <NavbarContainer />
         <div className={styles.blog}>
           <div className={styles.leftPane}>
+            <div
+              className={styles.expandLink}
+              onClick={this.handleClick}
+            >
+              <i className="fa fa-angle-down"></i>
+            </div>
             <div className={styles.filterPostsLabel}>Filter Posts</div>
             <div className={styles.byCategoryLabel + ' linkSoft'}>By category or tag</div>
-            <Link to='/blog' className={cx(styles.allPostsLink, {
-              linkActive: path === '/blog'
+            <div className={cx(styles.filterPane, {
+                filterPaneExpanded: expanded
             })}>
-              All {postsSize} Posts
-            </Link>
-            <CategoryFeed />
-            <CreateCategory />
+              <Link to='/blog' className={cx(styles.allPostsLink, {
+                linkActive: path === '/blog'
+              })}>
+                All {postsSize} Posts
+              </Link>
+              <CategoryFeed />
+              <CreateCategory />
+            </div>
           </div>
           <div className={styles.feed}>
             <CreatePost />
