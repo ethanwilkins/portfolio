@@ -97,7 +97,7 @@ $cardMaxWidth: 950px;
     cursor: pointer;
   }
   .filterPane {
-    transition: all .8s ease-in-out;
+    transition: all 750ms linear;
     max-height: 0px;
   }
   .filterPaneExpanded {
