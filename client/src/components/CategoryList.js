@@ -7,6 +7,10 @@ import Category from './Category';
 import styles from '../styles/CategoryList.module.scss';
 
 class CategoryList extends Component {
+  state = {
+    expanded: false
+  }
+
   componentDidMount = () => {
     const { getCategories } = this.props;
     getCategories().then(() => {
@@ -14,15 +18,21 @@ class CategoryList extends Component {
     });
   };
 
+  handleSeeAllClick = () => {
+    const { expanded } = this.state;
+    this.setState({ expanded: !expanded });
+  };
+
   render() {
     const { categories, deleteCategory } = this.props;
+    const { expanded } = this.state;
 
     return (
       <div className={styles.container}>
         <div className={styles.label + " linkSoft"}>
           Category
         </div>
-        {categories.map(
+        {categories.slice(0, (expanded ? categories.length : 3)).map(
           category =>
           <Category
             key={category._id}
@@ -32,12 +42,12 @@ class CategoryList extends Component {
             deleteCategory={id => deleteCategory(id)}
           />
         )}
-        <Link
-          to='/'
+        <div
           className={styles.seeAllLink + " linkSoft"}
+          onClick={this.handleSeeAllClick}
         >
-          see all
-        </Link>
+          {expanded ? 'close' : 'see all'}
+        </div>
       </div>
     );
   }

@@ -41,11 +41,10 @@ export class BlogPage extends Component {
           }
         });
       }
-    })
-
+    });
     getPosts().then((res) => {
       if (res.payload) {
-        // to display number of blog posts
+        // to display number of total blog posts
         this.setState({postsSize: res.payload.length});
       }
     });
