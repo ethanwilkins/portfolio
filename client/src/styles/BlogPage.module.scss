@@ -5,6 +5,13 @@
 $mainFontSize: 19px;
 $cardMaxWidth: 950px;
 
+@font-face {
+  font-family: "Maison Neue Thin";
+  src: url("../fonts/maison_neue_thin.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 .blog {
   transition: all .4s ease-in-out;
   position: relative;
@@ -32,6 +39,20 @@ $cardMaxWidth: 950px;
 .allPostsLink:hover {
   text-decoration: none;
 }
+
+.filterPostsLabel {
+  font-size: 20px;
+}
+
+.byCategoryLabel {
+  font-family: 'Maison Neue Thin';
+  font-size: 17px;
+}
+
+.filterPostsLabel, .byCategoryLabel {
+  visibility: hidden;
+  height: 0;
+}
 // end global
 
 // for mobile
@@ -44,9 +65,20 @@ $cardMaxWidth: 950px;
     width: 100%;
   }
   .leftPane {
-    width: 0%;
-    height: 0;
-    visibility: hidden;
+    width: 100%;
+  }
+  .filterPostsLabel {
+    padding-bottom: 5px;
+  }
+  .byCategoryLabel {
+    padding-bottom: 45px;
+  }
+  .filterPostsLabel, .byCategoryLabel {
+    visibility: visible;
+    height: initial;
+  }
+  .allPostsLink {
+    font-size: 16px;
   }
 }
 

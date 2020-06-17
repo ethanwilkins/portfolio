@@ -60,6 +60,8 @@ export class BlogPage extends Component {
         <NavbarContainer />
         <div className={styles.blog}>
           <div className={styles.leftPane}>
+            <div className={styles.filterPostsLabel}>Filter Posts</div>
+            <div className={styles.byCategoryLabel + ' linkSoft'}>By category or tag</div>
             <Link to='/blog' className={cx(styles.allPostsLink, {
               linkActive: path === '/blog'
             })}>

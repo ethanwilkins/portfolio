@@ -28,3 +28,20 @@ $activeColor: rgb(95, 210, 140);
   text-decoration: none;
   color: $activeColor;
 }
+// end global
+
+// for mobile
+@media screen and (max-width: 975px) {
+  .container {
+    margin-top: 40px;
+    padding-bottom: 50px;
+  }
+  .label {
+    font-size: 15px;
+    padding-bottom: 15px;
+  }
+  .seeAllLink {
+    font-size: 15px;
+    padding-top: 10px;
+  }
+}

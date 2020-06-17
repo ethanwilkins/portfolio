@@ -25,3 +25,14 @@ $activeColor: rgb(95, 210, 140);
 .delete:hover {
   color: rgb(255, 75, 75);
 }
+// end global
+
+// for mobile
+@media screen and (max-width: 975px) {
+  .category {
+    margin-bottom: 10px;
+  }
+  .link {
+    font-size: 16px;
+  }
+}
