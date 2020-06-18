@@ -5,7 +5,7 @@ export const EDIT_POST = 'EDIT_POST';
 export const GET_POSTS = 'GET_POSTS';
 export const GET_POST = 'GET_POST';
 export const GET_POST_BY_PRETTY_ID = 'GET_POST_BY_PRETTY_ID';
-export const GET_POSTS_BY_TAG_ID = 'GET_POSTS_BY_TAG_ID';
+export const GET_POSTS_BY_CATEGORY_ID = 'GET_POSTS_BY_CATEGORY_ID';
 
 // tagActions
 export const CREATE_TAG = 'CREATE_TAG';
