@@ -22,7 +22,7 @@ class Tag extends Component {
     } = this.props;
     const path = location.pathname;
     return (
-      <div className={styles.tag}>
+      <div className={styles.category}>
         <Link
           to={`/blog/tag/${prettyId}`} onClick={this.handleLinkClick} className={cx(styles.link, {
             linkActive: path.includes(prettyId)

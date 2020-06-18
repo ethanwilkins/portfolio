@@ -27,7 +27,7 @@ class TagList extends Component {
     const { expanded } = this.state;
 
     return (
-      <div className={styles.container}>
+      <div className={styles.container + ' ' + styles.tagContainer}>
         <div className={styles.label + " linkSoft"}>
           Tags
         </div>
