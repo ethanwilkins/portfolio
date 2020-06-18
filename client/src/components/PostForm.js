@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { TextField, Input, Button, TextareaAutosize } from '@material-ui/core';
+import ChipInput from 'material-ui-chip-input'
 
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -89,6 +90,10 @@ export class PostForm extends Component {
               )}
             </Select>
           </FormControl>
+
+          <ChipInput
+            value=''
+          />          
         </div>
         <Button
           type="submit"
