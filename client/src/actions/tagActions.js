@@ -32,7 +32,6 @@ export const getTags = () => dispatch =>
     }));
 
 export const createTag = (name, user) => dispatch => {
-
   axios.post('/tags', {
     authorId: user.userId,
     name
