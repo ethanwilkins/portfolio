@@ -17,7 +17,7 @@ export const getTagByPrettyId = prettyId => async (dispatch) => {
 };
 
 export const getTag = tagId => async (dispatch) => {
-  const result = await axios.get(`/tags/${categoryId}`);
+  const result = await axios.get(`/tags/${tagId}`);
   return dispatch({
     type: GET_TAG,
     payload: result.data

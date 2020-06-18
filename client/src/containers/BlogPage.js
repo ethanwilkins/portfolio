@@ -11,6 +11,8 @@ import NavbarContainer from './NavbarContainer';
 import Footer from '../components/Footer';
 import CreatePost from './CreatePost';
 import PostFeed from './PostFeed';
+import TagFeed from './TagFeed';
+import CreateTag from './CreateTag';
 import CategoryFeed from './CategoryFeed';
 import CreateCategory from './CreateCategory';
 
@@ -74,6 +76,7 @@ export class BlogPage extends Component {
             </div>
             <div className={styles.filterPostsLabel}>Filter Posts</div>
             <div className={styles.byCategoryLabel + ' linkSoft'}>By category or tag</div>
+
             <div className={cx(styles.filterPane, {
                 filterPaneExpanded: expanded
             })}>
@@ -92,6 +95,21 @@ export class BlogPage extends Component {
                 <CreateCategory />
               </div>
             </div>
+
+            <div className={cx(styles.filterPane, {
+                filterPaneExpanded: expanded
+            })}>
+              <div className={cx(styles.filterPaneCover, {
+                filterPaneCoverExpanded: expanded
+              })}></div>
+              <div className={cx(styles.filterPaneInner, {
+                filterPaneInnerExpanded: expanded
+              })}>
+                <TagFeed />
+                <CreateTag />
+              </div>
+            </div>
+
           </div>
           <div className={styles.feed}>
             <CreatePost />

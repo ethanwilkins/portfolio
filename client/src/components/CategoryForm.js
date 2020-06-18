@@ -28,7 +28,7 @@ export class CategoryForm extends Component {
       >
         <TextField
           id="textarea"
-          placeholder="Add a category"
+          placeholder={"Add a " + (this.props.createTag ? 'tag' : 'category')}
           multiline
           margin="normal"
           rowsMax="1"
