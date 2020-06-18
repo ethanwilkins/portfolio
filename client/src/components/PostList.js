@@ -19,7 +19,7 @@ class PostList extends Component {
       });
     });
     history.listen((location) => {
-      // if new path includes category, order posts by category
+      // when user clicks See X Posts after filtering by category
       if (location.pathname === '/blog') {
         getPosts().then(() => {
           console.log('Reloaded posts successfully.');
