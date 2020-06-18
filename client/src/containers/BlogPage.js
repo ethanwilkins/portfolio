@@ -51,7 +51,7 @@ export class BlogPage extends Component {
     });
   };
 
-  handleClick = () => {
+  handleExpandClick = () => {
     const { expanded } = this.state;
     this.setState({ expanded: !expanded });
   };
@@ -68,7 +68,7 @@ export class BlogPage extends Component {
           <div className={styles.leftPane}>
             <div
               className={styles.expandLink + ' noSelect'}
-              onClick={this.handleClick}
+              onClick={this.handleExpandClick}
             >
               <i className="fa fa-angle-down"></i>
             </div>

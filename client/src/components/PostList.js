@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
+
 import Post from './Post';
 import Loading from './Loading';
 
@@ -9,11 +11,20 @@ class PostList extends Component {
   };
 
   componentDidMount = () => {
-    const { getPosts } = this.props;
+    const { getPosts, history } = this.props;
+
     getPosts().then(() => {
       this.setState({
         loading: false
       });
+    });
+    history.listen((location) => {
+      // if new path includes category, order posts by category
+      if (location.pathname === '/blog') {
+        getPosts().then(() => {
+          console.log('Reloaded posts successfully.');
+        });
+      }
     });
   };
 
@@ -78,4 +89,4 @@ PostList.propTypes = {
   })
 };
 
-export default PostList;
+export default withRouter(PostList);
