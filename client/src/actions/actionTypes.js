@@ -5,7 +5,15 @@ export const EDIT_POST = 'EDIT_POST';
 export const GET_POSTS = 'GET_POSTS';
 export const GET_POST = 'GET_POST';
 export const GET_POST_BY_PRETTY_ID = 'GET_POST_BY_PRETTY_ID';
-export const GET_POSTS_BY_CATEGORY_ID = 'GET_POSTS_BY_CATEGORY_ID';
+export const GET_POSTS_BY_TAG_ID = 'GET_POSTS_BY_TAG_ID';
+
+// tagActions
+export const CREATE_TAG = 'CREATE_TAG';
+export const DELETE_TAG = 'DELETE_TAG';
+export const EDIT_TAG = 'EDIT_TAG';
+export const GET_TAGS = 'GET_TAGS';
+export const GET_TAG = 'GET_TAG';
+export const GET_TAG_BY_PRETTY_ID = 'GET_TAG_BY_PRETTY_ID';
 
 // categoryActions
 export const CREATE_CATEGORY = 'CREATE_CATEGORY';
