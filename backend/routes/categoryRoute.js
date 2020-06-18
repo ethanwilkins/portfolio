@@ -44,7 +44,7 @@ router.post('/', async (req, res) => {
     const newCategory = new Category({
       authorId: req.body.authorId,
       name: req.body.name,
-      prettyId: req.body.name.replace(/\s/g, '-').replace(/[^a-zA-Z0-9-_]/g, '').toLowerCase(),
+      prettyId: req.body.name.replace(/^\s+/g, '').replace(/\s/g, '-').replace(/[^a-zA-Z0-9-_]/g, '').toLowerCase(),
       timestamp: new Date().getTime()
     });
     try {
