@@ -79,7 +79,7 @@ PostList.propTypes = {
       authorId: PropTypes.string.isRequired,
       prettyId: PropTypes.string.isRequired,
       categoryId: PropTypes.string.isRequired,
-      tags: PropTypes.string.isRequired,
+      tags: PropTypes.array.isRequired,
       title: PropTypes.string.isRequired,
       body: PropTypes.string.isRequired,
       previewText: PropTypes.string.isRequired,

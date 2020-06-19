@@ -74,7 +74,7 @@ export class CreatePost extends Component {
       body: '',
       previewText: '',
       categoryId: '',
-      tags: [],
+      selectedTags: [],
       wysiwygKey: Math.random(),
       inputKey: Math.random()
     });

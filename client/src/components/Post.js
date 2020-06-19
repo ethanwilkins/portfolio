@@ -13,7 +13,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import styles from '../styles/Post.module.scss';
 
 import { getCategory } from '../actions/categoryActions';
-import { getTags } from '../actions/tagActions';
+import { getTagsByPostId } from '../actions/tagActions';
 
 const options = ['Edit', 'Delete'];
 const ITEM_HEIGHT = 48;
@@ -21,14 +21,20 @@ const ITEM_HEIGHT = 48;
 class Post extends Component {
   state = {
     anchorEl: null,
-    category: {}
+    category: {},
+    tags: []
   };
 
   componentDidMount = () => {
-    const { categoryId, getCategory } = this.props;
+    const { categoryId, getCategory, getTagsByPostId, _id } = this.props;
     getCategory(categoryId).then((res) => {
       this.setState({
         category: res.payload.category,
+      });
+    });
+    getTagsByPostId(_id).then((res) => {
+      this.setState({
+        tags: res.payload.filteredTags,
       });
     });
   };
@@ -134,12 +140,13 @@ class Post extends Component {
             <i>
               <Link to={`/blog/category/${category.prettyId}`} className='linkSoft'>
                 {category.name}
-              </Link> - {(tags ? tags.split(',').map(
-                tag => 
-                  <Link to={`/blog/tag/${tag}`} style={{marginRight: '0.25em'}} className='linkSoft' key={tag}>
-                    {tag.charAt(0).toUpperCase() + tag.slice(1) + (tags.split(',')[tags.split(',').length - 1] !== tag ? ',' : '')}
-                  </Link>
-                ) : null)}
+              </Link> - {
+
+              (tags ? tags.map(tag => 
+                <Link to={`/blog/tag/${tag}`} style={{marginRight: '0.25em'}} className='linkSoft' key={tag}>
+                  {tag + (tags[tags.length - 1] !== tag ? ',' : '')}
+                </Link>
+              ) : null)}
             </i>
           </div>
         </div>
@@ -154,19 +161,19 @@ Post.propTypes = {
   prettyId: PropTypes.string.isRequired,
   categoryId: PropTypes.string.isRequired,
   getCategory: PropTypes.func.isRequired,
-  getTag: PropTypes.func.isRequired,
+  getTagsByPostId: PropTypes.func.isRequired,
   deletePost: PropTypes.func.isRequired,
   signedInUserId: PropTypes.string,
   title: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   previewText: PropTypes.string.isRequired,
-  tags: PropTypes.string.isRequired,
+  tags: PropTypes.array.isRequired,
   timestamp: PropTypes.number.isRequired
 };
 
 const mapDispatchToProps = dispatch => ({
   getCategory: id => dispatch(getCategory(id)),
-  getTags: id => dispatch(getTags(id))
+  getTagsByPostId: id => dispatch(getTagsByPostId(id))
 });
 
 export default connect(

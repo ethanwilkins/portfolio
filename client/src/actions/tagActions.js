@@ -1,12 +1,20 @@
 import axios from 'axios';
 import {
   GET_TAG,
+  GET_TAGS_BY_POST_ID,
   GET_TAG_BY_PRETTY_ID,
   GET_TAGS,
   CREATE_TAG,
   EDIT_TAG,
   DELETE_TAG
 } from './actionTypes';
+
+export const getTagsByPostId = postId => dispatch =>
+  axios.get('/tags').then(res =>
+    dispatch({
+      type: GET_TAGS_BY_POST_ID,
+      payload: res.data, postId
+    }));
 
 export const getTagByPrettyId = prettyId => async (dispatch) => {
   const result = await axios.get(`/tags/pretty/${prettyId}`);

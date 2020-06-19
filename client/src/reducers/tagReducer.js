@@ -3,16 +3,24 @@ import {
   GET_TAGS,
   CREATE_TAG,
   EDIT_TAG,
-  DELETE_TAG
+  DELETE_TAG,
+  GET_TAGS_BY_POST_ID
 } from '../actions/actionTypes';
 
 const initialState = {
+  filteredTags: [],
   tags: [],
   tag: {}
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case GET_TAGS_BY_POST_ID: {
+      return {
+        ...state,
+        filteredTags: action.payload.filter(({ postId }) => postId === action.postId)
+      };
+    }
     case GET_TAG:
       return {
         ...state,
