@@ -17,7 +17,13 @@ $width: 100%;
 }
 
 .textField {
-  width: 70%;
+  width: 75%;
+}
+
+.imgInput {
+  float: right;
+  height: 48px;
+  width: calc(25% - 10px);
 }
 
 .textArea {
@@ -25,14 +31,16 @@ $width: 100%;
   margin-bottom: 5px;
 }
 
-.imgInput {
-  float: left;
-  height: 48px;
+.button {
+  width: $width;
+}
+
+.select {
   width: 30%;
 }
 
-.button {
-  width: $width;
+.chipInput {
+  width: calc(70% - 10px);
 }
 // end of global css
 
@@ -47,10 +55,16 @@ $width: 100%;
 @media screen and (max-width: 500px) {
   .imgInput {
     height: 48px;
-    width: 37.5%;
+    width: calc(37.5% - 10px);
   }
   .textField {
     width: 62.5%;
+  }
+  .select {
+    width: 40%
+  }
+  .chipInput {
+    width: calc(60% - 10px);
   }
 }
 // end small mobile

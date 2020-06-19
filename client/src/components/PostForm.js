@@ -13,8 +13,16 @@ import Wysiwyg from "../components/Wysiwyg";
 import styles from '../styles/PostForm.module.scss';
 
 export class PostForm extends Component {
+  state = {
+    tags: []
+  }
+
+  handleChipInputChange = (chips) => {
+    this.setState({ tags: chips });
+  };
 
   render() {
+    const { tags } = this.state;
     const {
       title,
       body,
@@ -74,7 +82,7 @@ export class PostForm extends Component {
             key={wysiwygKey}
           />
 
-          <FormControl style={{minWidth: 120}}>
+          <FormControl style={{minWidth: 120}} className={styles.select}>
             <InputLabel id="category-select-label">Category</InputLabel>
             <Select
               labelId="category-select-label"
@@ -92,8 +100,12 @@ export class PostForm extends Component {
           </FormControl>
 
           <ChipInput
-            value=''
-          />          
+            defaultValue={tags}
+            placeholder="Tags"
+            onChange={(chips) => this.handleChipInputChange(chips)}
+            className={styles.chipInput}
+            style={{ marginTop: '10px', marginLeft: '10px'}}
+          />
         </div>
         <Button
           type="submit"
