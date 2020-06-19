@@ -18,6 +18,7 @@ export class CreatePost extends Component {
     categoryId: '',
     selectedTags: [],
     wysiwygKey: Math.random(),
+    selectKey: Math.random(),
     inputKey: Math.random()
   };
 
@@ -76,12 +77,13 @@ export class CreatePost extends Component {
       categoryId: '',
       selectedTags: [],
       wysiwygKey: Math.random(),
+      selectKey: Math.random(),
       inputKey: Math.random()
     });
   };
 
   render() {
-    const { title, body, previewText, categoryId, selectedTags, wysiwygKey, inputKey } = this.state;
+    const { title, body, previewText, categoryId, selectedTags, wysiwygKey, inputKey, selectKey } = this.state;
     const { categories, tags } = this.props;
 
     return localStorage.jwtToken ? (
@@ -101,6 +103,7 @@ export class CreatePost extends Component {
         handleTagsChange={this.handleTagsChange}
         handleSubmit={this.handleSubmit}
         wysiwygKey={wysiwygKey}
+        selectKey={selectKey}
         inputKey={inputKey}
       />
     ) : null;

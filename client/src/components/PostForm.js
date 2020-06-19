@@ -28,6 +28,7 @@ export class PostForm extends Component {
       handleTagsChange,
       handleSubmit,
       wysiwygKey,
+      selectKey,
       inputKey
     } = this.props;
     // gets ReactSelect options from tags
@@ -103,6 +104,7 @@ export class PostForm extends Component {
             className={styles.tagInput}
             options={tagOptions}
             onChange={handleTagsChange}
+            key={selectKey}
             isMulti
           />
         </div>
