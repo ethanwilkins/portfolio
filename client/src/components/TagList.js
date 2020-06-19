@@ -15,6 +15,16 @@ class TagList extends Component {
     getTags().then(() => {
       console.log("Successfully loaded tags.");
     });
+    // collapses dropdown for tags in mobile on screen resize
+    window.addEventListener("resize", this.collapse);
+  };
+
+  componentWillUnmount = () => {
+    window.removeEventListener("resize", this.collapse);
+  };
+
+  collapse = () => {
+    this.setState({ expanded: false })
   };
 
   handleSeeAllClick = () => {

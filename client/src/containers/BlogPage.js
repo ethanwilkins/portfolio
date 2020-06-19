@@ -52,7 +52,15 @@ export class BlogPage extends Component {
       }
     });
     // collapses dropdown for tags and categories in mobile on screen resize
-    window.addEventListener("resize", () => {this.setState({ expanded: false })});
+    window.addEventListener("resize", this.collapse);
+  };
+  
+  componentWillUnmount = () => {
+    window.removeEventListener("resize", this.collapse);
+  };
+
+  collapse = () => {
+    this.setState({ expanded: false })
   };
 
   handleExpandClick = () => {
