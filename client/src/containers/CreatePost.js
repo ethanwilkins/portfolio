@@ -7,6 +7,7 @@ import PostForm from "../components/PostForm";
 
 import { createPost } from '../actions/postActions';
 import { getCategories } from '../actions/categoryActions';
+import { getTags } from '../actions/tagActions';
 
 export class CreatePost extends Component {
   state = {
@@ -15,7 +16,7 @@ export class CreatePost extends Component {
     body: '',
     previewText: '',
     categoryId: '',
-    tags: [],
+    selectedTags: [],
     wysiwygKey: Math.random(),
     inputKey: Math.random()
   };
@@ -23,6 +24,7 @@ export class CreatePost extends Component {
   componentDidMount = () => {
     const { dispatch } = this.props;
     dispatch(getCategories());
+    dispatch(getTags());
   };
 
   handleTitleChange = (e) => {
@@ -49,17 +51,17 @@ export class CreatePost extends Component {
     this.setState(() => ({ categoryId }));
   };
 
-  handleTagsChange = (tags) => {
-    this.setState({ tags: tags });
+  handleTagsChange = (selectedTags) => {
+    this.setState({ selectedTags: selectedTags });
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { title, body, previewText, image, categoryId, tags } = this.state;
+    const { title, body, previewText, image, categoryId, selectedTags } = this.state;
     const { dispatch, user } = this.props;
     if (!title.trim()) return;
 
-    dispatch(createPost(title, body, previewText, categoryId, tags, image, user));
+    dispatch(createPost(title, body, previewText, categoryId, selectedTags, image, user));
     // updates wysiwygKey to remount Wysiwyg
     this.setState({
       title: '',
@@ -74,8 +76,8 @@ export class CreatePost extends Component {
   };
 
   render() {
-    const { title, body, previewText, categoryId, tags, wysiwygKey, inputKey } = this.state;
-    const { categories } = this.props;
+    const { title, body, previewText, categoryId, selectedTags, wysiwygKey, inputKey } = this.state;
+    const { categories, tags } = this.props;
 
     return localStorage.jwtToken ? (
       <PostForm
@@ -85,6 +87,7 @@ export class CreatePost extends Component {
         categories={categories}
         categoryId={categoryId}
         tags={tags}
+        selectedTags={selectedTags}
         handleTitleChange={this.handleTitleChange}
         handleBodyChange={this.handleBodyChange}
         handleImageChange={this.handleImageChange}
@@ -106,7 +109,8 @@ CreatePost.propTypes = {
 
 const mapStateToProps = state => ({
   user: state.authReducer.user,
-  categories: state.categoryReducer.categories
+  categories: state.categoryReducer.categories,
+  tags: state.tagReducer.tags
 });
 
 export default compose(

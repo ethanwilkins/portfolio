@@ -39,8 +39,11 @@ $width: 100%;
   width: 30%;
 }
 
-.chipInput {
+.tagInput {
+  float: right;
   width: calc(70% - 10px);
+  margin-top: 10px;
+  font-weight: 300;
 }
 // end of global css
 
@@ -63,7 +66,7 @@ $width: 100%;
   .select {
     width: 40%
   }
-  .chipInput {
+  .tagInput {
     width: calc(60% - 10px);
   }
 }

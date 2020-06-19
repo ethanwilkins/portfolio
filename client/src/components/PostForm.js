@@ -1,32 +1,29 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { TextField, Input, Button, TextareaAutosize } from '@material-ui/core';
-import ChipInput from 'material-ui-chip-input'
-
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
+import { TextField, Input, Button, TextareaAutosize, InputLabel, MenuItem, FormControl } from '@material-ui/core';
+import { default as MuiSelect } from '@material-ui/core/Select';
+import { default as ReactSelect } from 'react-select';
+import makeAnimated from 'react-select/animated';
 
 import Wysiwyg from "../components/Wysiwyg";
 import styles from '../styles/PostForm.module.scss';
 
 export class PostForm extends Component {
   render() {
+    const animatedComponents = makeAnimated();
     const {
       title,
       body,
       previewText,
       categories,
       categoryId,
-      tags,
+      selectedTags,
       handleTitleChange,
       handleBodyChange,
       handleImageChange,
       handlePreviewTextChange,
       handleCategoryIdChange,
-      handleTagsChange,
       handleSubmit,
       wysiwygKey,
       inputKey
@@ -77,7 +74,7 @@ export class PostForm extends Component {
 
           <FormControl style={{minWidth: 120}} className={styles.select}>
             <InputLabel id="category-select-label">Category</InputLabel>
-            <Select
+            <MuiSelect
               labelId="category-select-label"
               id="category-select"
               value={categoryId}
@@ -89,16 +86,20 @@ export class PostForm extends Component {
                     {category.name}
                   </MenuItem>
               )}
-            </Select>
+            </MuiSelect>
           </FormControl>
 
-          <ChipInput
-            defaultValue={tags}
+          <ReactSelect
+            className={styles.tagInput}
             placeholder="Tags"
-            onChange={(chips) => handleTagsChange(chips)}
-            className={styles.chipInput}
-            style={{ marginTop: '10px', marginLeft: '10px'}}
-          />
+            defaultValue={selectedTags}
+            components={animatedComponents}
+            isMulti
+            options={[
+              { value: 'chocolate', label: 'Chocolate' },
+              { value: 'strawberry', label: 'Strawberry' },
+              { value: 'vanilla', label: 'Vanilla' }
+            ]} />
         </div>
         <Button
           type="submit"

@@ -13,6 +13,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import styles from '../styles/Post.module.scss';
 
 import { getCategory } from '../actions/categoryActions';
+import { getTag } from '../actions/tagActions';
 
 const options = ['Edit', 'Delete'];
 const ITEM_HEIGHT = 48;
@@ -135,7 +136,7 @@ class Post extends Component {
                 {category.name}
               </Link> - {(tags ? tags.split(',').map(
                 tag => 
-                  <Link to={`/blog/tag/${tag}`} style={{marginRight: '0.25em'}} className='linkSoft'>
+                  <Link to={`/blog/tag/${tag}`} style={{marginRight: '0.25em'}} className='linkSoft' key={tag}>
                     {tag.charAt(0).toUpperCase() + tag.slice(1) + (tags.split(',')[tags.split(',').length - 1] !== tag ? ',' : '')}
                   </Link>
                 ) : null)}
@@ -153,6 +154,7 @@ Post.propTypes = {
   prettyId: PropTypes.string.isRequired,
   categoryId: PropTypes.string.isRequired,
   getCategory: PropTypes.func.isRequired,
+  getTag: PropTypes.func.isRequired,
   deletePost: PropTypes.func.isRequired,
   signedInUserId: PropTypes.string,
   title: PropTypes.string.isRequired,
@@ -163,7 +165,8 @@ Post.propTypes = {
 };
 
 const mapDispatchToProps = dispatch => ({
-  getCategory: id => dispatch(getCategory(id))
+  getCategory: id => dispatch(getCategory(id)),
+  getTag: id => dispatch(getTag(id))
 });
 
 export default connect(
