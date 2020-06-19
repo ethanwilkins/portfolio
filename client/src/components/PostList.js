@@ -55,6 +55,7 @@ class PostList extends Component {
               body={post.body}
               previewText={post.previewText}
               imageData={post.imageData}
+              tags={post.tags}
               timestamp={post.timestamp}
               deletePost={id => deletePost(id)}
               editPost={(id, title, body, previewText, categoryId, image) => editPost(id, title, body, previewText, categoryId, image)}
@@ -78,6 +79,7 @@ PostList.propTypes = {
       authorId: PropTypes.string.isRequired,
       prettyId: PropTypes.string.isRequired,
       categoryId: PropTypes.string.isRequired,
+      tags: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
       body: PropTypes.string.isRequired,
       previewText: PropTypes.string.isRequired,

@@ -20,14 +20,14 @@ const ITEM_HEIGHT = 48;
 class Post extends Component {
   state = {
     anchorEl: null,
-    categoryName: ''
+    category: {}
   };
 
   componentDidMount = () => {
     const { categoryId, getCategory } = this.props;
     getCategory(categoryId).then((res) => {
       this.setState({
-        categoryName: res.payload.category.name,
+        category: res.payload.category,
       });
     });
   };
@@ -54,9 +54,10 @@ class Post extends Component {
       title,
       previewText,
       imageData,
+      tags,
       timestamp
     } = this.props;
-    const { anchorEl, categoryName } = this.state;
+    const { anchorEl, category } = this.state;
     const open = Boolean(anchorEl);
     const relativeTime = new Intl.DateTimeFormat('en-US', {
       year: 'numeric',
@@ -129,7 +130,16 @@ class Post extends Component {
             {previewText}
           </div>
           <div className={styles.category + ' linkSoft'}>
-            <i>Web Development - {categoryName}</i>
+            <i>
+              <Link to={`/blog/category/${category.prettyId}`} className='linkSoft'>
+                {category.name}
+              </Link> - {(tags ? tags.split(',').map(
+                tag => 
+                  <Link to={`/blog/tag/${tag}`} style={{marginRight: '0.25em'}} className='linkSoft'>
+                    {tag.charAt(0).toUpperCase() + tag.slice(1) + (tags.split(',')[tags.split(',').length - 1] !== tag ? ',' : '')}
+                  </Link>
+                ) : null)}
+            </i>
           </div>
         </div>
       </div>
@@ -148,6 +158,7 @@ Post.propTypes = {
   title: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   previewText: PropTypes.string.isRequired,
+  tags: PropTypes.string.isRequired,
   timestamp: PropTypes.number.isRequired
 };
 
