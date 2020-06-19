@@ -52,7 +52,12 @@ export class CreatePost extends Component {
   };
 
   handleTagsChange = (tags) => {
-    console.log(JSON.stringify(tags));
+    let selectedTags = [];
+    tags.forEach(function(tag) {
+      // strips each down to _id
+      selectedTags.push(tag.value);
+    });
+    this.setState(() => ({ selectedTags }));
   };
 
   handleSubmit = (e) => {

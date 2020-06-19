@@ -12,7 +12,7 @@ const PostSchema = new Schema({
     required: true
   },
   tags: {
-    type: String,
+    type: [String],
     required: true
   },
   title: {

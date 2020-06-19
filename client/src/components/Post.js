@@ -13,7 +13,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import styles from '../styles/Post.module.scss';
 
 import { getCategory } from '../actions/categoryActions';
-import { getTag } from '../actions/tagActions';
+import { getTags } from '../actions/tagActions';
 
 const options = ['Edit', 'Delete'];
 const ITEM_HEIGHT = 48;
@@ -166,7 +166,7 @@ Post.propTypes = {
 
 const mapDispatchToProps = dispatch => ({
   getCategory: id => dispatch(getCategory(id)),
-  getTag: id => dispatch(getTag(id))
+  getTags: id => dispatch(getTags(id))
 });
 
 export default connect(
