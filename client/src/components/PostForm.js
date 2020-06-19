@@ -13,27 +13,20 @@ import Wysiwyg from "../components/Wysiwyg";
 import styles from '../styles/PostForm.module.scss';
 
 export class PostForm extends Component {
-  state = {
-    tags: []
-  }
-
-  handleChipInputChange = (chips) => {
-    this.setState({ tags: chips });
-  };
-
   render() {
-    const { tags } = this.state;
     const {
       title,
       body,
       previewText,
       categories,
       categoryId,
+      tags,
       handleTitleChange,
       handleBodyChange,
       handleImageChange,
       handlePreviewTextChange,
       handleCategoryIdChange,
+      handleTagsChange,
       handleSubmit,
       wysiwygKey,
       inputKey
@@ -102,7 +95,7 @@ export class PostForm extends Component {
           <ChipInput
             defaultValue={tags}
             placeholder="Tags"
-            onChange={(chips) => this.handleChipInputChange(chips)}
+            onChange={(chips) => handleTagsChange(chips)}
             className={styles.chipInput}
             style={{ marginTop: '10px', marginLeft: '10px'}}
           />
@@ -135,6 +128,7 @@ PostForm.propTypes = {
   handleImageChange: PropTypes.func.isRequired,
   handlePreviewTextChange: PropTypes.func.isRequired,
   handleCategoryIdChange: PropTypes.func.isRequired,
+  handleTagsChange: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   categories: PropTypes.arrayOf(
     PropTypes.shape({

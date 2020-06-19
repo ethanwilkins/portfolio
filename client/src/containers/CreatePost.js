@@ -15,6 +15,7 @@ export class CreatePost extends Component {
     body: '',
     previewText: '',
     categoryId: '',
+    tags: [],
     wysiwygKey: Math.random(),
     inputKey: Math.random()
   };
@@ -48,13 +49,17 @@ export class CreatePost extends Component {
     this.setState(() => ({ categoryId }));
   };
 
+  handleTagsChange = (tags) => {
+    this.setState({ tags: tags });
+  };
+
   handleSubmit = (e) => {
     e.preventDefault();
-    const { title, body, previewText, image, categoryId } = this.state;
+    const { title, body, previewText, image, categoryId, tags } = this.state;
     const { dispatch, user } = this.props;
     if (!title.trim()) return;
 
-    dispatch(createPost(title, body, previewText, categoryId, image, user));
+    dispatch(createPost(title, body, previewText, categoryId, tags, image, user));
     // updates wysiwygKey to remount Wysiwyg
     this.setState({
       title: '',
@@ -62,13 +67,14 @@ export class CreatePost extends Component {
       body: '',
       previewText: '',
       categoryId: '',
+      tags: [],
       wysiwygKey: Math.random(),
       inputKey: Math.random()
     });
   };
 
   render() {
-    const { title, body, previewText, categoryId, wysiwygKey, inputKey } = this.state;
+    const { title, body, previewText, categoryId, tags, wysiwygKey, inputKey } = this.state;
     const { categories } = this.props;
 
     return localStorage.jwtToken ? (
@@ -78,11 +84,13 @@ export class CreatePost extends Component {
         previewText={previewText}
         categories={categories}
         categoryId={categoryId}
+        tags={tags}
         handleTitleChange={this.handleTitleChange}
         handleBodyChange={this.handleBodyChange}
         handleImageChange={this.handleImageChange}
         handlePreviewTextChange={this.handlePreviewTextChange}
         handleCategoryIdChange={this.handleCategoryIdChange}
+        handleTagsChange={this.handleTagsChange}
         handleSubmit={this.handleSubmit}
         wysiwygKey={wysiwygKey}
         inputKey={inputKey}
