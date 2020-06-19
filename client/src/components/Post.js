@@ -8,12 +8,14 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 
+import PostTag from "./PostTag";
+
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 import styles from '../styles/Post.module.scss';
 
 import { getCategory } from '../actions/categoryActions';
-import { getTagsByPostId } from '../actions/tagActions';
+import { getTagsByPostId, getTag } from '../actions/tagActions';
 
 const options = ['Edit', 'Delete'];
 const ITEM_HEIGHT = 48;
@@ -57,6 +59,7 @@ class Post extends Component {
       authorId,
       prettyId,
       deletePost,
+      getTag,
       signedInUserId,
       title,
       previewText,
@@ -143,9 +146,12 @@ class Post extends Component {
               </Link> - {
 
               (tags ? tags.map(tag => 
-                <Link to={`/blog/tag/${tag}`} style={{marginRight: '0.25em'}} className='linkSoft' key={tag}>
-                  {tag + (tags[tags.length - 1] !== tag ? ',' : '')}
-                </Link>
+                <PostTag
+                  key={tag}
+                  _id={tag}
+                  tags={tags}
+                  getTag={getTag}
+                />
               ) : null)}
             </i>
           </div>
@@ -161,6 +167,7 @@ Post.propTypes = {
   prettyId: PropTypes.string.isRequired,
   categoryId: PropTypes.string.isRequired,
   getCategory: PropTypes.func.isRequired,
+  getTag: PropTypes.func.isRequired,
   getTagsByPostId: PropTypes.func.isRequired,
   deletePost: PropTypes.func.isRequired,
   signedInUserId: PropTypes.string,
@@ -172,6 +179,7 @@ Post.propTypes = {
 };
 
 const mapDispatchToProps = dispatch => ({
+  getTag: id => dispatch(getTag(id)),
   getCategory: id => dispatch(getCategory(id)),
   getTagsByPostId: id => dispatch(getTagsByPostId(id))
 });
