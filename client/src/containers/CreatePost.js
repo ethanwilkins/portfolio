@@ -51,8 +51,8 @@ export class CreatePost extends Component {
     this.setState(() => ({ categoryId }));
   };
 
-  handleTagsChange = (selectedTags) => {
-    this.setState({ selectedTags: selectedTags });
+  handleTagsChange = (tags) => {
+    console.log(JSON.stringify(tags));
   };
 
   handleSubmit = (e) => {

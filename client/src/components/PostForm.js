@@ -18,16 +18,23 @@ export class PostForm extends Component {
       previewText,
       categories,
       categoryId,
+      tags,
       selectedTags,
       handleTitleChange,
       handleBodyChange,
       handleImageChange,
       handlePreviewTextChange,
       handleCategoryIdChange,
+      handleTagsChange,
       handleSubmit,
       wysiwygKey,
       inputKey
     } = this.props;
+    // gets ReactSelect options from tags
+    let tagOptions = [];
+    tags.forEach(function(tag, i) {
+      tagOptions.push({value: tag._id, label: tag.name});
+    });
     return (
       <form
         noValidate
@@ -90,16 +97,14 @@ export class PostForm extends Component {
           </FormControl>
 
           <ReactSelect
-            className={styles.tagInput}
             placeholder="Tags"
             defaultValue={selectedTags}
             components={animatedComponents}
+            className={styles.tagInput}
+            options={tagOptions}
+            onChange={handleTagsChange}
             isMulti
-            options={[
-              { value: 'chocolate', label: 'Chocolate' },
-              { value: 'strawberry', label: 'Strawberry' },
-              { value: 'vanilla', label: 'Vanilla' }
-            ]} />
+          />
         </div>
         <Button
           type="submit"
