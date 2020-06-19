@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { getPosts, getPostsByCategoryId } from '../actions/postActions';
+import { getPosts, getPostsByCategoryId, getPostsByTagId } from '../actions/postActions';
 import { getCategoryByPrettyId } from '../actions/categoryActions';
+import { getTagByPrettyId } from '../actions/tagActions';
 
 import { Link } from 'react-router-dom';
 
@@ -28,7 +29,7 @@ export class BlogPage extends Component {
   };
 
   componentDidMount = () => {
-    const { getPosts, getCategoryByPrettyId, getPostsByCategoryId, history } = this.props;
+    const { getPosts, getCategoryByPrettyId, getTagByPrettyId, getPostsByCategoryId, getPostsByTagId, history } = this.props;
     // listens to changes in browser history
     history.listen((location) => {
       // if new path includes category, order posts by category
@@ -40,6 +41,18 @@ export class BlogPage extends Component {
           if (res.payload.category) {
             getPostsByCategoryId(res.payload.category._id).then(() => {
               console.log('Successfully filtered posts by category.');
+            });
+          }
+        });
+      }
+      else if (location.pathname.includes('tag')) {
+        // extracts prettyId for tag from path
+        const prettyId = location.pathname.replace('/blog/tag/', '');
+        // retrieves category by it's prettyId in order to get posts with it's _id
+        getTagByPrettyId(prettyId).then((res) => {
+          if (res.payload.tag) {
+            getPostsByTagId(res.payload.tag._id).then(() => {
+              console.log('Successfully filtered posts by tag.');
             });
           }
         });
@@ -135,13 +148,16 @@ export class BlogPage extends Component {
 BlogPage.propTypes = {
   getPosts: PropTypes.func.isRequired,
   getCategoryByPrettyId: PropTypes.func.isRequired,
+  getTagByPrettyId: PropTypes.func.isRequired,
   getPostsByCategoryId: PropTypes.func.isRequired
 };
 
 const mapDispatchToProps = dispatch => ({
   getPosts: () => dispatch(getPosts()),
   getCategoryByPrettyId: prettyId => dispatch(getCategoryByPrettyId(prettyId)),
-  getPostsByCategoryId: categoryId => dispatch(getPostsByCategoryId(categoryId))
+  getTagByPrettyId: prettyId => dispatch(getTagByPrettyId(prettyId)),
+  getPostsByCategoryId: categoryId => dispatch(getPostsByCategoryId(categoryId)),
+  getPostsByTagId: categoryId => dispatch(getPostsByTagId(categoryId))
 });
 
 export default connect(

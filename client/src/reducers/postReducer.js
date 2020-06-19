@@ -4,7 +4,8 @@ import {
   CREATE_POST,
   EDIT_POST,
   DELETE_POST,
-  GET_POSTS_BY_CATEGORY_ID
+  GET_POSTS_BY_CATEGORY_ID,
+  GET_POSTS_BY_TAG_ID
 } from '../actions/actionTypes';
 
 const initialState = {
@@ -18,6 +19,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         posts: action.payload.filter(({ categoryId }) => categoryId === action.categoryId)
+      };
+    }
+    case GET_POSTS_BY_TAG_ID: {
+      return {
+        ...state,
+        posts: action.payload.filter(({ tags }) => tags.includes(action.tagId))
       };
     }
     case GET_POST:

@@ -15,6 +15,7 @@ export const GET_TAGS = 'GET_TAGS';
 export const GET_TAG = 'GET_TAG';
 export const GET_TAG_BY_PRETTY_ID = 'GET_TAG_BY_PRETTY_ID';
 export const GET_TAGS_BY_POST_ID = 'GET_TAGS_BY_POST_ID';
+export const GET_POSTS_BY_TAG_ID = 'GET_POSTS_BY_TAG_ID';
 
 // categoryActions
 export const CREATE_CATEGORY = 'CREATE_CATEGORY';
