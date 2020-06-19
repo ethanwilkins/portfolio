@@ -1,3 +1,10 @@
+@font-face {
+  font-family: "Maison Neue Light";
+  src: url("../fonts/maison_neue_light.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 $width: 100%;
 
 .form {
@@ -43,7 +50,8 @@ $width: 100%;
   float: right;
   width: calc(70% - 10px);
   margin-top: 10px;
-  font-weight: 300;
+  font-size: 17px;
+  font-family: "Maison Neue Light";
 }
 // end of global css
 
