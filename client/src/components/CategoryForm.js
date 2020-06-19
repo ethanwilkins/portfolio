@@ -16,19 +16,20 @@ export class CategoryForm extends Component {
     const {
       name,
       handleNameChange,
-      handleSubmit
+      handleSubmit,
+      createTag
     } = this.props;
     return (
       <form
         noValidate
         autoComplete="off"
         onSubmit={handleSubmit}
-        className={styles.form}
+        className={styles.form + ' ' + (createTag ? styles.categoryForm : null)}
         ref={(ref) => { this.form = ref; }}
       >
         <TextField
           id="textarea"
-          placeholder={"Add a " + (this.props.createTag ? 'tag' : 'category')}
+          placeholder={"Add a " + (createTag ? 'tag' : 'category')}
           multiline
           margin="normal"
           rowsMax="1"
