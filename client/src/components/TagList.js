@@ -5,6 +5,8 @@ import Tag from './Tag';
 
 import styles from '../styles/CategoryList.module.scss';
 
+import { isMobile } from "react-device-detect";
+
 class TagList extends Component {
   state = {
     expanded: false
@@ -24,7 +26,10 @@ class TagList extends Component {
   };
 
   collapse = () => {
-    this.setState({ expanded: false })
+    // only applies to desktop
+    if (!isMobile) {
+      this.setState({ expanded: false })
+    }
   };
 
   handleSeeAllClick = () => {

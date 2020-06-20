@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
+import { isMobile } from "react-device-detect";
+
 import { getPosts, getPostsByCategoryId, getPostsByTagId } from '../actions/postActions';
 import { getCategoryByPrettyId } from '../actions/categoryActions';
 import { getTagByPrettyId } from '../actions/tagActions';
@@ -73,7 +75,10 @@ export class BlogPage extends Component {
   };
 
   collapse = () => {
-    this.setState({ expanded: false })
+    // only applies to desktop
+    if (!isMobile) {
+      this.setState({ expanded: false })
+    }
   };
 
   handleExpandClick = () => {
