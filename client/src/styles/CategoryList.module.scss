@@ -27,7 +27,6 @@ $activeColor: rgb(95, 210, 140);
 
 .seeAllLink:hover {
   text-decoration: none;
-  color: $activeColor;
 }
 // end global
 
@@ -46,5 +45,13 @@ $activeColor: rgb(95, 210, 140);
   .seeAllLink {
     font-size: 16px;
     padding-top: 10px;
+  }
+}
+// end mobile
+
+// for not mobile
+@media screen and (min-width: 975px) {
+  .seeAllLink:hover {
+    color: $activeColor;
   }
 }
