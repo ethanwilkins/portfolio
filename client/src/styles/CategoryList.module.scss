@@ -18,6 +18,7 @@ $activeColor: rgb(95, 210, 140);
 }
 
 .seeAllLink {
+  transition: all 200ms linear;
   display: block;
   font-family: "Maison Neue Thin";
   font-size: 18px;

@@ -16,6 +16,7 @@ $activeColor: rgb(95, 210, 140);
 }
 
 .delete {
+  transition: all 200ms linear;
   display: inline-block;
   margin-left: 5px;
   font-size: 16px;

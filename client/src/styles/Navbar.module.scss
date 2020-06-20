@@ -67,6 +67,10 @@ $cardMaxWidth: 950px;
   font-family: "Maison Neue Thin";
 }
 
+.headerLink {
+  transition: all 200ms linear;
+}
+
 .headerLink:hover {
   text-decoration: none;
   color: $activeColor;
