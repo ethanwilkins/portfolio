@@ -43,7 +43,7 @@ class CategoryList extends Component {
 
     return (
       <div className={styles.container}>
-        <div className={styles.label + " linkSoft noSelect"}>
+        <div className={styles.label + " linkSoft"}>
           Category
         </div>
         {categories.slice(0, (expanded ? categories.length : 3)).map(
@@ -57,7 +57,7 @@ class CategoryList extends Component {
           />
         )}
         <div
-          className={styles.seeAllLink + " linkSoft"}
+          className={styles.seeAllLink + " linkSoft noSelect"}
           onClick={this.handleSeeAllClick}
         >
           {expanded ? 'close' : 'see all'}
