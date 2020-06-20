@@ -96,7 +96,7 @@ export class BlogPage extends Component {
         <NavbarContainer />
         <div className={styles.blog}>
           <div className={styles.leftPane}>
-            <div className={styles.expandLink} onClick={this.handleExpandClick}>
+            <div className={styles.expandLink + ' noSelect'} onClick={this.handleExpandClick}>
               <div className={styles.expandIcon}>
                 <i className="fa fa-angle-down"></i>
               </div>
