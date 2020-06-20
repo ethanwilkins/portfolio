@@ -57,7 +57,7 @@ class TagList extends Component {
           />
         )}
         <div
-          className={styles.seeAllLink + " linkSoft"}
+          className={styles.seeAllLink + " linkSoft noSelect"}
           onClick={this.handleSeeAllClick}
         >
           {expanded ? 'close' : 'see all'}

@@ -43,7 +43,7 @@ class CategoryList extends Component {
 
     return (
       <div className={styles.container}>
-        <div className={styles.label + " linkSoft"}>
+        <div className={styles.label + " linkSoft noSelect"}>
           Category
         </div>
         {categories.slice(0, (expanded ? categories.length : 3)).map(

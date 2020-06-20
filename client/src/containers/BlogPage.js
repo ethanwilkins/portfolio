@@ -96,14 +96,13 @@ export class BlogPage extends Component {
         <NavbarContainer />
         <div className={styles.blog}>
           <div className={styles.leftPane}>
-            <div
-              className={styles.expandLink + ' noSelect'}
-              onClick={this.handleExpandClick}
-            >
-              <i className="fa fa-angle-down"></i>
+            <div className={styles.expandLink} onClick={this.handleExpandClick}>
+              <div className={styles.expandIcon}>
+                <i className="fa fa-angle-down"></i>
+              </div>
+              <div className={styles.filterPostsLabel}>Filter Posts</div>
+              <div className={styles.byCategoryLabel + ' linkSoft'}>By category or tag</div>
             </div>
-            <div className={styles.filterPostsLabel}>Filter Posts</div>
-            <div className={styles.byCategoryLabel + ' linkSoft'}>By category or tag</div>
 
             <div className={cx(styles.filterPane, {
                 filterPaneExpanded: expanded
