@@ -38,11 +38,12 @@ class ScrollToTopButton extends Component {
 
   render() {
     return (
-      <Link to='/' onClick={this.scrollToTop} className={cx(styles.button, {
-        showButton: !this.state.isHidden
+      <div onClick={this.scrollToTop} className={cx(styles.button, {
+        showButton: !this.state.isHidden,
+        noSelect: true
       })}>
         <i className="fa fa-angle-up"></i>
-      </Link>
+      </div>
     );
   }
 }
