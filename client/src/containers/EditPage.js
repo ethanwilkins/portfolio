@@ -32,10 +32,13 @@ class EditPage extends Component {
   };
 
   componentDidMount = () => {
-    const { dispatch, match } = this.props;
+    const { dispatch, match, history } = this.props;
     const prettyId = match.params.prettyId;
+    // secures editing of posts, must be logged in to edit
+    if (!localStorage.jwtToken) {
+      history.push('/login');
+    }
     dispatch(getPostByPrettyId(prettyId)).then((res) => {
-
       let savedTags = [];
       if (res.payload.post.tags) {
         res.payload.post.tags.forEach(function(tag) {
