@@ -31,7 +31,6 @@ class PostList extends Component {
   render() {
     const {
       deletePost,
-      editPost,
       posts,
       user
     } = this.props;
@@ -58,7 +57,6 @@ class PostList extends Component {
               tags={post.tags}
               timestamp={post.timestamp}
               deletePost={id => deletePost(id)}
-              editPost={(id, title, body, previewText, categoryId, image) => editPost(id, title, body, previewText, categoryId, image)}
             />
         )}
       </div>

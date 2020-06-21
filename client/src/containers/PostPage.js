@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { getPostByPrettyId } from '../actions/postActions';
+import { getPostByPrettyId, deletePost } from '../actions/postActions';
 
 import Loading from '../components/Loading';
 import FullPost from '../components/FullPost';
@@ -20,6 +20,8 @@ class PostPage extends Component {
     author: '',
     authorId: '',
     prettyId: '',
+    categoryId: '',
+    tags: [],
     title: '',
     body: '',
     imageData: '',
@@ -39,6 +41,8 @@ class PostPage extends Component {
         author: res.payload.post.author,
         authorId: res.payload.post.authorId,
         prettyId: res.payload.post.prettyId,
+        categoryId: res.payload.post.categoryId,
+        tags: res.payload.post.tags,
         title: res.payload.post.title,
         body: res.payload.post.body,
         imageData: res.payload.post.imageData,
@@ -53,11 +57,17 @@ class PostPage extends Component {
       _id,
       author,
       authorId,
+      prettyId,
+      categoryId,
+      tags,
       title,
       body,
       imageData,
+      deletePost,
+      editPost,
       timestamp
     } = this.state;
+    const { user } = this.props;
     return loading ? (
       <Loading />
     ) : (
@@ -69,9 +79,15 @@ class PostPage extends Component {
             _id={_id}
             author={author}
             authorId={authorId}
+            signedInUserId={user.userId}
+            prettyId={prettyId}
+            categoryId={categoryId}
+            tags={tags}
             title={title}
             body={body}
             imageData={imageData}
+            deletePost={id => deletePost(id)}
+            editPost={(id, title, body, previewText, categoryId, image) => editPost(id, title, body, previewText, categoryId, image)}
             timestamp={timestamp}
           />
           <DiscussionEmbed
@@ -95,11 +111,16 @@ PostPage.propTypes = {
   getPostByPrettyId: PropTypes.func.isRequired
 };
 
+const mapStateToProps = state => ({
+  user: state.authReducer.user
+});
+
 const mapDispatchToProps = dispatch => ({
-  getPostByPrettyId: prettyId => dispatch(getPostByPrettyId(prettyId))
+  getPostByPrettyId: prettyId => dispatch(getPostByPrettyId(prettyId)),
+  deletePost: id => dispatch(deletePost(id))
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(PostPage);
