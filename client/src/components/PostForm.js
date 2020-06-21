@@ -33,7 +33,7 @@ export class PostForm extends Component {
     } = this.props;
     // gets ReactSelect options from tags
     let tagOptions = [];
-    tags.forEach(function(tag, i) {
+    tags.forEach(function(tag) {
       tagOptions.push({value: tag._id, label: tag.name});
     });
     return (

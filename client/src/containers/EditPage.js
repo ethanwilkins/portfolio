@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import { getPostByPrettyId, editPost } from '../actions/postActions';
 import { getCategories } from '../actions/categoryActions';
-import { getTags } from '../actions/tagActions';
+import { getTags, getTag } from '../actions/tagActions';
 
 import Loading from '../components/Loading';
 import PostForm from '../components/PostForm';
@@ -34,6 +34,16 @@ class EditPage extends Component {
     const { dispatch, match } = this.props;
     const prettyId = match.params.prettyId;
     dispatch(getPostByPrettyId(prettyId)).then((res) => {
+
+      let savedTags = [];
+      if (res.payload.post.tags) {
+        res.payload.post.tags.forEach(function(tag) {
+          dispatch(getTag(tag)).then((res) => {
+            savedTags.push({value: tag, label: res.payload.tag.name});
+          });
+        });
+      }
+
       this.setState({
         loading: false,
         id: res.payload.post._id,
@@ -42,9 +52,10 @@ class EditPage extends Component {
         body: res.payload.post.body,
         previewText: res.payload.post.previewText,
         categoryId: res.payload.post.categoryId,
-        selectedTags: res.payload.post.tags,
+        selectedTags: savedTags,
         timestamp: res.payload.post.timestamp
       });
+
     });
     dispatch(getCategories());
     dispatch(getTags());
@@ -122,6 +133,7 @@ class EditPage extends Component {
             handleCategoryIdChange={this.handleCategoryIdChange}
             handleTagsChange={this.handleTagsChange}
             handleSubmit={this.handleSubmit}
+            editPage={true}
           />
         </div>
         <Footer />
