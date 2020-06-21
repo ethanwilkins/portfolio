@@ -133,7 +133,6 @@ class EditPage extends Component {
             handleCategoryIdChange={this.handleCategoryIdChange}
             handleTagsChange={this.handleTagsChange}
             handleSubmit={this.handleSubmit}
-            editPage={true}
           />
         </div>
         <Footer />
