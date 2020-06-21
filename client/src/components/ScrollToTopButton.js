@@ -12,7 +12,7 @@ class ScrollToTopButton extends Component {
 
   showButton = () => {
     // if user has scroll at least half way down the page, show button
-    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - (window.innerHeight * 1.5)) {
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - (window.innerHeight * 1.75)) {
       this.setState({
         isHidden: false
       });
