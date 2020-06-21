@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
 
 import { getPostByPrettyId, editPost } from '../actions/postActions';
+import { getCategories } from '../actions/categoryActions';
+import { getTags } from '../actions/tagActions';
 
 import Loading from '../components/Loading';
 import PostForm from '../components/PostForm';
@@ -22,16 +25,15 @@ class EditPage extends Component {
     body: '',
     previewText: '',
     image: '',
+    categoryId: '',
+    selectedTags: [],
     timestamp: 0
   };
 
   componentDidMount = () => {
-    const {
-      getPostByPrettyId,
-      match
-    } = this.props;
+    const { dispatch, match } = this.props;
     const prettyId = match.params.prettyId;
-    getPostByPrettyId(prettyId).then((res) => {
+    dispatch(getPostByPrettyId(prettyId)).then((res) => {
       this.setState({
         loading: false,
         id: res.payload.post._id,
@@ -39,9 +41,13 @@ class EditPage extends Component {
         title: res.payload.post.title,
         body: res.payload.post.body,
         previewText: res.payload.post.previewText,
+        categoryId: res.payload.post.categoryId,
+        selectedTags: res.payload.post.tags,
         timestamp: res.payload.post.timestamp
       });
     });
+    dispatch(getCategories());
+    dispatch(getTags());
   };
 
   handleTitleChange = (e) => {
@@ -63,12 +69,26 @@ class EditPage extends Component {
     this.setState(() => ({ previewText }));
   };
 
+  handleCategoryIdChange = (e) => {
+    const categoryId = e.target.value;
+    this.setState(() => ({ categoryId }));
+  };
+
+  handleTagsChange = (tags) => {
+    let selectedTags = [];
+    tags.forEach(function(tag) {
+      // strips each down to _id
+      selectedTags.push(tag.value);
+    });
+    this.setState(() => ({ selectedTags }));
+  };
+
   handleSubmit = (e) => {
-    const { editPost } = this.props;
+    const { dispatch } = this.props;
     e.preventDefault();
-    const { id, title, body, image, previewText } = this.state;
+    const { id, title, body, image, previewText, categoryId, selectedTags } = this.state;
     if (!title.trim()) return;
-    editPost(id, title, body, previewText, image);
+    dispatch(editPost(id, title, body, previewText, categoryId, selectedTags, image));
   };
 
   render() {
@@ -76,8 +96,11 @@ class EditPage extends Component {
       loading,
       title,
       body,
-      previewText
+      previewText,
+      categoryId,
+      selectedTags
     } = this.state;
+    const { categories, tags } = this.props;
     return loading ? (
       <Loading />
     ) : (
@@ -88,10 +111,16 @@ class EditPage extends Component {
             title={title}
             body={body}
             previewText={previewText}
+            categories={categories}
+            categoryId={categoryId}
+            tags={tags}
+            selectedTags={selectedTags}
             handleTitleChange={this.handleTitleChange}
             handleBodyChange={this.handleBodyChange}
             handleImageChange={this.handleImageChange}
             handlePreviewTextChange={this.handlePreviewTextChange}
+            handleCategoryIdChange={this.handleCategoryIdChange}
+            handleTagsChange={this.handleTagsChange}
             handleSubmit={this.handleSubmit}
           />
         </div>
@@ -102,34 +131,16 @@ class EditPage extends Component {
 }
 
 EditPage.propTypes = {
-  getPostByPrettyId: PropTypes.func.isRequired,
-  editPost: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
+  user: PropTypes.object.isRequired
 };
 
-const mapDispatchToProps = dispatch => ({
-  getPostByPrettyId: prettyId => dispatch(getPostByPrettyId(prettyId)),
-  editPost: (id, title, body, previewText, image) => dispatch(editPost(id, title, body, previewText, image))
+const mapStateToProps = state => ({
+  user: state.authReducer.user,
+  categories: state.categoryReducer.categories,
+  tags: state.tagReducer.tags
 });
 
-export default connect(
-  null,
-  mapDispatchToProps
+export default compose(
+  connect(mapStateToProps)
 )(EditPage);
-
-
-
-
-
-
-// import { connect } from 'react-redux';
-// import EditPost from '../components/EditPost';
-// import { editPost } from '../actions/postActions';
-
-// const mapDispatchToProps = dispatch => ({
-//   editPost: (id, title, body, previewText, image) => dispatch(editPost(id, title, body, previewText, image))
-// });
-
-// export default connect(
-//   null,
-//   mapDispatchToProps
-// )(EditPost);

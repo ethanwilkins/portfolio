@@ -82,6 +82,8 @@ router.route('/:id')
           title: req.body.title,
           body: req.body.body,
           previewText: req.body.previewText,
+          categoryId: req.body.categoryId,
+          tags: req.body.tags.split(','),
           prettyId: req.body.title.replace(/\s/g, '-').replace(/[^a-zA-Z0-9-_]/g, '').toLowerCase(),
           imageName: imageName,
           imageData: imageData

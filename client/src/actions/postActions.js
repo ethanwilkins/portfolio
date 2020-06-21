@@ -67,11 +67,13 @@ export const createPost = (title, body, previewText, categoryId, tags, image, us
     }));
 };
 
-export const editPost = (id, title, body, previewText, image) =>  dispatch => {
+export const editPost = (id, title, body, previewText, categoryId, tags, image) =>  dispatch => {
   const formPayload = new FormData();
   formPayload.append('title', title);
   formPayload.append('body', body);
   formPayload.append('previewText', previewText);
+  formPayload.append('categoryId', categoryId);
+  formPayload.append('tags', tags);
   formPayload.append('imageName', "multer-image-" + Date.now());
   formPayload.append('imageData', image);
 
