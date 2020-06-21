@@ -27,6 +27,7 @@ class EditPage extends Component {
     image: '',
     categoryId: '',
     selectedTags: [],
+    tagsChanged: false,
     timestamp: 0
   };
 
@@ -91,15 +92,18 @@ class EditPage extends Component {
       // strips each down to _id
       selectedTags.push(tag.value);
     });
-    this.setState(() => ({ selectedTags }));
+    this.setState({
+      selectedTags: selectedTags,
+      tagsChanged: true
+    });
   };
 
   handleSubmit = (e) => {
     const { dispatch } = this.props;
     e.preventDefault();
-    const { id, title, body, image, previewText, categoryId, selectedTags } = this.state;
+    const { id, title, body, image, previewText, categoryId, selectedTags, tagsChanged } = this.state;
     if (!title.trim()) return;
-    dispatch(editPost(id, title, body, previewText, categoryId, selectedTags, image));
+    dispatch(editPost(id, title, body, previewText, categoryId, (tagsChanged ? selectedTags : []), image));
   };
 
   render() {

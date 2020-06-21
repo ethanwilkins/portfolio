@@ -74,6 +74,7 @@ router.route('/:id')
 
     try {
       const post = await Post.findById(id);
+      const tags = (req.body.tags.split(',')[0]) ? req.body.tags.split(',') : (post.tags ? post.tags : null);
       const imageName = (req.body.imageName) ? req.body.imageName : (post.imageName ? post.imageName : null);
       const imageData = (req.file) ? req.file.path : (post.imageData ? post.imageData : null);
 
@@ -83,7 +84,7 @@ router.route('/:id')
           body: req.body.body,
           previewText: req.body.previewText,
           categoryId: req.body.categoryId,
-          tags: req.body.tags.split(','),
+          tags: tags,
           prettyId: req.body.title.replace(/\s/g, '-').replace(/[^a-zA-Z0-9-_]/g, '').toLowerCase(),
           imageName: imageName,
           imageData: imageData
