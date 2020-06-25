@@ -54,7 +54,7 @@ export class CreatePost extends Component {
 
   handleTagsChange = (tags) => {
     let selectedTags = [];
-    tags.forEach(function(tag) {
+    (tags ? tags : []).forEach(function(tag) {
       // strips each down to _id
       selectedTags.push(tag.value);
     });
