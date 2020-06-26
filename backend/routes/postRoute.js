@@ -3,6 +3,10 @@ const { ObjectID } = require('mongodb');
 const Post = require('../models/postModel');
 const multerUpload = require('../config/multer');
 const router = new express.Router();
+// fs, promisify, and unlink to delete img
+const fs = require('fs');
+const { promisify } = require('util');
+const unlinkAsync = promisify(fs.unlink);
 
 // Get a post by prettyId
 router.get('/pretty/:prettyId', async (req, res) => {
@@ -104,7 +108,11 @@ router.route('/:id')
 router.delete('/:id', async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
+    // deletes associated image
+    await unlinkAsync(post.imageData);
+    // deletes post
     await post.remove();
+    // returns success message
     return res.json({ success: true });
   } catch (err) {
     return res.status(404).send(err);
