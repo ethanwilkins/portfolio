@@ -79,6 +79,11 @@ class FullPost extends Component {
           }
           
           <div className={styles.body} dangerouslySetInnerHTML={{ __html: body }} />
+
+          <div>
+            {body}
+          </div>
+          
           <div className={styles.category + ' linkSoft'}>
             <i>
               <Link to={`/blog/category/${category.prettyId}`} className='linkSoft'>

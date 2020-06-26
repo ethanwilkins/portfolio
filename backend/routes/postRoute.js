@@ -108,8 +108,24 @@ router.route('/:id')
 router.delete('/:id', async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
-    // deletes associated image
+    const body = post.body;
+    // deletes associated main image
     await unlinkAsync(post.imageData);
+    // Deleting images saved as attachments through Trix
+    // loops through body, separated by /uploads/
+    body.split('/uploads/').forEach(async (str) => {
+      // to ensure each path is only deleted from once (multiple iterations of same path in body)
+      if (!str.includes('attachment--preview')) {
+        return;
+      }
+      // gets image path and removes garbage text
+      let path = str.substr(0, 18)
+        .replace('/', '')
+        .replace('&', '')
+        .replace('"', '');
+      // deletes image at path
+      await unlinkAsync('uploads/' + path);
+    });
     // deletes post
     await post.remove();
     // returns success message

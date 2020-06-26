@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { getPostByPrettyId, deletePost } from '../actions/postActions';
+import { getPostByPrettyId, deletePost, editPost } from '../actions/postActions';
 
 import Loading from '../components/Loading';
 import FullPost from '../components/FullPost';
@@ -63,11 +63,9 @@ class PostPage extends Component {
       title,
       body,
       imageData,
-      deletePost,
-      editPost,
       timestamp
     } = this.state;
-    const { user } = this.props;
+    const { user, deletePost, editPost } = this.props;
     return loading ? (
       <Loading />
     ) : (
@@ -117,7 +115,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getPostByPrettyId: prettyId => dispatch(getPostByPrettyId(prettyId)),
-  deletePost: id => dispatch(deletePost(id))
+  deletePost: id => dispatch(deletePost(id)),
+  editPost: id => dispatch(editPost(id))
 });
 
 export default connect(
