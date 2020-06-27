@@ -28,6 +28,22 @@ export class Wysywig extends Component {
         this.uploadImage(attachment);
       }
     });
+    // deletes image from server when attachment is removed
+    this.trixInput.current.addEventListener("trix-attachment-remove", event => {
+      if (event.attachment && event.attachment.file.name) {
+        const path = event.attachment.file.name;
+        // deletes image at path
+        axios.delete(`/images/${path}`)
+        .then((data) => {
+          if (data.data.success) {
+            console.log("Successfully deleted image at " + path + ".");
+          }
+        })
+        .catch(() => {
+          console.log("Error while deleting image.");
+        });
+      }
+    });
     this.trixInput.current.addEventListener("trix-initialize", event => {
       // sets value of trix-editor when value prop is passed in from EditPost
       if (this.props.value) {
