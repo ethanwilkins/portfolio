@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import compose from 'recompose/compose';
+import axios from 'axios';
 
 import PostForm from "../components/PostForm";
 
@@ -26,6 +27,35 @@ export class CreatePost extends Component {
     const { dispatch } = this.props;
     dispatch(getCategories());
     dispatch(getTags());
+  };
+
+  componentWillUnmount = () => {
+    const { body } = this.state;
+    if (body && body.includes('uploads')) {
+      // Deleting images saved as attachments through Trix
+      // loops through body, separated by /uploads/
+      body.split('/uploads/').forEach(function(str) {
+        // to ensure each path is only deleted from once (multiple iterations of same path in body)
+        if (!str.includes('attachment--preview')) {
+          return;
+        }
+        // gets image path and removes garbage text
+        let path = str.substr(0, 18)
+          .replace('/', '')
+          .replace('&', '')
+          .replace('"', '');
+        // deletes image at path
+        axios.delete(`/images/${path}`)
+        .then((data) => {
+          if (data.data.success) {
+            console.log("Successfully deleted image at " + path + ".");
+          }
+        })
+        .catch(() => {
+          console.log("Error while deleting image.");
+        });
+      });
+    }
   };
 
   handleTitleChange = (e) => {
