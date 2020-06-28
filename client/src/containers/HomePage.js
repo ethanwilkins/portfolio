@@ -8,6 +8,10 @@ import Footer from '../components/Footer';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/opacity.css';
 
+// import motionImg from '../images/motion.png';
+// import surveysImg from '../images/surveys.png';
+// import lendingImg from '../images/lending.png';
+
 import mainImg from '../images/html.jpg';
 import lilCImg from '../images/lil_c_screen.png';
 import styles from '../styles/HomePage.module.scss';
@@ -41,7 +45,7 @@ export class HomePage extends Component {
               Need a professional website made with quick turnaround for your business, company, or idea that hasn't launched yet?
             </p>
             <p>
-              All of my websites are built from scratch using the web development framework known as Ruby on Rails. So whether it's a simple, static landing page for your art or music, or something more complex (e.g. custom social networks or inventory management systems), you've come to the right place.
+              Every website I build for a client is built with the <a href="https://blog.hyperiondev.com/index.php/2018/09/10/everything-need-know-mern-stack/" target="_blank" rel="noopener noreferrer" className='linkUnderlined linkActive'>MERN stack</a>, ensuring that your application will be highly efficient and very fast. So whether it's a simple, static landing page for your business, or something more complex (e.g. online stores or custom social networks), you've come to the right place.
             </p>
             <p>
               My specialties include website design, hosting, mobile responsive websites, search engine optimization, and full scale content management systems.
