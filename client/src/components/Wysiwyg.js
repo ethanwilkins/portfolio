@@ -30,7 +30,7 @@ export class Wysywig extends Component {
     });
     // deletes image from server when attachment is removed
     this.trixInput.current.addEventListener("trix-attachment-remove", event => {
-      if (event.attachment && event.attachment.file.name) {
+      if (event.attachment && event.attachment.file && event.attachment.file.name) {
         const path = event.attachment.file.name;
         // deletes image at path
         axios.delete(`/images/${path}`)
