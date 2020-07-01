@@ -104,9 +104,9 @@ class EditPage extends Component {
   handleSubmit = (e) => {
     const { dispatch } = this.props;
     e.preventDefault();
-    const { id, title, body, image, previewText, categoryId, selectedTags, tagsChanged } = this.state;
+    const { id, title, body, image, previewText, categoryId, selectedTags, tagsChanged, prettyId } = this.state;
     if (!title.trim()) return;
-    dispatch(editPost(id, title, body, previewText, categoryId, (tagsChanged ? selectedTags : []), image));
+    dispatch(editPost(id, prettyId, title, body, previewText, categoryId, (tagsChanged ? selectedTags : []), image));
   };
 
   render() {

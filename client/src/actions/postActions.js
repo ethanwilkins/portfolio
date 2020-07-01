@@ -67,7 +67,7 @@ export const createPost = (title, body, previewText, categoryId, tags, image, us
     }));
 };
 
-export const editPost = (id, title, body, previewText, categoryId, tags, image) =>  dispatch => {
+export const editPost = (id, prettyId, title, body, previewText, categoryId, tags, image) =>  dispatch => {
   const formPayload = new FormData();
   formPayload.append('title', title);
   formPayload.append('body', body);
@@ -84,7 +84,7 @@ export const editPost = (id, title, body, previewText, categoryId, tags, image) 
       payload: res.data
     }));
   // redirect back to blog
-  window.location.href = '/blog';
+  window.location.href = `/post/${prettyId}`;
 };
 
 export const deletePost = id => dispatch =>
