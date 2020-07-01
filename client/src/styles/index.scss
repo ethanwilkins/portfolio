@@ -138,13 +138,15 @@ form .attachment img {
 }
 
 // pre is used for Trix code snippets
-pre {
+.trixElem pre {
   font-size: 16px;
   background-color: rgb(40, 40, 40);
   color: rgb(220, 220, 240);
   padding: 2.5px 10px;
   padding-bottom: 5px;
   line-height: 180%;
+  // disables pre so that long lines still wrap
+  white-space: pre-wrap;
 }
 // end of global css
 
@@ -172,8 +174,8 @@ $mobileFontSize: 18px;
     margin: 0;
     width: 100%;
   }
-  pre {
-    font-size: 10px;
+  .trixElem pre {
+    font-size: 12px;
     padding: 0 5px;
     padding-bottom: 2.5px;
   }

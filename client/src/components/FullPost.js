@@ -78,7 +78,7 @@ class FullPost extends Component {
             </div>
           }
 
-          <div className={styles.body} dangerouslySetInnerHTML={{ __html: body }} />
+          <div className={styles.body + ' trixElem'} dangerouslySetInnerHTML={{ __html: body }} />
           
           <div className={styles.category + ' linkSoft'}>
             <i>

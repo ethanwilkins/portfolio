@@ -17,6 +17,15 @@ export class Wysywig extends Component {
   }
 
   componentDidMount() {
+    this.trixInput.current.addEventListener("keydown", event => {
+      // if tab key is pressed
+      if (event.keyCode == 9) {
+        // prevents from tabbing to next input
+        event.preventDefault();
+        // inserts space twice for tab
+        for (let i=0; i<2; i++) this.trixInput.current.editor.insertHTML('&nbsp;');
+      }
+    });
     // gets called on every change for trix-editor
     this.trixInput.current.addEventListener("trix-change", event => {
       // calls function that sets state.body in parent element with innerHTML
@@ -76,7 +85,7 @@ export class Wysywig extends Component {
     return (
       <div>
         <input type="hidden" id="trix" value={this.props.value} />
-        <trix-editor input="trix" ref={this.trixInput} />
+        <trix-editor class="trixElem" input="trix" ref={this.trixInput} />
       </div>
     );
   }
