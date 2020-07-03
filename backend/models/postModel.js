@@ -41,6 +41,9 @@ const PostSchema = new Schema({
   imageData: {
     type: String
   },
+  editTimestamp: {
+    type: Number
+  },
   timestamp: {
     type: Number,
     required: true

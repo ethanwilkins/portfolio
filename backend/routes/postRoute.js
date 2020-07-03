@@ -91,7 +91,8 @@ router.route('/:id')
           tags: tags,
           prettyId: req.body.title.replace(/\s/g, '-').replace(/[^a-zA-Z0-9-_]/g, '').toLowerCase(),
           imageName: imageName,
-          imageData: imageData
+          imageData: imageData,
+          editTimestamp: new Date().getTime()
         }},
         { new: true },
         (err, post) => {
