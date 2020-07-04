@@ -13,6 +13,11 @@ import { logoutUser, setCurrentUser } from './actions/authActions';
 import './styles/index.scss';
 import 'font-awesome/css/font-awesome.min.css';
 
+// Initializes time ago locale for react-time-ago
+import JavascriptTimeAgo from 'javascript-time-ago';
+import en from 'javascript-time-ago/locale/en';
+JavascriptTimeAgo.addLocale(en);
+
 const store = createStore();
 
 // Code snippet from Krunal

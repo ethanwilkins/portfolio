@@ -25,7 +25,8 @@ class PostPage extends Component {
     title: '',
     body: '',
     imageData: '',
-    timestamp: 0
+    timestamp: 0,
+    editTimestamp: 0
   };
 
   componentDidMount = () => {
@@ -46,7 +47,8 @@ class PostPage extends Component {
         title: res.payload.post.title,
         body: res.payload.post.body,
         imageData: res.payload.post.imageData,
-        timestamp: res.payload.post.timestamp
+        timestamp: res.payload.post.timestamp,
+        editTimestamp: res.payload.post.editTimestamp
       });
     });
   };
@@ -63,7 +65,8 @@ class PostPage extends Component {
       title,
       body,
       imageData,
-      timestamp
+      timestamp,
+      editTimestamp
     } = this.state;
     const { user, deletePost, editPost } = this.props;
     return loading ? (
@@ -87,6 +90,7 @@ class PostPage extends Component {
             deletePost={id => deletePost(id)}
             editPost={(id, title, body, previewText, categoryId, image) => editPost(id, title, body, previewText, categoryId, image)}
             timestamp={timestamp}
+            editTimestamp={editTimestamp}
           />
           <DiscussionEmbed
             shortname='https-forrestwebco-com'

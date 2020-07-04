@@ -19,7 +19,7 @@ export class Wysywig extends Component {
   componentDidMount() {
     this.trixInput.current.addEventListener("keydown", event => {
       // if tab key is pressed
-      if (event.keyCode == 9) {
+      if (event.keyCode === 9) {
         // prevents from tabbing to next input
         event.preventDefault();
         // inserts space twice for tab

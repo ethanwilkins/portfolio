@@ -9,6 +9,9 @@ import PostMenu from "./PostMenu";
 
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
+import ReactTimeAgo from 'react-time-ago';
+import moment from 'moment';
+
 import styles from '../styles/FullPost.module.scss';
 
 import { getCategory } from '../actions/categoryActions';
@@ -44,7 +47,8 @@ class FullPost extends Component {
       title,
       body,
       imageData,
-      timestamp
+      timestamp,
+      editTimestamp
     } = this.props;
     const { category } = this.state;
     const relativeTime = new Intl.DateTimeFormat('en-US', {
@@ -52,6 +56,12 @@ class FullPost extends Component {
       month: 'long',
       day: 'numeric'
     }).format(timestamp);
+    // gets edit time if post has already been updated
+    const editTime = new Intl.DateTimeFormat('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    }).format(editTimestamp);
     return (
       <div className={styles.card}>
         <PostMenu
@@ -79,23 +89,28 @@ class FullPost extends Component {
           }
 
           <div className={styles.body + ' trixElem'} dangerouslySetInnerHTML={{ __html: body }} />
-          
-          <div className={styles.category + ' linkSoft'}>
-            <i>
-              <Link to={`/blog/category/${category.prettyId}`} className='linkSoft'>
-                {category.name}
-              </Link> - {
+        </div>
 
-              (tags ? tags.map(tag => 
-                <PostTag
-                  key={tag}
-                  _id={tag}
-                  tags={tags}
-                  getTag={getTag}
-                />
-              ) : null)}
+        <div className={styles.metaData}>
+          <i className={styles.category + ' linkSoft'}>
+            <Link to={`/blog/category/${category.prettyId}`} className='linkSoft'>
+              {category.name}
+            </Link> - {
+
+            (tags ? tags.map(tag => 
+              <PostTag
+                key={tag}
+                _id={tag}
+                tags={tags}
+                getTag={getTag}
+              />
+            ) : null)}
+          </i>
+          {editTimestamp &&
+            <i className={styles.editTime + ' linkSoft'}>
+              Last edited {moment(editTimestamp).isSame(Date.now(), 'day') ? 'today' : <ReactTimeAgo date={editTime}/>}
             </i>
-          </div>
+          }
         </div>
       </div>
     );
@@ -114,7 +129,8 @@ FullPost.propTypes = {
   title: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   tags: PropTypes.array.isRequired,
-  timestamp: PropTypes.number.isRequired
+  timestamp: PropTypes.number.isRequired,
+  editTimestamp: PropTypes.number.isRequired
 };
 
 const mapDispatchToProps = dispatch => ({

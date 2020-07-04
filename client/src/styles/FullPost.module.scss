@@ -36,6 +36,20 @@
   margin-bottom: 25px;
   font-family: Helvetica;
 }
+
+.metaData {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 70px;
+}
+
+.category {
+  float: left;
+}
+
+.editTime {
+  float: right;
+}
 // end global
 
 // for mobile
@@ -54,7 +68,16 @@
     height: auto;
     margin-bottom: 47.5px;
   }
-  .time, .category {
+  .time, .category, .editTime {
     font-size: 17.5px;
+  }
+  .category {
+    padding-bottom: 25px;
+  }
+  .category, .editTime {
+    width: 100%;
+  }
+  .metaData {
+    padding-bottom: 110px;
   }
 }
