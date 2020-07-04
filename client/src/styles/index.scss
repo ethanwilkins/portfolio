@@ -149,6 +149,12 @@ form .attachment img {
   // disables pre so that long lines still wrap
   white-space: pre-wrap;
 }
+
+.trixElem a {
+  color: $activeColor;
+  text-decoration: underline;
+  font-weight: 200;
+}
 // end of global css
 
 // for mobile
