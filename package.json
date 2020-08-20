@@ -27,7 +27,7 @@
   "homepage": "https://forrestwebco.com/",
   "dependencies": {
     "app-root-path": "^3.0.0",
-    "bcrypt": "^4.0.1",
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.18.3",
     "concurrently": "^4.0.1",
     "cors": "^2.8.4",
